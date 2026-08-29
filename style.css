@@ -1,193 +1,266 @@
 /* ==========================================================================
-   VARIABLES & ESTILOS BASE
+   1. IMPORTACIÓN DE FUENTES Y VARIABLES DE COLOR
    ========================================================================== */
-:root {
-  /* Tema Patricia Martín (Teal & Slate) */
-  --pat-bg: #f5f8f8;
-  --pat-card-bg: #ffffff;
-  --pat-dark: #1c3137;
-  --pat-teal: #38808e;
-  --pat-accent: #63caa7;
-  --pat-text: #2d3e42;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;700&display=swap');
 
-  /* Tema La Maga Pica (Gold & Dark Purple) */
-  --pica-bg: #0f0a17;
-  --pica-card-bg: #181126;
-  --pica-dark: #07040a;
-  --pica-gold: #e2b765;
-  --pica-accent: #9d4edd;
-  --pica-text: #e0d6eb;
+:root {
+  /* PALETA PATRICIA MARTÍN (Lagoon) */
+  --pat-dark: #26798E;
+  --pat-teal: #63CAA7;
+  --pat-accent: #FFC172;
+  --pat-light: #FFE3B3;
+  --pat-bg: #F8FAF9;
+  --pat-card-bg: #FFFFFF;
+  --pat-text: #1C3137;
+  --pat-muted: #536E75;
+
+  /* PALETA LA MAGA PICA (Colors #225) */
+  --pica-dark: #584053;
+  --pica-teal: #8DC6BF;
+  --pica-warm: #FCBC66;
+  --pica-orange: #F97B4F;
+  --pica-bg: #1F151E;
+  --pica-card-bg: #2D1D2A;
+  --pica-text: #FBEEE6;
+  --pica-muted: #D1B3C4;
 }
 
+/* ==========================================================================
+   2. ESTILOS GENERALES
+   ========================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: var(--pat-bg);
-  color: var(--pat-text);
+  font-family: 'DM Sans', sans-serif;
   line-height: 1.6;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  background-color: #111;
+  color: #333;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 /* ==========================================================================
-   LANDING / PORTAL DE SELECCIÓN
+   3. PORTADA / PANTALLA DIVIDIDA (SPLIT SCREEN)
    ========================================================================== */
-.landing-portal {
-  position: fixed;
-  top: 0;
-  left: 0;
+.world-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 100vw;
   height: 100vh;
-  background: #0d1317;
+  overflow: hidden;
+}
+
+.world {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  color: #fff;
-}
-
-.portal-content {
+  padding: 4rem 2rem;
   text-align: center;
-  max-width: 900px;
-  width: 90%;
+  transition: transform 0.4s ease;
 }
 
-.portal-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+.world-copy {
+  max-width: 450px;
 }
 
-.portal-subtitle {
-  color: #a0b0b5;
-  margin-bottom: 3rem;
-}
-
-.portal-choices {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.choice-card {
-  background: #172228;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px;
-  padding: 2.5rem 2rem;
-  width: 380px;
-  cursor: pointer;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.choice-card:hover {
-  transform: translateY(-8px);
-}
-
-.choice-patricia:hover { border-color: var(--pat-accent); }
-.choice-pica:hover { border-color: var(--pica-gold); }
-
-.choice-card h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  margin-bottom: 0.3rem;
-}
-
-.role-tag {
-  display: inline-block;
-  font-size: 0.8rem;
+.eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  letter-spacing: 1px;
   margin-bottom: 1rem;
+}
+
+.world-description {
+  margin: 1.5rem 0 2rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.world-patricia {
+  background: linear-gradient(135deg, var(--pat-dark) 0%, #1a5767 100%);
+  color: var(--pat-light);
+}
+
+.world-patricia .eyebrow { color: var(--pat-teal); }
+
+.world-patricia h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem;
+  line-height: 1.1;
+  color: #FFFFFF;
+}
+
+.world-patricia h1 em {
+  font-style: italic;
   color: var(--pat-accent);
 }
 
-.choice-pica .role-tag { color: var(--pica-gold); }
-
-.btn-portal {
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  background: var(--pat-teal);
-  color: #fff;
+.world-patricia .enter-button {
+  background-color: var(--pat-accent);
+  color: var(--pat-text);
 }
 
-.choice-pica .btn-portal {
-  background: var(--pica-gold);
+.world-patricia .enter-button:hover {
+  background-color: var(--pat-teal);
+  transform: translateY(-3px);
+}
+
+.world-pica {
+  background: linear-gradient(135deg, var(--pica-dark) 0%, var(--pica-bg) 100%);
+  color: var(--pica-text);
+}
+
+.world-pica .eyebrow { color: var(--pica-orange); }
+
+.pica-logo-cover {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}
+
+.world-pica h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem;
+  color: var(--pica-warm);
+}
+
+.world-pica .enter-button {
+  background-color: var(--pica-orange);
+  color: #FFFFFF;
+}
+
+.world-pica .enter-button:hover {
+  background-color: var(--pica-warm);
   color: var(--pica-dark);
+  transform: translateY(-3px);
+}
+
+.enter-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
 }
 
 /* ==========================================================================
-   HEADERS Y NAVEGACIÓN
+   4. ESTRUCTURA BASE DE LAS WEBS
    ========================================================================== */
-.site-header {
+.site {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 5%;
-  background: rgba(245, 248, 248, 0.95);
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 4rem;
+  backdrop-filter: blur(10px);
 }
 
-.header-pica {
-  background: rgba(15, 10, 23, 0.95);
-  border-bottom: 1px solid rgba(226, 183, 101, 0.2);
-}
-
-.logo a {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--pat-dark);
-  text-decoration: none;
-}
-
-.header-pica .logo a { color: var(--pica-gold); }
-
-nav {
+.site-header nav {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
-nav a {
-  color: var(--pat-text);
-  text-decoration: none;
-  font-size: 0.9rem;
+.site-header nav a {
+  font-size: 0.95rem;
   font-weight: 500;
 }
 
-.header-pica nav a { color: var(--pica-text); }
+.site-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 4rem;
+  font-size: 0.9rem;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
 
 .switch-world {
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  border: 1px solid var(--pat-teal);
-  background: transparent;
-  color: var(--pat-teal);
-  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.btn-switch-to-patricia {
-  border-color: var(--pica-gold);
-  color: var(--pica-gold);
+/* ==========================================================================
+   5. WEB PATRICIA MARTÍN (Lagoon Palette)
+   ========================================================================== */
+.site-patricia {
+  background-color: var(--pat-bg);
+  color: var(--pat-text);
 }
 
-/* DROPDOWN */
+.site-patricia .site-header {
+  background-color: rgba(38, 121, 142, 0.95);
+  color: #FFFFFF;
+}
+
+.site-patricia .brand-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: block;
+}
+
+.site-patricia .brand-role {
+  font-size: 0.75rem;
+  color: var(--pat-teal);
+  letter-spacing: 1px;
+}
+
+.site-patricia nav a:hover {
+  color: var(--pat-accent);
+}
+
+/* DROPDOWN MENU PARA PORTFOLIO 3D */
 .nav-dropdown {
   position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  cursor: pointer;
 }
 
 .dropdown-menu {
@@ -195,280 +268,697 @@ nav a {
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--pat-card-bg);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  padding: 0.5rem 0;
-  min-width: 180px;
+  background-color: var(--pat-dark);
+  min-width: 170px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  border-radius: 12px;
+  padding: 0.6rem 0;
+  z-index: 200;
+  border: 1px solid rgba(99, 202, 167, 0.3);
 }
 
-.nav-dropdown:hover .dropdown-menu { display: block; }
-
 .dropdown-menu a {
+  color: #FFFFFF;
+  padding: 0.6rem 1.2rem;
   display: block;
-  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
 }
 
 .dropdown-menu a:hover {
-  background: var(--pat-bg);
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--pat-accent);
 }
 
-/* ==========================================================================
-   SECCIONES Y PROYECTOS
-   ========================================================================== */
-.section-padding { padding: 4rem 5%; }
+.nav-dropdown:hover .dropdown-menu {
+  display: block;
+}
 
-.section-header {
+.site-patricia .switch-world {
+  background-color: var(--pat-accent);
+  color: var(--pat-text);
+}
+
+.site-patricia .switch-world:hover {
+  background-color: var(--pat-teal);
+}
+
+.hero-patricia {
+  background: linear-gradient(135deg, var(--pat-dark), #1d5f70);
+  color: #FFFFFF;
+  padding: 6rem 2rem;
   text-align: center;
-  margin-bottom: 3rem;
+  border-radius: 20px;
+  margin-bottom: 4rem;
 }
 
-.section-header h2 {
+.hero-patricia h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.5rem;
+  font-size: 4.2rem;
+  line-height: 1.1;
+  margin: 1rem 0;
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+.hero-patricia h1 em {
+  color: var(--pat-accent);
 }
 
-.project-card {
-  background: var(--pat-card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover { transform: translateY(-5px); }
-
-.project-image-button img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.project-card h3 {
-  padding: 1rem 1rem 0.3rem 1rem;
+.hero-patricia .hero-text {
   font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--pat-light);
 }
 
-.project-mini-desc {
-  padding: 0 1rem 1rem 1rem;
-  font-size: 0.85rem;
-  color: #666;
+.site-patricia section {
+  margin-bottom: 5rem;
 }
 
-/* ==========================================================================
-   SECCIÓN INTERACTIVA: DESCUBRE VAREIA
-   ========================================================================== */
-.vareia-zones-container {
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
+.site-patricia h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  color: var(--pat-dark);
+  margin-bottom: 1.5rem;
+}
+
+.site-patricia .section-label {
+  color: var(--pat-dark);
+}
+
+.service-grid, .project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
 }
 
-.vareia-zone-card {
+.subprojects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-card, .project-card {
+  background-color: var(--pat-card-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(38, 121, 142, 0.08);
+  border: 1px solid rgba(99, 202, 167, 0.2);
+}
+
+/* PORTFOLIO TARJETAS INTERACTIVAS */
+.project-card.project-open-btn {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card.project-open-btn:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(38, 121, 142, 0.18);
+}
+
+.project-mini-desc {
+  font-size: 0.88rem;
+  color: var(--pat-muted);
+  margin-top: 0.5rem;
+}
+
+.project-image-button {
+  width: 100%;
+  border: none;
+  background: rgba(38, 121, 142, 0.04);
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image-button img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.project-card.project-open-btn:hover .project-image-button img {
+  transform: scale(1.05);
+}
+
+/* VISTA DE DETALLE DE PROYECTOS (GALERÍAS OCULTAS) */
+.back-to-grid-btn {
+  background-color: var(--pat-dark);
+  color: #FFFFFF;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.back-to-grid-btn:hover {
+  background-color: var(--pat-accent);
+  color: var(--pat-text);
+}
+
+.detail-header {
+  margin-bottom: 2rem;
+}
+
+.detail-header h2 {
+  margin-bottom: 0.5rem;
+}
+
+.detail-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.detail-media-grid img,
+.detail-media-grid video {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  object-fit: cover;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  max-height: 450px;
+  background: #000;
+}
+
+/* SOFTWARE & HERRAMIENTAS */
+.software-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.software-card {
   background: var(--pat-card-bg);
   border: 1px solid rgba(99, 202, 167, 0.25);
-  border-radius: 18px;
-  padding: 2.5rem;
-  box-shadow: 0 6px 25px rgba(38, 121, 142, 0.08);
-}
-
-.zone-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem;
-  color: var(--pat-dark);
-  margin-bottom: 1.8rem;
-  border-bottom: 2px solid var(--pat-teal);
-  padding-bottom: 0.5rem;
-}
-
-/* 1. SLIDER COMPARATIVO */
-.comparison-slider {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
   border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  user-select: none;
-  margin-bottom: 2rem;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  box-shadow: 0 4px 15px rgba(38, 121, 142, 0.05);
+  transition: all 0.3s ease;
 }
 
-.comparison-slider img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+.software-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--pat-dark);
+  box-shadow: 0 8px 25px rgba(38, 121, 142, 0.15);
 }
 
-.comparison-slider .img-after-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 2;
-  border-right: 3px solid var(--pat-accent);
-}
-
-.comparison-slider .img-after-wrapper img {
-  width: 100%;
-  max-width: none;
-}
-
-.slider-handle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: 10;
-  cursor: ew-resize;
-}
-
-.slider-label {
-  position: absolute;
-  top: 1rem;
-  padding: 0.4rem 0.9rem;
-  background: rgba(28, 49, 55, 0.85);
-  color: #ffffff;
-  font-size: 0.8rem;
-  font-weight: 700;
-  border-radius: 20px;
-  z-index: 5;
-  backdrop-filter: blur(4px);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.label-before { right: 1rem; }
-.label-after { left: 1rem; }
-
-/* 2. VISOR PANORÁMICO 360º */
-.viewer-360-container {
-  position: relative;
-  width: 100%;
-  height: 480px;
-  overflow: hidden;
-  border-radius: 14px;
-  background: #0d171a;
-  cursor: grab;
-  margin-bottom: 2rem;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-}
-
-.viewer-360-container:active { cursor: grabbing; }
-
-.viewer-360-wrapper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.software-icon {
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform-origin: center center;
-  transition: transform 0.05s linear;
+  color: var(--pat-dark);
 }
 
-.panorama-img {
+.software-icon svg {
+  width: 100%;
   height: 100%;
-  width: auto;
-  max-width: none;
-  pointer-events: none;
 }
 
-.badge-360 {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: rgba(38, 121, 142, 0.85);
-  color: #fff;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
+.adobe-tag {
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
-  backdrop-filter: blur(4px);
-}
-
-.viewer-360-controls {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  z-index: 5;
-}
-
-.btn-360 {
+  font-size: 1.4rem;
   background: var(--pat-dark);
   color: #fff;
-  border: 1px solid var(--pat-teal);
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
 }
 
-.btn-360:hover {
-  background: var(--pat-accent);
+.software-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--pat-text);
+  text-align: center;
+}
+
+/* TIMELINE (LÍNEA DE TIEMPO) */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding-left: 2rem;
+  border-left: 3px solid var(--pat-teal);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timeline-badge {
+  position: absolute;
+  left: -2rem;
+  top: 0;
+  transform: translateX(-50%);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.timeline-badge.work {
+  background-color: var(--pat-dark);
+  color: #fff;
+}
+
+.timeline-badge.edu {
+  background-color: var(--pat-accent);
+  color: var(--pat-text);
+}
+
+.timeline-content {
+  background: var(--pat-card-bg);
+  padding: 1.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(99, 202, 167, 0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  margin-left: 1rem;
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pat-dark);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-content h3 {
+  font-size: 1.25rem;
+  color: var(--pat-text);
+  margin-bottom: 0.2rem;
+}
+
+.timeline-place {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--pat-muted);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+/* PREMIOS & RECONOCIMIENTOS */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.award-card {
+  background: var(--pat-card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(99, 202, 167, 0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  display: flex;
+  gap: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.award-card:hover {
+  transform: translateY(-4px);
+}
+
+.award-card.highlight {
+  border: 2px solid var(--pat-accent);
+  background: linear-gradient(145deg, #ffffff, #fffbf3);
+}
+
+.award-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.award-year {
+  font-size: 0.8rem;
+  font-weight: 700;
   color: var(--pat-dark);
 }
 
-/* MUNDO PICA OVERRIDES */
-#world-pica {
+.award-info h3 {
+  font-size: 1.15rem;
+  color: var(--pat-text);
+  margin: 0.2rem 0;
+}
+
+.award-org {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pat-muted);
+  margin-bottom: 0.6rem;
+}
+
+.site-patricia .site-footer {
+  background-color: var(--pat-dark);
+  color: var(--pat-light);
+}
+
+/* ==========================================================================
+   6. WEB LA MAGA PICA (Colors #225 Palette)
+   ========================================================================== */
+.site-pica {
   background-color: var(--pica-bg);
   color: var(--pica-text);
 }
 
-.shows-grid {
+.pica-header {
+  background-color: rgba(88, 64, 83, 0.95);
+  border-bottom: 1px solid rgba(252, 188, 102, 0.2);
+}
+
+.pica-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.pica-brand img {
+  height: 38px;
+}
+
+.pica-brand .brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--pica-warm);
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--pica-teal);
+  color: var(--pica-text);
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background-color: var(--pica-orange);
+  border-color: var(--pica-orange);
+  color: #FFFFFF;
+}
+
+.site-pica .switch-world {
+  background-color: var(--pica-warm);
+  color: var(--pica-dark);
+}
+
+.site-pica .switch-world:hover {
+  background-color: var(--pica-orange);
+  color: #FFFFFF;
+}
+
+.pica-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.pica-section {
+  margin-bottom: 5rem;
+}
+
+.pica-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.2rem;
+  color: var(--pica-warm);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.pica-section h2 em {
+  color: var(--pica-teal);
+  font-style: italic;
+}
+
+.pica-section p {
+  font-size: 1.1rem;
+  margin-bottom: 1.4rem;
+  color: var(--pica-muted);
+}
+
+.site-pica .section-label {
+  color: var(--pica-orange);
+}
+
+.about-subtabs {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(252, 188, 102, 0.2);
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.subtab-btn {
+  background: transparent;
+  border: 1px solid var(--pica-teal);
+  color: var(--pica-text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.subtab-btn.active,
+.subtab-btn:hover {
+  background-color: var(--pica-orange);
+  border-color: var(--pica-orange);
+  color: #FFFFFF;
+}
+
+.subtab-content {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.subtab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pica-hero-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.pica-hero-image img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(252, 188, 102, 0.2);
+}
+
+.sculpture-narrative {
+  background: rgba(45, 29, 42, 0.6);
+  border-left: 4px solid var(--pica-warm);
+  padding: 1.5rem 2rem;
+  border-radius: 0 12px 12px 0;
+  margin-top: 2rem;
+}
+
+.sculpture-narrative strong {
+  color: var(--pica-warm);
+}
+
+.pica-photo-text {
+  margin-bottom: 2.5rem;
+}
+
+.photo-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.photo-item {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(141, 198, 191, 0.2);
+  background-color: #140d13;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.sculpture-gallery .photo-item img {
+  object-fit: contain;
+  background-color: #160e15;
+}
+
+.photo-item img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.08);
 }
 
 .show-card {
-  background: var(--pica-card-bg);
-  border: 1px solid rgba(226, 183, 101, 0.2);
-  padding: 2rem;
-  border-radius: 14px;
+  background-color: var(--pica-card-bg);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border-left: 5px solid var(--pica-warm);
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
 }
 
 .show-card h3 {
-  color: var(--pica-gold);
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
-  margin-bottom: 0.8rem;
+  font-size: 2.4rem;
+  color: var(--pica-warm);
 }
 
-.site-footer {
-  text-align: center;
-  padding: 2rem;
-  border-top: 1px solid rgba(0,0,0,0.05);
+.show-subtitle {
+  color: var(--pica-teal);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-.footer-pica {
-  border-top: 1px solid rgba(226, 183, 101, 0.1);
+.show-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin: 1.5rem 0 2rem 0;
 }
 
+.show-gallery img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border: 1px solid rgba(141, 198, 191, 0.2);
+}
+
+.show-gallery img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.08);
+}
+
+.show-meta {
+  list-style: none;
+  background-color: rgba(0,0,0,0.25);
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.show-meta li {
+  margin-bottom: 0.4rem;
+  color: var(--pica-text);
+}
+
+.show-card h4 {
+  color: var(--pica-orange);
+  margin: 1.5rem 0 0.8rem;
+}
+
+.show-card ul {
+  padding-left: 1.2rem;
+  color: var(--pica-muted);
+  margin-bottom: 1.5rem;
+}
+
+.show-card ul li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-details {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.contact-details li {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.contact-details a {
+  color: var(--pica-warm);
+  font-weight: 700;
+}
+
+.contact-details a:hover {
+  color: var(--pica-orange);
+  text-decoration: underline;
+}
+
+.site-pica .site-footer {
+  background-color: #140d13;
+  color: var(--pica-muted);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* RESPONSIVE */
 @media (max-width: 850px) {
-  .comparison-slider, .viewer-360-container { height: 340px; }
-  .portal-choices { flex-direction: column; align-items: center; }
-  .choice-card { width: 100%; }
+  .world-selector {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .site-header, .site-footer {
+    padding: 1.2rem 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pica-hero-wrapper, .show-gallery, .photo-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline {
+    padding-left: 1rem;
+  }
+
+  .hero-patricia h1, .world-patricia h1, .world-pica h2 {
+    font-size: 2.8rem;
+  }
 }
