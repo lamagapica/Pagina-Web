@@ -352,13 +352,6 @@ a {
   margin-top: 2rem;
 }
 
-.subprojects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
 .service-card, .project-card {
   background-color: var(--pat-card-bg);
   padding: 2rem;
@@ -436,25 +429,186 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.detail-media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
+/* ==========================================================================
+   ESTILOS INTERACTIVOS: DESCUBRE VAREIA (SLIDER COMPARATIVO & VISOR 360º)
+   ========================================================================== */
+.vareia-zones-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 2rem;
 }
 
-.detail-media-grid img,
-.detail-media-grid video {
+.vareia-zone-card {
+  background: var(--pat-card-bg);
+  border-radius: 18px;
+  padding: 2.5rem;
+  border: 1px solid rgba(99, 202, 167, 0.25);
+  box-shadow: 0 8px 30px rgba(38, 121, 142, 0.08);
+}
+
+.zone-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: var(--pat-dark);
+  margin-bottom: 1.5rem;
+}
+
+/* 1. SLIDER COMPARATIVO */
+.comparison-slider {
+  position: relative;
   width: 100%;
+  height: 450px;
+  overflow: hidden;
   border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+  user-select: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.comparison-slider .img-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-.video-wrapper video {
+.comparison-slider .img-after-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  border-right: 3px solid var(--pat-accent);
+  z-index: 2;
+}
+
+.comparison-slider .img-after {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  max-height: 450px;
-  background: #000;
+  object-fit: cover;
+}
+
+.comparison-slider .slider-handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 3;
+  margin: 0;
+}
+
+.slider-label {
+  position: absolute;
+  bottom: 1rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(28, 49, 55, 0.85);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 6px;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+.label-before { right: 1rem; }
+.label-after { left: 1rem; }
+
+/* 2. VISOR PANORÁMICO 360º */
+.viewer-360-container {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #0d171a;
+  cursor: grab;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.viewer-360-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panorama-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
+}
+
+.viewer-360-controls {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 5;
+}
+
+.btn-360 {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: var(--pat-dark);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-360:hover {
+  background: var(--pat-accent);
+  color: var(--pat-text);
+  transform: scale(1.1);
+}
+
+.badge-360 {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(38, 121, 142, 0.9);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.zone-description h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--pat-dark);
+  margin-bottom: 0.6rem;
+}
+
+.zone-description p {
+  color: var(--pat-muted);
+  line-height: 1.7;
 }
 
 /* SOFTWARE & HERRAMIENTAS */
@@ -485,20 +639,6 @@ a {
   box-shadow: 0 8px 25px rgba(38, 121, 142, 0.15);
 }
 
-.software-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--pat-dark);
-}
-
-.software-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
 .adobe-tag {
   font-family: 'DM Sans', sans-serif;
   font-weight: 700;
@@ -517,7 +657,7 @@ a {
   text-align: center;
 }
 
-/* TIMELINE (LÍNEA DE TIEMPO) */
+/* TIMELINE */
 .timeline {
   position: relative;
   max-width: 800px;
@@ -546,11 +686,6 @@ a {
 .timeline-badge.work {
   background-color: var(--pat-dark);
   color: #fff;
-}
-
-.timeline-badge.edu {
-  background-color: var(--pat-accent);
-  color: var(--pat-text);
 }
 
 .timeline-content {
@@ -584,65 +719,13 @@ a {
   margin-bottom: 0.8rem;
 }
 
-/* PREMIOS & RECONOCIMIENTOS */
-.awards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.award-card {
-  background: var(--pat-card-bg);
-  border-radius: 16px;
-  padding: 2rem;
-  border: 1px solid rgba(99, 202, 167, 0.2);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-  display: flex;
-  gap: 1.2rem;
-  transition: transform 0.3s ease;
-}
-
-.award-card:hover {
-  transform: translateY(-4px);
-}
-
-.award-card.highlight {
-  border: 2px solid var(--pat-accent);
-  background: linear-gradient(145deg, #ffffff, #fffbf3);
-}
-
-.award-icon {
-  font-size: 2.2rem;
-  line-height: 1;
-}
-
-.award-year {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--pat-dark);
-}
-
-.award-info h3 {
-  font-size: 1.15rem;
-  color: var(--pat-text);
-  margin: 0.2rem 0;
-}
-
-.award-org {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--pat-muted);
-  margin-bottom: 0.6rem;
-}
-
 .site-patricia .site-footer {
   background-color: var(--pat-dark);
   color: var(--pat-light);
 }
 
 /* ==========================================================================
-   6. WEB LA MAGA PICA (Colors #225 Palette)
+   6. WEB LA MAGA PICA
    ========================================================================== */
 .site-pica {
   background-color: var(--pica-bg);
@@ -654,37 +737,10 @@ a {
   border-bottom: 1px solid rgba(252, 188, 102, 0.2);
 }
 
-.pica-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.pica-brand img {
-  height: 38px;
-}
-
 .pica-brand .brand-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   color: var(--pica-warm);
-}
-
-.tab-btn {
-  background: transparent;
-  border: 1px solid var(--pica-teal);
-  color: var(--pica-text);
-  padding: 0.5rem 1.2rem;
-  border-radius: 30px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tab-btn:hover {
-  background-color: var(--pica-orange);
-  border-color: var(--pica-orange);
-  color: #FFFFFF;
 }
 
 .site-pica .switch-world {
@@ -701,10 +757,6 @@ a {
   max-width: 900px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
-}
-
-.pica-section {
-  margin-bottom: 5rem;
 }
 
 .pica-section h2 {
@@ -726,211 +778,6 @@ a {
   color: var(--pica-muted);
 }
 
-.site-pica .section-label {
-  color: var(--pica-orange);
-}
-
-.about-subtabs {
-  display: flex;
-  gap: 0.8rem;
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(252, 188, 102, 0.2);
-  padding-bottom: 1rem;
-  flex-wrap: wrap;
-}
-
-.subtab-btn {
-  background: transparent;
-  border: 1px solid var(--pica-teal);
-  color: var(--pica-text);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  padding: 0.6rem 1.4rem;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
-
-.subtab-btn.active,
-.subtab-btn:hover {
-  background-color: var(--pica-orange);
-  border-color: var(--pica-orange);
-  color: #FFFFFF;
-}
-
-.subtab-content {
-  display: none;
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-.subtab-content.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.pica-hero-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 2.5rem;
-  align-items: center;
-  margin-bottom: 2.5rem;
-}
-
-.pica-hero-image img {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(252, 188, 102, 0.2);
-}
-
-.sculpture-narrative {
-  background: rgba(45, 29, 42, 0.6);
-  border-left: 4px solid var(--pica-warm);
-  padding: 1.5rem 2rem;
-  border-radius: 0 12px 12px 0;
-  margin-top: 2rem;
-}
-
-.sculpture-narrative strong {
-  color: var(--pica-warm);
-}
-
-.pica-photo-text {
-  margin-bottom: 2.5rem;
-}
-
-.photo-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.photo-item {
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(141, 198, 191, 0.2);
-  background-color: #140d13;
-}
-
-.photo-item img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.sculpture-gallery .photo-item img {
-  object-fit: contain;
-  background-color: #160e15;
-}
-
-.photo-item img:hover {
-  transform: scale(1.03);
-  filter: brightness(1.08);
-}
-
-.show-card {
-  background-color: var(--pica-card-bg);
-  padding: 2.5rem;
-  border-radius: 16px;
-  border-left: 5px solid var(--pica-warm);
-  margin-bottom: 3rem;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-}
-
-.show-card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem;
-  color: var(--pica-warm);
-}
-
-.show-subtitle {
-  color: var(--pica-teal);
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.show-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  margin: 1.5rem 0 2rem 0;
-}
-
-.show-gallery img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, filter 0.3s ease;
-  border: 1px solid rgba(141, 198, 191, 0.2);
-}
-
-.show-gallery img:hover {
-  transform: scale(1.02);
-  filter: brightness(1.08);
-}
-
-.show-meta {
-  list-style: none;
-  background-color: rgba(0,0,0,0.25);
-  padding: 1.2rem;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
-}
-
-.show-meta li {
-  margin-bottom: 0.4rem;
-  color: var(--pica-text);
-}
-
-.show-card h4 {
-  color: var(--pica-orange);
-  margin: 1.5rem 0 0.8rem;
-}
-
-.show-card ul {
-  padding-left: 1.2rem;
-  color: var(--pica-muted);
-  margin-bottom: 1.5rem;
-}
-
-.show-card ul li {
-  margin-bottom: 0.5rem;
-}
-
-.contact-details {
-  list-style: none;
-  margin-top: 2rem;
-}
-
-.contact-details li {
-  font-size: 1.2rem;
-  margin-bottom: 1.2rem;
-}
-
-.contact-details a {
-  color: var(--pica-warm);
-  font-weight: 700;
-}
-
-.contact-details a:hover {
-  color: var(--pica-orange);
-  text-decoration: underline;
-}
-
 .site-pica .site-footer {
   background-color: #140d13;
   color: var(--pica-muted);
@@ -950,12 +797,8 @@ a {
     gap: 1rem;
   }
 
-  .pica-hero-wrapper, .show-gallery, .photo-gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .timeline {
-    padding-left: 1rem;
+  .comparison-slider, .viewer-360-container {
+    height: 320px;
   }
 
   .hero-patricia h1, .world-patricia h1, .world-pica h2 {
