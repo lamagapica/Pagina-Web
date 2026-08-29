@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // FUNCIÓN PARA ABRIR UN PROYECTO
   function openProjectDetail(projectId) {
-    // Oculta las secciones generales de la web
     mainSectionsToToggle.forEach(sec => sec.style.display = "none");
     
     if (gridView) gridView.style.display = "none";
@@ -78,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (detailView) detailView.style.display = "none";
     if (gridView) gridView.style.display = "grid";
     
-    // Muestra de nuevo todas las secciones del cuerpo
     mainSectionsToToggle.forEach(sec => sec.style.display = "");
 
     detailContents.forEach(content => {
@@ -91,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // EVENTOS PARA LAS TARJETAS DE LA REJILLA (INCLUYENDO SUBCARD)
+  // EVENTOS PARA LAS TARJETAS DE LA REJILLA
   document.addEventListener("click", (e) => {
     const card = e.target.closest(".project-open-btn");
     if (card && card.dataset.project) {
@@ -129,6 +127,102 @@ document.addEventListener("DOMContentLoaded", () => {
       if (targetContent) {
         targetContent.classList.add("active");
       }
+    });
+  });
+
+  /* ==========================================================================
+     INTERACTIVIDAD: DESCUBRE VAREIA (SLIDER COMPARATIVO & VISOR 360º)
+     ========================================================================== */
+  // 1. SLIDER COMPARATIVO (ANTES / DESPUÉS)
+  const sliders = document.querySelectorAll(".comparison-slider");
+
+  sliders.forEach(slider => {
+    const rangeInput = slider.querySelector(".slider-handle");
+    const imgAfterWrapper = slider.querySelector(".img-after-wrapper");
+
+    if (rangeInput && imgAfterWrapper) {
+      rangeInput.addEventListener("input", (e) => {
+        const value = e.target.value;
+        imgAfterWrapper.style.width = `${value}%`;
+      });
+    }
+  });
+
+  // 2. VISOR PANORÁMICO 360º (PAN & ZOOM)
+  const view360Containers = document.querySelectorAll(".viewer-360-container");
+
+  view360Containers.forEach(container => {
+    const wrapper = container.querySelector(".viewer-360-wrapper");
+    const img = container.querySelector(".panorama-img");
+    const btnZoomIn = container.querySelector(".zoom-in");
+    const btnZoomOut = container.querySelector(".zoom-out");
+    const btnReset = container.querySelector(".reset-view");
+
+    if (!wrapper || !img) return;
+
+    let scale = 1;
+    let translateX = 0;
+    let translateY = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+
+    function updateTransform() {
+      img.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    }
+
+    if (btnZoomIn) {
+      btnZoomIn.addEventListener("click", () => {
+        scale = Math.min(scale + 0.3, 3);
+        updateTransform();
+      });
+    }
+
+    if (btnZoomOut) {
+      btnZoomOut.addEventListener("click", () => {
+        scale = Math.max(scale - 0.3, 1);
+        if (scale === 1) { translateX = 0; translateY = 0; }
+        updateTransform();
+      });
+    }
+
+    if (btnReset) {
+      btnReset.addEventListener("click", () => {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        updateTransform();
+      });
+    }
+
+    container.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        scale = Math.min(scale + 0.15, 3);
+      } else {
+        scale = Math.max(scale - 0.15, 1);
+        if (scale === 1) { translateX = 0; translateY = 0; }
+      }
+      updateTransform();
+    }, { passive: false });
+
+    container.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+      container.style.cursor = "grabbing";
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      updateTransform();
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+      container.style.cursor = "grab";
     });
   });
 });
