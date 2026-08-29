@@ -1,73 +1,257 @@
-<!-- NAVEGACIÓN (Fragmento del dropdown) -->
-<div class="nav-dropdown">
-  <a href="#work-3d" class="dropdown-trigger">Portfolio 3D ▾</a>
-  <div class="dropdown-menu">
-    <a href="#" class="project-direct-link" data-project="productos">Productos</a>
-    <a href="#" class="project-direct-link" data-project="silvano">Silvano</a>
-    <a href="#" class="project-direct-link" data-project="luminis">Luminis</a>
-    <a href="#" class="project-direct-link" data-project="guitarra">Guitarra</a>
-    <a href="#" class="project-direct-link" data-project="vareia">Vareia</a>
-    <a href="#" class="project-direct-link" data-project="descubre-vareia">Descubre Vareia</a>
-    <a href="#" class="project-direct-link" data-project="environment">La Fuente del Encino</a>
-    <a href="#" class="project-direct-link" data-project="props">Props</a>
-    <a href="#" class="project-direct-link" data-project="almazara">Almazara Romana</a>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patricia Martín | Designer 3D & La Maga Pica</title>
+  
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-patricia">
 
-<!-- TARJETA EN LA REJILLA PRINCIPAL (#projects-grid-view) -->
-<article class="project-card project-open-btn" data-project="descubre-vareia">
-  <div class="project-image-button">
-    <img src="assets/vareia-romana.jpg" alt="Descubre Vareia">
-  </div>
-  <h3>Descubre Vareia</h3>
-  <p class="project-mini-desc">Exploración interactiva, comparación histórica y panorámica 360º.</p>
-</article>
+  <!-- ==========================================
+       PANTALLA DE SELECCIÓN INICIAL (LANDING)
+     ========================================== -->
+  <div id="landing-portal" class="landing-portal">
+    <div class="portal-overlay"></div>
+    <div class="portal-content">
+      <h1 class="portal-title">Bienvenido</h1>
+      <p class="portal-subtitle">Selecciona el perfil que deseas explorar</p>
 
-<!-- SECCIÓN DETALLADA DE DETALLES DE PROYECTOS (#project-detail-view) -->
-<div id="detail-descubre-vareia" class="project-detail-content" style="display: none;">
-  <div class="detail-header">
-    <h2>Descubre Vareia</h2>
-    <p>Exploración interactiva de los yacimientos de la antigua Vareia romana frente a su estado actual.</p>
-  </div>
-
-  <div class="vareia-zones-container">
-
-    <!-- ZONA 1: ALMAZARA Y ENTORNO ARQUEOLÓGICO -->
-    <article class="vareia-zone-card">
-      <h3 class="zone-title">01. Reconstrucción Histórica del Yacimiento</h3>
-
-      <!-- 1. COMPARADOR SLIDER (ROMANA VS ACTUALIDAD) -->
-      <div class="comparison-slider">
-        <img class="img-before" src="assets/vareia-actualidad.jpg" alt="Varea en la actualidad">
-        <div class="img-after-wrapper">
-          <img class="img-after" src="assets/vareia-romana.jpg" alt="Varea en época romana">
+      <div class="portal-choices">
+        <!-- Tarjeta Patricia Martín -->
+        <div class="choice-card choice-patricia" data-world="patricia">
+          <div class="card-bg"></div>
+          <div class="card-content">
+            <h2>Patricia Martín</h2>
+            <span class="role-tag">3D Generalist & Layout Designer</span>
+            <p>Modelado 3D, espacios escénicos, infoarquitectura y recreación histórica.</p>
+            <button class="btn-portal">Entrar al Portfolio 3D</button>
+          </div>
         </div>
-        <input type="range" min="0" max="100" value="50" class="slider-handle" aria-label="Deslizador de comparación histórica">
-        <span class="slider-label label-before">Actualidad</span>
-        <span class="slider-label label-after">Época Romana</span>
+
+        <!-- Tarjeta La Maga Pica -->
+        <div class="choice-card choice-pica" data-world="pica">
+          <div class="card-bg"></div>
+          <div class="card-content">
+            <h2>La Maga Pica</h2>
+            <span class="role-tag">Ilusionista & Mentalista</span>
+            <p>Espectáculos de magia técnica, ilusiones interactivas y narrativa escénica.</p>
+            <button class="btn-portal">Entrar a Magia</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================================
+       1. MUNDO: PATRICIA MARTÍN (PORTFOLIO 3D)
+     ========================================== -->
+  <div id="world-patricia" class="world-container" style="display: none;">
+    
+    <!-- HEADER Y NAVEGACIÓN -->
+    <header class="site-header">
+      <div class="logo">
+        <a href="#about-patricia">Patricia Martín <span>/ 3D</span></a>
       </div>
 
-      <!-- 2. VISOR INTERACTIVO 360º -->
-      <div class="viewer-360-container" data-panorama="assets/360-almazara.jpg">
-        <div class="viewer-360-wrapper">
-          <img src="assets/vareia-romana.jpg" alt="Vista Panorámica 360º" class="panorama-img">
+      <nav>
+        <a href="#about-patricia">Sobre mí</a>
+        <a href="#services">Servicios</a>
+        
+        <div class="nav-dropdown">
+          <a href="#work-3d" class="dropdown-trigger">Portfolio 3D ▾</a>
+          <div class="dropdown-menu">
+            <a href="#" class="project-direct-link" data-project="productos">Productos</a>
+            <a href="#" class="project-direct-link" data-project="silvano">Silvano</a>
+            <a href="#" class="project-direct-link" data-project="luminis">Luminis</a>
+            <a href="#" class="project-direct-link" data-project="guitarra">Guitarra</a>
+            <a href="#" class="project-direct-link" data-project="vareia">Vareia</a>
+            <a href="#" class="project-direct-link" data-project="descubre-vareia">Descubre Vareia</a>
+            <a href="#" class="project-direct-link" data-project="environment">La Fuente del Encino</a>
+            <a href="#" class="project-direct-link" data-project="props">Props</a>
+            <a href="#" class="project-direct-link" data-project="almazara">Almazara Romana</a>
+          </div>
         </div>
-        <div class="viewer-360-controls">
-          <button class="btn-360 zoom-in" title="Acercar">+</button>
-          <button class="btn-360 zoom-out" title="Alejar">-</button>
-          <button class="btn-360 reset-view" title="Restablecer">⟲</button>
+
+        <a href="#skills">Software</a>
+        <a href="#experience">Trayectoria</a>
+        <a href="#awards">Premios</a>
+        <a href="#contact-patricia">Contacto</a>
+        <button class="switch-world btn-switch-to-pica">Ir a La Maga Pica 🔮</button>
+      </nav>
+    </header>
+
+    <!-- HERO PATRICIA -->
+    <section id="about-patricia" class="hero-section">
+      <div class="hero-text">
+        <span class="subtitle">3D Modeling & Visual Design</span>
+        <h1>Patricia Martín</h1>
+        <p>Especialista en diseño 3D, distribución de espacios escénicos, auditorios y recreación del patrimonio histórico. Rigor técnico y precisión estética aplicados al entorno digital.</p>
+        <div class="hero-actions">
+          <a href="#work-3d" class="btn-primary">Ver Proyectos 3D</a>
+          <a href="#contact-patricia" class="btn-secondary">Contacto Pro</a>
         </div>
-        <span class="badge-360">Vista 360º (Arrastra para girar / Rueda para zoom)</span>
+      </div>
+    </section>
+
+    <!-- PROYECTOS 3D -->
+    <section id="work-3d" class="section-padding">
+      <div class="section-header">
+        <h2>Portfolio 3D</h2>
+        <p>Proyectos destacados de modelado, renderizado e interacción virtual.</p>
       </div>
 
-      <!-- 3. TEXTO EXPLICATIVO -->
-      <div class="zone-description">
-        <h4>Contexto Histórico y Producción</h4>
-        <p>
-          Este enclave albergaba las estructuras dedicadas a la producción agrícola e industrial en la Vareia romana. Los trabajos de infografía y modelado 3D permiten reconstruir la distribución edilicia original y contrastarla con el entramado urbano actual.
-        </p>
-      </div>
-    </article>
+      <!-- VISTA GRID -->
+      <div id="projects-grid-view" class="projects-grid">
+        <article class="project-card project-open-btn" data-project="descubre-vareia">
+          <div class="project-image-button">
+            <img src="assets/vareia-romana.jpg" alt="Descubre Vareia">
+          </div>
+          <h3>Descubre Vareia</h3>
+          <p class="project-mini-desc">Exploración interactiva, comparación histórica y panorámica 360º.</p>
+        </article>
 
+        <article class="project-card project-open-btn" data-project="vareia">
+          <div class="project-image-button">
+            <img src="assets/vareia-romana.jpg" alt="Vareia 3D">
+          </div>
+          <h3>Reconstrucción Vareia</h3>
+          <p class="project-mini-desc">Modelado y restitución arquitectónica de la ciudad romana.</p>
+        </article>
+
+        <article class="project-card project-open-btn" data-project="almazara">
+          <div class="project-image-button">
+            <img src="assets/vareia-actualidad.jpg" alt="Almazara Romana">
+          </div>
+          <h3>Almazara Romana</h3>
+          <p class="project-mini-desc">Documental 3D y virtualización industrial antigua.</p>
+        </article>
+      </div>
+
+      <!-- VISTA DETALLE PROYECTO -->
+      <div id="project-detail-view" style="display: none;">
+        <button id="btn-close-detail" class="btn-secondary">← Volver al listado de proyectos</button>
+        
+        <!-- DETALLE: DESCUBRE VAREIA -->
+        <div id="detail-descubre-vareia" class="project-detail-content" style="display: none;">
+          <div class="detail-header">
+            <h2>Descubre Vareia</h2>
+            <p>Exploración interactiva de los yacimientos de la antigua Vareia romana frente a su estado actual.</p>
+          </div>
+
+          <div class="vareia-zones-container">
+            <article class="vareia-zone-card">
+              <h3 class="zone-title">01. Reconstrucción Histórica del Yacimiento</h3>
+
+              <!-- SLIDER COMPARATIVO (ROMANA VS ACTUALIDAD) -->
+              <div class="comparison-slider">
+                <img class="img-before" src="assets/vareia-actualidad.jpg" alt="Varea en la actualidad">
+                <div class="img-after-wrapper">
+                  <img class="img-after" src="assets/vareia-romana.jpg" alt="Varea en época romana">
+                </div>
+                <input type="range" min="0" max="100" value="50" class="slider-handle" aria-label="Deslizador de comparación histórica">
+                <span class="slider-label label-before">Actualidad</span>
+                <span class="slider-label label-after">Época Romana</span>
+              </div>
+
+              <!-- VISOR PANORÁMICO 360º -->
+              <div class="viewer-360-container">
+                <div class="viewer-360-wrapper">
+                  <img src="assets/vareia-romana.jpg" alt="Vista Panorámica 360º" class="panorama-img">
+                </div>
+                <div class="viewer-360-controls">
+                  <button class="btn-360 zoom-in" title="Acercar">+</button>
+                  <button class="btn-360 zoom-out" title="Alejar">-</button>
+                  <button class="btn-360 reset-view" title="Restablecer">⟲</button>
+                </div>
+                <span class="badge-360">Vista 360º (Arrastra para girar / Rueda para zoom)</span>
+              </div>
+
+              <div class="zone-description">
+                <h4>Contexto Histórico y Producción</h4>
+                <p>
+                  Este enclave albergaba las estructuras dedicadas a la producción agrícola e industrial en la Vareia romana. Los trabajos de infografía y modelado 3D permiten reconstruir la distribución edilicia original y contrastarla con el entramado urbano actual.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER PATRICIA -->
+    <footer id="contact-patricia" class="site-footer">
+      <p>© 2026 Patricia Martín — Diseñadora & Generalista 3D</p>
+    </footer>
   </div>
-</div>
+
+
+  <!-- ==========================================
+       2. MUNDO: LA MAGA PICA (MAGIA Y MENTALISMO)
+     ========================================== -->
+  <div id="world-pica" class="world-container" style="display: none;">
+    
+    <!-- HEADER Y NAVEGACIÓN -->
+    <header class="site-header header-pica">
+      <div class="logo">
+        <a href="#about-pica">La Maga Pica <span>✨</span></a>
+      </div>
+
+      <nav>
+        <a href="#about-pica">La Ilusionista</a>
+        <a href="#shows-pica">Espectáculos</a>
+        <a href="#tech-magic">Magia & Tecnología</a>
+        <a href="#contact-pica">Contratación</a>
+        <button class="switch-world btn-switch-to-patricia">Ir a Portfolio 3D 📐</button>
+      </nav>
+    </header>
+
+    <!-- HERO LA MAGA PICA -->
+    <section id="about-pica" class="hero-section hero-pica">
+      <div class="hero-text">
+        <span class="subtitle">Ilusionismo, Mentalismo & Tradición</span>
+        <h1>La Maga Pica</h1>
+        <p>Una fusión única entre la herencia artesana, la cartomagia clásica y las herramientas tecnológicas contemporáneas. Ilusiones diseñadas para desafiar la lógica.</p>
+        <div class="hero-actions">
+          <a href="#shows-pica" class="btn-primary btn-pica">Ver Espectáculos</a>
+          <a href="#contact-pica" class="btn-secondary btn-pica-sec">Contratación</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN ESPECTÁCULOS -->
+    <section id="shows-pica" class="section-padding">
+      <div class="section-header">
+        <h2>Rutinas & Espectáculos Escénicos</h2>
+        <p>Experiencias memorables adaptadas a teatros, galas y eventos corporativos.</p>
+      </div>
+
+      <div class="shows-grid">
+        <article class="show-card">
+          <h3>El Legado del Pica Piedra</h3>
+          <p>Un homenaje poético a las raíces familiares, donde las herramientas de cantero y la magia con naipes se entrelazan en una revelación imposible.</p>
+        </article>
+
+        <article class="show-card">
+          <h3>Mentalismo Digital</h3>
+          <p>Aplicaciones web personalizadas, predicciones en tiempo real y transmisión de pensamiento apoyadas en tecnología propia.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER LA MAGA PICA -->
+    <footer id="contact-pica" class="site-footer footer-pica">
+      <p>© 2026 La Maga Pica — Ilusionismo & Espectáculos</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
