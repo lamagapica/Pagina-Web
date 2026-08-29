@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sustituye esta URL por el dominio real de tu web en GitHub Pages
-Sitemap: https://TU-USUARIO.github.io/TU-REPOSITORIO/sitemap.xml
+Sitemap:  https://lamagapica.github.io/Pagina-Web/
