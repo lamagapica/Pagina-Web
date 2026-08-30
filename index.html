@@ -14,8 +14,6 @@
   <meta property="og:title" content="Patricia Martín · Artista 3D & La Maga Pica">
   <meta property="og:description" content="Descubre el portfolio 3D de Patricia Martín y los espectáculos de magia de La Maga Pica.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://TU-USUARIO.github.io/TU-REPOSITORIO/">
-  <meta property="og:image" content="https://TU-USUARIO.github.io/TU-REPOSITORIO/assets/portada%20luminis.jpg">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,8 +24,8 @@
 
 <body>
 
+  <!-- PANTALLA PRINCIPAL DIVIDIDA EN DOS -->
   <main id="world-selector" class="world-selector">
-
     <section class="world world-patricia">
       <div class="world-copy">
         <p class="eyebrow">PORTFOLIO PROFESIONAL</p>
@@ -50,10 +48,10 @@
         </button>
       </div>
     </section>
-
   </main>
 
 
+  <!-- WEB DE PATRICIA MARTÍN -->
   <div id="patricia-site" class="site site-patricia" style="display: none;">
 
     <header class="site-header">
@@ -124,12 +122,12 @@
         </div>
       </section>
 
+      <!-- PORTFOLIO SECCIÓN PRINCIPAL -->
       <section class="portfolio-section" id="work-3d">
         <div class="section-label">03 / PORTFOLIO 3D</div>
         <h2>Trabajos de Diseño 3D</h2>
 
         <div id="projects-grid-view" class="project-grid">
-          
           <article class="project-card project-open-btn" data-project="productos">
             <div class="project-image-button">
               <img src="assets/portada luminis.jpg" alt="Productos">
@@ -195,8 +193,8 @@
           </article>
         </div>
 
+        <!-- CONTENEDOR DE DETALLE -->
         <div id="project-detail-view" style="display: none;">
-          
           <button class="back-to-grid-btn">← Volver a todos los proyectos</button>
 
           <div id="detail-productos" class="project-detail-content" style="display: none;">
@@ -328,11 +326,10 @@
               <img src="assets/vareia.png" alt="Integración y Reconstrucción Vareia">
             </div>
           </div>
-
         </div>
-
       </section>
 
+      <!-- DESCUBRE VAREIA -->
       <section class="vareia-section" id="descubre-vareia">
         <div class="section-label">04 / DESCUBRE VAREIA</div>
 
@@ -347,7 +344,8 @@
           </div>
         </div>
 
-        <article class="vareia-zone-card" data-vareia-zone="almazara">
+        <!-- ZONA 01: ALMAZARA -->
+        <article class="vareia-zone-card">
           <header class="zone-header">
             <span class="zone-number">01</span>
             <div>
@@ -359,7 +357,8 @@
             </div>
           </header>
 
-          <div class="comparison-slider vareia-comparison" aria-label="Comparación entre Vareia actual y Vareia romana">
+          <!-- 1. COMPARADOR DE IMÁGENES CON BARRA DESLIZANTE -->
+          <div class="comparison-slider vareia-comparison">
             <img class="img-before" src="assets/vareia-actualidad.jpg" alt="Vareia en la actualidad">
             <div class="img-after-wrapper">
               <img class="img-after" src="assets/vareia-romana.jpg" alt="Vareia en época romana">
@@ -370,14 +369,14 @@
               max="100"
               value="50"
               class="slider-handle"
-              aria-label="Desliza para comparar la actualidad con la época romana"
             >
             <span class="slider-label label-before">Actualidad</span>
             <span class="slider-label label-after">Época romana</span>
           </div>
 
-          <div class="viewer-360-container vareia-viewer" data-panorama="assets/360-almazara.jpg">
-            <div class="viewer-360-wrapper" tabindex="0" aria-label="Visor 360 grados de la almazara">
+          <!-- 2. VISOR 360 GRADOS CON GIRAR Y AMPLIAR -->
+          <div class="viewer-360-container vareia-viewer">
+            <div class="viewer-360-wrapper">
               <img
                 src="assets/360-almazara.jpg"
                 alt="Vista 360º de la almazara romana"
@@ -388,14 +387,15 @@
             </div>
 
             <div class="viewer-360-controls">
-              <button type="button" class="btn-360 zoom-in" title="Acercar" aria-label="Acercar">+</button>
-              <button type="button" class="btn-360 zoom-out" title="Alejar" aria-label="Alejar">−</button>
-              <button type="button" class="btn-360 reset-view" title="Restablecer" aria-label="Restablecer">⟲</button>
+              <button type="button" class="btn-360 zoom-in" title="Acercar">+</button>
+              <button type="button" class="btn-360 zoom-out" title="Alejar">−</button>
+              <button type="button" class="btn-360 reset-view" title="Restablecer">⟲</button>
             </div>
 
             <span class="badge-360">Vista 360º · Arrastra para girar · Rueda o botones para zoom</span>
           </div>
 
+          <!-- 3. TEXTO EXPLICATIVO -->
           <div class="zone-description">
             <p class="zone-kicker">CONTEXTO HISTÓRICO</p>
             <h4>Qué estás viendo</h4>
@@ -408,111 +408,33 @@
             </p>
           </div>
         </article>
-
       </section>
 
+      <!-- SOFTWARE / HERRAMIENTAS -->
       <section class="skills-section" id="skills">
         <div class="section-label">05 / SOFTWARE & HERRAMIENTAS</div>
         <h2>Especialidades Técnicas</h2>
-        
         <div class="software-grid">
-          <div class="software-card">
-            <div class="software-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <span class="software-name">Autodesk Maya</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-            </div>
-            <span class="software-name">ZBrush</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
-            </div>
-            <span class="software-name">Blender</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10v10H7z"/></svg>
-            </div>
-            <span class="software-name">Unreal Engine</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            </div>
-            <span class="software-name">Autodesk Inventor</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM8 12h8M12 8v8"/></svg>
-            </div>
-            <span class="software-name">AutoCAD</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/></svg>
-            </div>
-            <span class="software-name">V-Ray</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg>
-            </div>
-            <span class="software-name">Lumion</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-            </div>
-            <span class="software-name">KeyShot</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <span class="adobe-tag">Ae</span>
-            </div>
-            <span class="software-name">After Effects</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <span class="adobe-tag">Ai</span>
-            </div>
-            <span class="software-name">Illustrator</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <span class="adobe-tag">Pr</span>
-            </div>
-            <span class="software-name">Premiere Pro</span>
-          </div>
-
-          <div class="software-card">
-            <div class="software-icon">
-              <span class="adobe-tag">Ps</span>
-            </div>
-            <span class="software-name">Photoshop</span>
-          </div>
+          <div class="software-card"><span class="software-name">Autodesk Maya</span></div>
+          <div class="software-card"><span class="software-name">ZBrush</span></div>
+          <div class="software-card"><span class="software-name">Blender</span></div>
+          <div class="software-card"><span class="software-name">Unreal Engine</span></div>
+          <div class="software-card"><span class="software-name">Autodesk Inventor</span></div>
+          <div class="software-card"><span class="software-name">AutoCAD</span></div>
+          <div class="software-card"><span class="software-name">V-Ray</span></div>
+          <div class="software-card"><span class="software-name">Lumion</span></div>
+          <div class="software-card"><span class="software-name">KeyShot</span></div>
+          <div class="software-card"><span class="software-name">After Effects</span></div>
+          <div class="software-card"><span class="software-name">Illustrator</span></div>
+          <div class="software-card"><span class="software-name">Premiere Pro</span></div>
+          <div class="software-card"><span class="software-name">Photoshop</span></div>
         </div>
       </section>
 
+      <!-- EXPERIENCIA -->
       <section class="experience-section" id="experience">
         <div class="section-label">06 / TRAYECTORIA Y FORMACIÓN</div>
         <h2>Experiencia & Educación</h2>
-
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-badge work">Experiencia</div>
@@ -523,53 +445,13 @@
               <p>Modelado 3D y diseño 2D de sistemas de butacas.</p>
             </div>
           </div>
-
-          <div class="timeline-item">
-            <div class="timeline-badge edu">Formación</div>
-            <div class="timeline-content">
-              <span class="timeline-date">2026</span>
-              <h3>Entornos 4.0: AR, VR & MR</h3>
-              <span class="timeline-place">Formación Profesional para el Empleo</span>
-              <p>Especialización en Realidad Aumentada (AR), Realidad Virtual (VR) y Realidad Híbrida (MR).</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-badge edu">Formación</div>
-            <div class="timeline-content">
-              <span class="timeline-date">2026</span>
-              <h3>Esculpido Digital & Recreación Histórica 3D</h3>
-              <span class="timeline-place">Kore Formación</span>
-              <p>Cursos especializados en ZBrush y Blender aplicados a la conservación de patrimonio y recreación de ciudades históricas.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-badge work">Experiencia</div>
-            <div class="timeline-content">
-              <span class="timeline-date">2025</span>
-              <h3>Diseñadora 3D (Prácticas)</h3>
-              <span class="timeline-place">Render Estudio 3D</span>
-              <p>Desarrollo y modelado de proyectos de visualización arquitectónica y producto.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-badge edu">Formación</div>
-            <div class="timeline-content">
-              <span class="timeline-date">2023 - 2025</span>
-              <h3>F.P. Grado Superior en Animación 3D, Juegos y Entornos Interactivos</h3>
-              <span class="timeline-place">Formación Profesional Superior</span>
-              <p>Especialización en modelado, texturizado, animación e iluminación.</p>
-            </div>
-          </div>
         </div>
       </section>
 
+      <!-- PREMIOS -->
       <section class="awards-section" id="awards">
         <div class="section-label">07 / LOGROS</div>
         <h2>Premios & Reconocimientos</h2>
-
         <div class="awards-grid">
           <article class="award-card highlight">
             <div class="award-icon">🏆</div>
@@ -577,27 +459,6 @@
               <span class="award-year">2026</span>
               <h3>Representante de La Rioja</h3>
               <p class="award-org">SpainSkills 2026</p>
-              <p>Seleccionada para representar a la comunidad autónoma de La Rioja en las olimpiadas de FP de Animación 3D y Desarrollo.</p>
-            </div>
-          </article>
-
-          <article class="award-card highlight">
-            <div class="award-icon">🥇</div>
-            <div class="award-info">
-              <span class="award-year">2025</span>
-              <h3>1º Premio en Animación 3D</h3>
-              <p class="award-org">RiojaSkills 2025</p>
-              <p>Primer premio en el campeonato autonómico de habilidades profesionales en el área de tecnología y 3D.</p>
-            </div>
-          </article>
-
-          <article class="award-card">
-            <div class="award-icon">🎬</div>
-            <div class="award-info">
-              <span class="award-year">2021</span>
-              <h3>Premio Corto de Animación 3D</h3>
-              <p class="award-org">La Gota de Leche</p>
-              <p>Reconocimiento al mejor cortometraje de animación 3D.</p>
             </div>
           </article>
         </div>
@@ -618,8 +479,8 @@
   </div>
 
 
+  <!-- WEB DE LA MAGA PICA -->
   <div id="pica-site" class="site site-pica" style="display: none;">
-
     <header class="site-header pica-header">
       <a href="#" class="brand pica-brand" data-home="true">
         <img src="assets/logo-pica.png" alt="La Maga Pica">
@@ -635,10 +496,8 @@
     </header>
 
     <main class="pica-content">
-
       <section id="pica-about" class="pica-section">
         <div class="section-label">01 / SOBRE MÍ</div>
-
         <div class="about-subtabs">
           <button class="subtab-btn active" data-subtab="magia">La Maga Pica</button>
           <button class="subtab-btn" data-subtab="piedra">Escultura y Piedra</button>
@@ -646,150 +505,28 @@
         </div>
 
         <div id="subtab-magia" class="subtab-content active">
-          <div class="pica-hero-wrapper">
-            <div class="pica-hero-image">
-              <img src="assets/xperience.jpg" alt="La Maga Pica en directo">
-            </div>
-            <div class="pica-hero-text">
-              <h2>Soy Patricia Martín, <br><em>La Maga Pica.</em></h2>
-              <p>Mi identidad artística nace como un homenaje al legado de mi abuelo, quien esculpía la piedra y era conocido como "El Pica". De su oficio heredo la premisa que guía mi trabajo sobre el escenario: esculpir la ilusión con paciencia, técnica y precisión hasta transformar la materia cotidiana en una experiencia extraordinaria.</p>
-            </div>
-          </div>
-          <p>Mi repertorio abarca desde espectáculos de escenario y galas teatrales hasta formatos de magia de cerca (Close-up) para eventos corporativos y culturales.</p>
-          <p>Mi objetivo se centra en dignificar el arte de la magia como una disciplina escénica contemporánea, capaz de sorprender a públicos exigentes y generar momentos memorables.</p>
-          <p>Abierta a programación en teatros, festivales, eventos corporativos y proyectos de creación cultural.</p>
+          <h2>Soy Patricia Martín, <em>La Maga Pica.</em></h2>
+          <p>Ilusionismo escénico y magia contemporánea.</p>
         </div>
-
         <div id="subtab-piedra" class="subtab-content">
-          <div class="pica-hero-wrapper">
-            <div class="pica-hero-image">
-              <img src="assets/fuente-piedra.jpg" alt="Fuente de piedra - La magia de Patricia">
-            </div>
-            <div class="pica-hero-text">
-              <h2>El arte de tallar <br><em>la piedra.</em></h2>
-              <p>Con 15 años y viendo las esculturas de mi abuelo, cogí una de sus mazas y uno de sus cinceles y empecé a esculpir. Sentía como si las manos de mi abuelo guiasen las mías. Mágicamente donde había una piedra sin forma, aparecía una figura.</p>
-            </div>
-          </div>
-          
-          <div class="sculpture-narrative">
-            <p>Esculpir la piedra y hacer magia son, en esencia, dos formas distintas de realizar el mismo acto: <strong>revelar lo invisible y transformar la materia.</strong></p>
-            <p>El escultor no "crea" la forma desde la nada; la libera. Sabe que la figura ya habita dentro del bloque de piedra y que su trabajo consiste en retirar lo sobrante para sacarla a la luz.</p>
-          </div>
-
-          <div class="photo-gallery-grid sculpture-gallery" style="margin-top: 3rem;">
-            <figure class="photo-item">
-              <img src="assets/guernica.jpg" alt="Relieve tallado en piedra">
-            </figure>
-            <figure class="photo-item">
-              <img src="assets/el-molino.jpg" alt="El molino de la abuela esculpido en piedra">
-            </figure>
-            <figure class="photo-item">
-              <img src="assets/fuente-piedra.jpg" alt="Fuente esculpida en piedra - La Magia de Patricia">
-            </figure>
-            <figure class="photo-item">
-              <img src="assets/escudo.jpg" alt="Escudo heráldico en piedra - Martín Aguado">
-            </figure>
-          </div>
+          <h2>El arte de tallar la piedra.</h2>
         </div>
-
         <div id="subtab-foto" class="subtab-content">
-          <div class="pica-photo-text">
-            <h2>Capturar la luz, <em>transformar la realidad.</em></h2>
-            <p>La fotografía y la magia comparten un mismo centro de gravedad: la manipulación de la luz, el tiempo y la atención para transformar la realidad.</p>
-            <p>La fotografía no es solo un lenguaje paralelo, sino una herramienta que nutre directamente su dimensión artística sobre el escenario. Su sensibilidad para la composición visual, la perspectiva y el contraste influye en la geometría de sus efectos y en la estética de sus montajes.</p>
-          </div>
-
-          <div class="photo-gallery-grid">
-            <figure class="photo-item">
-              <img src="assets/rayo.jpg" alt="Rayo cruzando el cielo">
-            </figure>
-            <figure class="photo-item">
-              <img src="assets/eclipse.jpg" alt="Secuencia de eclipse solar">
-            </figure>
-            <figure class="photo-item">
-              <img src="assets/cigueñas.jpg" alt="Cigüeñas en vuelo sobre campanario">
-            </figure>
-            <figure class="photo-item">
-              <img src="assets/reflejos.jpg" alt="Reflejo simétrico de puente nocturno">
-            </figure>
-          </div>
+          <h2>Capturar la luz.</h2>
         </div>
-
-      </section>
-
-      <section id="pica-shows" class="pica-section">
-        <div class="section-label">02 / ESPECTÁCULOS</div>
-        <h2>Magia con historia, <em>magia con identidad.</em></h2>
-
-        <article class="show-card">
-          <div class="show-header-info">
-            <h3>La hermana del medio</h3>
-            <p class="show-subtitle">Espectáculo de magia y narrativa escénica</p>
-          </div>
-
-          <div class="show-gallery">
-            <img src="assets/alfaro.jpg" alt="La hermana del medio - Alfaro">
-            <img src="assets/pompones.jpg" alt="La hermana del medio - Pompones">
-          </div>
-
-          <ul class="show-meta">
-            <li><strong>Dramaturgia e interpretación:</strong> Patricia Martín (La Maga Pica)</li>
-            <li><strong>Formato:</strong> Magia de escenario / Teatro unipersonal</li>
-            <li><strong>Público objetivo:</strong> Espectáculo familiar</li>
-          </ul>
-
-          <h4>Sinopsis</h4>
-          <p>La hermana del medio es una propuesta de ilusionismo contemporáneo que explora el lugar que ocupamos en la familia, las memorias compartidas y las dinámicas invisibles que definen quiénes somos.</p>
-
-          <h4>Características de la propuesta</h4>
-          <ul>
-            <li><strong>Ilusionismo con relato:</strong> La técnica como lenguaje para contar una historia universal.</li>
-            <li><strong>Diversidad de disciplinas:</strong> Cartomagia, mentalismo e ilusionismo de escenario.</li>
-            <li><strong>Participación activa:</strong> El público forma parte directa de la magia.</li>
-          </ul>
-        </article>
-
-        <article class="show-card">
-          <div class="show-header-info">
-            <h3>PICA</h3>
-            <p class="show-subtitle">Magia, memoria y el arte de esculpir la ilusión</p>
-          </div>
-
-          <div class="show-gallery">
-            <img src="assets/rasillo.jpg" alt="Espectáculo PICA - Rasillo">
-            <img src="assets/guitarra.jpg" alt="Espectáculo PICA - Guitarra">
-          </div>
-
-          <ul class="show-meta">
-            <li><strong>Dramaturgia e interpretación:</strong> Patricia Martín (La Maga Pica)</li>
-            <li><strong>Formato:</strong> Magia de escenario / Teatro de pequeño y mediano formato</li>
-            <li><strong>Público objetivo:</strong> Espectáculo familiar</li>
-          </ul>
-
-          <h4>Sinopsis</h4>
-          <p>PICA es el espectáculo más personal de Patricia Martín, un viaje escénico donde la magia se entrelaza con el homenaje familiar, la memoria y la artesanía.</p>
-        </article>
       </section>
 
       <section id="pica-contact" class="pica-section">
         <div class="section-label">03 / CONTACTO</div>
         <h2>Contacto & Contratación</h2>
-        <p>Para contrataciones, programación de espectáculos o información:</p>
-
-        <ul class="contact-details">
-          <li><strong>Email:</strong> <a href="mailto:lamagapica@gmail.com">lamagapica@gmail.com</a></li>
-          <li><strong>Teléfono:</strong> <a href="tel:+34628243657">628 243 657</a></li>
-          <li><strong>Instagram:</strong> <a href="https://instagram.com/lamagapica" target="_blank">@lamagapica</a></li>
-        </ul>
+        <p>Email: <a href="mailto:lamagapica@gmail.com">lamagapica@gmail.com</a></p>
       </section>
-
     </main>
 
     <footer class="site-footer pica-footer">
       <span>© La Maga Pica</span>
       <button class="switch-world" data-home="true">← Volver al inicio</button>
     </footer>
-
   </div>
 
   <script src="script.js"></script>
