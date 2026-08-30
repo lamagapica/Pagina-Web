@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ==========================================================================
+ /* ==========================================================================
      LÓGICA DEL PORTFOLIO 3D (GALERÍAS INDIVIDUALES & OCULTACIÓN DE CUERPO)
      ========================================================================== */
   const gridView = document.getElementById("projects-grid-view");
@@ -70,11 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (targetDetail) {
       targetDetail.style.display = "block";
       window.scrollTo({ top: 0, behavior: "smooth" });
-
-      // Si se abre Descubre Vareia, inicializar interactividad de sliders y visores 360º
-      if (projectId === "descubre-vareia") {
-        initDescubreVareia();
-      }
     }
   }
 
@@ -118,6 +113,65 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", closeProjectDetail);
   });
   
+
+  <!-- TARJETA EN LA REJILLA PRINCIPAL (#projects-grid-view) -->
+<article class="project-card project-open-btn" data-project="descubre-vareia">
+  <div class="project-image-button">
+    <img src="assets/vareia-romana.jpg" alt="Descubre Vareia">
+  </div>
+  <h3>Descubre Vareia</h3>
+  <p class="project-mini-desc">Exploración interactiva, comparación histórica y panorámica 360º.</p>
+</article>
+
+<!-- SECCIÓN DETALLADA DE DETALLES DE PROYECTOS (#project-detail-view) -->
+<div id="detail-descubre-vareia" class="project-detail-content" style="display: none;">
+  <div class="detail-header">
+    <h2>Descubre Vareia</h2>
+    <p>Exploración interactiva de los yacimientos de la antigua Vareia romana frente a su estado actual.</p>
+  </div>
+
+  <div class="vareia-zones-container">
+
+    <!-- ZONA 1: ALMAZARA Y ENTORNO ARQUEOLÓGICO -->
+    <article class="vareia-zone-card">
+      <h3 class="zone-title">01. Reconstrucción Histórica del Yacimiento</h3>
+
+      <!-- 1. COMPARADOR SLIDER (ROMANA VS ACTUALIDAD) -->
+      <div class="comparison-slider">
+        <img class="img-before" src="assets/vareia-actualidad.jpg" alt="Varea en la actualidad">
+        <div class="img-after-wrapper">
+          <img class="img-after" src="assets/vareia-romana.jpg" alt="Varea en época romana">
+        </div>
+        <input type="range" min="0" max="100" value="50" class="slider-handle" aria-label="Deslizador de comparación histórica">
+        <span class="slider-label label-before">Actualidad</span>
+        <span class="slider-label label-after">Época Romana</span>
+      </div>
+
+      <!-- 2. VISOR INTERACTIVO 360º -->
+      <div class="viewer-360-container" data-panorama="assets/360-almazara.jpg">
+        <div class="viewer-360-wrapper">
+          <img src="assets/vareia-romana.jpg" alt="Vista Panorámica 360º" class="panorama-img">
+        </div>
+        <div class="viewer-360-controls">
+          <button class="btn-360 zoom-in" title="Acercar">+</button>
+          <button class="btn-360 zoom-out" title="Alejar">-</button>
+          <button class="btn-360 reset-view" title="Restablecer">⟲</button>
+        </div>
+        <span class="badge-360">Vista 360º (Arrastra para girar / Rueda para zoom)</span>
+      </div>
+
+      <!-- 3. TEXTO EXPLICATIVO -->
+      <div class="zone-description">
+        <h4>Contexto Histórico y Producción</h4>
+        <p>
+          Este enclave albergaba las estructuras dedicadas a la producción agrícola e industrial en la Vareia romana. Los trabajos de infografía y modelado 3D permiten reconstruir la distribución edilicia original y contrastarla con el entramado urbano actual.
+        </p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
   /* ==========================================================================
      SUBPESTAÑAS SOBRE MÍ (LA MAGA PICA)
      ========================================================================== */
@@ -136,105 +190,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
-  /* ==========================================================================
-     INTERACTIVIDAD DE DESCUBRE VAREIA (SLIDER Y VISOR 360º)
-     ========================================================================== */
-  function initDescubreVareia() {
-    const descubreContainer = document.getElementById("detail-descubre-vareia");
-    if (!descubreContainer) return;
-
-    // 1. LÓGICA DEL SLIDER DE COMPARACIÓN (ROMANA VS ACTUALIDAD)
-    const sliders = descubreContainer.querySelectorAll(".comparison-slider");
-    sliders.forEach(slider => {
-      const handle = slider.querySelector(".slider-handle");
-      const afterWrapper = slider.querySelector(".img-after-wrapper");
-
-      if (handle && afterWrapper) {
-        const updateSlider = () => {
-          const val = handle.value;
-          afterWrapper.style.width = `${val}%`;
-        };
-
-        handle.addEventListener("input", updateSlider);
-        updateSlider(); // Inicializar posición
-      }
-    });
-
-    // 2. LÓGICA DEL VISOR INTERACTIVO 360º (ARRASTRE Y ZOOM)
-    const viewers360 = descubreContainer.querySelectorAll(".viewer-360-container");
-    viewers360.forEach(viewer => {
-      const img = viewer.querySelector(".panorama-img");
-      const btnZoomIn = viewer.querySelector(".zoom-in");
-      const btnZoomOut = viewer.querySelector(".zoom-out");
-      const btnReset = viewer.querySelector(".reset-view");
-
-      if (!img) return;
-
-      let scale = 1;
-      let posX = 0;
-      let isDragging = false;
-      let startX = 0;
-
-      const updateTransform = () => {
-        img.style.transform = `scale(${scale}) translateX(${posX}px)`;
-      };
-
-      // Control Zoom In
-      if (btnZoomIn) {
-        btnZoomIn.addEventListener("click", () => {
-          scale = Math.min(scale + 0.2, 2.5);
-          updateTransform();
-        });
-      }
-
-      // Control Zoom Out
-      if (btnZoomOut) {
-        btnZoomOut.addEventListener("click", () => {
-          scale = Math.max(scale - 0.2, 1);
-          if (scale === 1) posX = 0;
-          updateTransform();
-        });
-      }
-
-      // Control Reset
-      if (btnReset) {
-        btnReset.addEventListener("click", () => {
-          scale = 1;
-          posX = 0;
-          updateTransform();
-        });
-      }
-
-      // Zoom con rueda del ratón
-      viewer.addEventListener("wheel", (e) => {
-        e.preventDefault();
-        if (e.deltaY < 0) {
-          scale = Math.min(scale + 0.1, 2.5);
-        } else {
-          scale = Math.max(scale - 0.1, 1);
-          if (scale === 1) posX = 0;
-        }
-        updateTransform();
-      }, { passive: false });
-
-      // Arrastrar (Panorámica 360º)
-      viewer.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        startX = e.clientX - posX;
-        viewer.style.cursor = "grabbing";
-      });
-
-      window.addEventListener("mouseup", () => {
-        isDragging = false;
-        viewer.style.cursor = "default";
-      });
-
-      viewer.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        posX = e.clientX - startX;
-        updateTransform();
-      });
-    });
-  }
 });
