@@ -56,10 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // FUNCIÓN PARA ABRIR UN PROYECTO
   function openProjectDetail(projectId) {
+    // Oculta las secciones generales de la web
     mainSectionsToToggle.forEach(sec => sec.style.display = "none");
     
-    if (gridView) gridView.style.display = "none";
-    if (detailView) detailView.style.display = "block";
+    gridView.style.display = "none";
+    detailView.style.display = "block";
 
     detailContents.forEach(content => {
       content.style.display = "none";
@@ -69,14 +70,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (targetDetail) {
       targetDetail.style.display = "block";
       window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Si se abre Descubre Vareia, inicializar interactividad de sliders y visores 360º
+      if (projectId === "descubre-vareia") {
+        initDescubreVareia();
+      }
     }
   }
 
   // FUNCIÓN PARA VOLVER A LA VISTA GENERAL
   function closeProjectDetail() {
-    if (detailView) detailView.style.display = "none";
-    if (gridView) gridView.style.display = "grid";
+    detailView.style.display = "none";
+    gridView.style.display = "grid";
     
+    // Muestra de nuevo todas las secciones del cuerpo
     mainSectionsToToggle.forEach(sec => sec.style.display = "");
 
     detailContents.forEach(content => {
@@ -89,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // EVENTOS PARA LAS TARJETAS DE LA REJILLA
+  // EVENTOS PARA LAS TARJETAS DE LA REJILLA (INCLUYENDO SUBCARD)
   document.addEventListener("click", (e) => {
     const card = e.target.closest(".project-open-btn");
     if (card && card.dataset.project) {
@@ -131,98 +138,103 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ==========================================================================
-     INTERACTIVIDAD: DESCUBRE VAREIA (SLIDER COMPARATIVO & VISOR 360º)
+     INTERACTIVIDAD DE DESCUBRE VAREIA (SLIDER Y VISOR 360º)
      ========================================================================== */
-  // 1. SLIDER COMPARATIVO (ANTES / DESPUÉS)
-  const sliders = document.querySelectorAll(".comparison-slider");
+  function initDescubreVareia() {
+    const descubreContainer = document.getElementById("detail-descubre-vareia");
+    if (!descubreContainer) return;
 
-  sliders.forEach(slider => {
-    const rangeInput = slider.querySelector(".slider-handle");
-    const imgAfterWrapper = slider.querySelector(".img-after-wrapper");
+    // 1. LÓGICA DEL SLIDER DE COMPARACIÓN (ROMANA VS ACTUALIDAD)
+    const sliders = descubreContainer.querySelectorAll(".comparison-slider");
+    sliders.forEach(slider => {
+      const handle = slider.querySelector(".slider-handle");
+      const afterWrapper = slider.querySelector(".img-after-wrapper");
 
-    if (rangeInput && imgAfterWrapper) {
-      rangeInput.addEventListener("input", (e) => {
-        const value = e.target.value;
-        imgAfterWrapper.style.width = `${value}%`;
-      });
-    }
-  });
+      if (handle && afterWrapper) {
+        const updateSlider = () => {
+          const val = handle.value;
+          afterWrapper.style.width = `${val}%`;
+        };
 
-  // 2. VISOR PANORÁMICO 360º (PAN & ZOOM)
-  const view360Containers = document.querySelectorAll(".viewer-360-container");
-
-  view360Containers.forEach(container => {
-    const wrapper = container.querySelector(".viewer-360-wrapper");
-    const img = container.querySelector(".panorama-img");
-    const btnZoomIn = container.querySelector(".zoom-in");
-    const btnZoomOut = container.querySelector(".zoom-out");
-    const btnReset = container.querySelector(".reset-view");
-
-    if (!wrapper || !img) return;
-
-    let scale = 1;
-    let translateX = 0;
-    let translateY = 0;
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-
-    function updateTransform() {
-      img.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-    }
-
-    if (btnZoomIn) {
-      btnZoomIn.addEventListener("click", () => {
-        scale = Math.min(scale + 0.3, 3);
-        updateTransform();
-      });
-    }
-
-    if (btnZoomOut) {
-      btnZoomOut.addEventListener("click", () => {
-        scale = Math.max(scale - 0.3, 1);
-        if (scale === 1) { translateX = 0; translateY = 0; }
-        updateTransform();
-      });
-    }
-
-    if (btnReset) {
-      btnReset.addEventListener("click", () => {
-        scale = 1;
-        translateX = 0;
-        translateY = 0;
-        updateTransform();
-      });
-    }
-
-    container.addEventListener("wheel", (e) => {
-      e.preventDefault();
-      if (e.deltaY < 0) {
-        scale = Math.min(scale + 0.15, 3);
-      } else {
-        scale = Math.max(scale - 0.15, 1);
-        if (scale === 1) { translateX = 0; translateY = 0; }
+        handle.addEventListener("input", updateSlider);
+        updateSlider(); // Inicializar posición
       }
-      updateTransform();
-    }, { passive: false });
-
-    container.addEventListener("mousedown", (e) => {
-      isDragging = true;
-      startX = e.clientX - translateX;
-      startY = e.clientY - translateY;
-      container.style.cursor = "grabbing";
     });
 
-    window.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
-      translateX = e.clientX - startX;
-      translateY = e.clientY - startY;
-      updateTransform();
-    });
+    // 2. LÓGICA DEL VISOR INTERACTIVO 360º (ARRASTRE Y ZOOM)
+    const viewers360 = descubreContainer.querySelectorAll(".viewer-360-container");
+    viewers360.forEach(viewer => {
+      const img = viewer.querySelector(".panorama-img");
+      const btnZoomIn = viewer.querySelector(".zoom-in");
+      const btnZoomOut = viewer.querySelector(".zoom-out");
+      const btnReset = viewer.querySelector(".reset-view");
 
-    window.addEventListener("mouseup", () => {
-      isDragging = false;
-      container.style.cursor = "grab";
+      if (!img) return;
+
+      let scale = 1;
+      let posX = 0;
+      let isDragging = false;
+      let startX = 0;
+
+      const updateTransform = () => {
+        img.style.transform = `scale(${scale}) translateX(${posX}px)`;
+      };
+
+      // Control Zoom In
+      if (btnZoomIn) {
+        btnZoomIn.addEventListener("click", () => {
+          scale = Math.min(scale + 0.2, 2.5);
+          updateTransform();
+        });
+      }
+
+      // Control Zoom Out
+      if (btnZoomOut) {
+        btnZoomOut.addEventListener("click", () => {
+          scale = Math.max(scale - 0.2, 1);
+          if (scale === 1) posX = 0;
+          updateTransform();
+        });
+      }
+
+      // Control Reset
+      if (btnReset) {
+        btnReset.addEventListener("click", () => {
+          scale = 1;
+          posX = 0;
+          updateTransform();
+        });
+      }
+
+      // Zoom con rueda del ratón
+      viewer.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        if (e.deltaY < 0) {
+          scale = Math.min(scale + 0.1, 2.5);
+        } else {
+          scale = Math.max(scale - 0.1, 1);
+          if (scale === 1) posX = 0;
+        }
+        updateTransform();
+      }, { passive: false });
+
+      // Arrastrar (Panorámica 360º)
+      viewer.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.clientX - posX;
+        viewer.style.cursor = "grabbing";
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDragging = false;
+        viewer.style.cursor = "default";
+      });
+
+      viewer.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        posX = e.clientX - startX;
+        updateTransform();
+      });
     });
-  });
+  }
 });
