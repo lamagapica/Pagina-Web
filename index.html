@@ -24,267 +24,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-<style id="vareia-page-styles">
-/* =========================================================
-   DESCUBRE VAREIA
-   ========================================================= */
-.vareia-section {
-  padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 5vw, 5rem);
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.vareia-intro {
-  max-width: 900px;
-  margin-bottom: 4rem;
-}
-
-.vareia-intro h2 {
-  font-size: clamp(3rem, 7vw, 6rem);
-  line-height: .9;
-  margin: .5rem 0 1.5rem;
-}
-
-.vareia-intro > div > p:last-child {
-  max-width: 700px;
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-
-.vareia-zone-card {
-  margin: 0 0 7rem;
-  padding-top: 2rem;
-  border-top: 1px solid currentColor;
-}
-
-.zone-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1.5rem;
-  align-items: start;
-  margin-bottom: 2rem;
-}
-
-.zone-number {
-  font-size: 1.1rem;
-  opacity: .55;
-  padding-top: .35rem;
-}
-
-.zone-header h3 {
-  margin: .25rem 0 .75rem;
-  font-size: clamp(2rem, 4vw, 3.8rem);
-  line-height: 1;
-}
-
-.zone-kicker {
-  margin: 0;
-  font-size: .75rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  opacity: .65;
-}
-
-.zone-summary {
-  max-width: 700px;
-  margin: 0;
-  line-height: 1.6;
-  opacity: .75;
-}
-
-/* Comparador */
-.vareia-comparison {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  margin: 2rem 0;
-  background: #ddd;
-  border-radius: 2px;
-}
-
-.vareia-comparison .img-before,
-.vareia-comparison .img-after,
-.vareia-comparison .img-after-wrapper {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.vareia-comparison .img-before,
-.vareia-comparison .img-after {
-  object-fit: cover;
-}
-
-.vareia-comparison .img-after-wrapper {
-  overflow: hidden;
-  width: 50%;
-  z-index: 2;
-}
-
-.vareia-comparison .slider-handle {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  z-index: 5;
-  cursor: ew-resize;
-  opacity: 0;
-}
-
-.vareia-comparison::after {
-  content: "";
-  position: absolute;
-  z-index: 4;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: #fff;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.12);
-  pointer-events: none;
-}
-
-.vareia-comparison .slider-label {
-  position: absolute;
-  z-index: 6;
-  top: 1rem;
-  padding: .45rem .75rem;
-  background: rgba(0,0,0,.55);
-  color: #fff;
-  font-size: .72rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  pointer-events: none;
-}
-
-.vareia-comparison .label-before { left: 1rem; }
-.vareia-comparison .label-after { right: 1rem; }
-
-/* Visor 360 */
-.vareia-viewer {
-  position: relative;
-  margin: 2rem 0;
-  overflow: hidden;
-  background: #111;
-  border-radius: 2px;
-}
-
-.vareia-viewer .viewer-360-wrapper {
-  position: relative;
-  width: 100%;
-  height: min(65vh, 700px);
-  min-height: 360px;
-  overflow: hidden;
-  cursor: grab;
-  touch-action: none;
-  outline: none;
-}
-
-.vareia-viewer .viewer-360-wrapper.is-dragging {
-  cursor: grabbing;
-}
-
-.vareia-viewer .panorama-img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: max(100%, 1400px);
-  height: 100%;
-  min-width: 100%;
-  object-fit: cover;
-  object-position: center;
-  user-select: none;
-  pointer-events: none;
-  transform-origin: center center;
-  will-change: transform;
-}
-
-.viewer-360-hint {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: .65rem 1rem;
-  background: rgba(0,0,0,.55);
-  color: #fff;
-  border-radius: 999px;
-  font-size: .8rem;
-  pointer-events: none;
-  opacity: .9;
-}
-
-.vareia-viewer .viewer-360-controls {
-  position: absolute;
-  right: 1rem;
-  bottom: 2.6rem;
-  z-index: 4;
-  display: flex;
-  gap: .4rem;
-}
-
-.vareia-viewer .btn-360 {
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(255,255,255,.35);
-  background: rgba(0,0,0,.6);
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.vareia-viewer .badge-360 {
-  position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  z-index: 4;
-  color: #fff;
-  font-size: .7rem;
-  letter-spacing: .06em;
-  opacity: .8;
-}
-
-/* Texto */
-.vareia-zone-card .zone-description {
-  max-width: 850px;
-  padding-top: 1rem;
-}
-
-.vareia-zone-card .zone-description h4 {
-  font-size: 1.6rem;
-  margin: .4rem 0 1rem;
-}
-
-.vareia-zone-card .zone-description p:last-child {
-  line-height: 1.8;
-  opacity: .8;
-}
-
-/* Cabecera */
-.nav-vareia-link {
-  position: relative;
-}
-
-@media (max-width: 800px) {
-  .vareia-section {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .vareia-viewer .viewer-360-wrapper {
-    height: 50vh;
-    min-height: 280px;
-  }
-
-  .viewer-360-hint {
-    font-size: .7rem;
-  }
-}
-</style>
-
 </head>
 
 <body>
@@ -463,8 +202,6 @@
             <h3>Almazara Romana de Vareia</h3>
             <p class="project-mini-desc">Recreación en 3D Almazara romana de Vareia</p>
           </article>
-        </section>
-
         </div>
 
         <!-- CONTENEDOR DE DETALLE (GALERÍAS INDIVIDUALES OCULTAS) -->
@@ -615,16 +352,7 @@
 
       </section>
 
-
-      <!-- =====================================================================
-           DESCUBRE VAREIA
-           Apartado independiente del Portfolio 3D.
-           Cada zona de Vareia mantiene SIEMPRE el mismo orden:
-           1. Título + comparador Actualidad / Época Romana
-           2. Imagen/visor 360º con giro y zoom
-           3. Texto explicativo
-           Para añadir otra zona, duplica .vareia-zone-card y cambia sus datos.
-           ===================================================================== -->
+      <!-- DESCUBRE VAREIA -->
       <section class="vareia-section" id="descubre-vareia">
         <div class="section-label">04 / DESCUBRE VAREIA</div>
 
@@ -704,12 +432,6 @@
             </p>
           </div>
         </article>
-
-        <!--
-          FUTURAS ZONAS:
-          Duplica el bloque .vareia-zone-card y conserva exactamente este orden:
-          TÍTULO → COMPARADOR → 360º → EXPLICACIÓN.
-        -->
 
       </section>
 
@@ -812,7 +534,7 @@
         </div>
       </section>
 
-      <!-- SECCIÓN EXPERIENCIA Y EDUCACIÓN (TIMELINE) -->
+      <!-- SECCIÓN EXPERIENCIA Y EDUCACIÓN -->
       <section class="experience-section" id="experience">
         <div class="section-label">06 / TRAYECTORIA Y FORMACIÓN</div>
         <h2>Experiencia & Educación</h2>
