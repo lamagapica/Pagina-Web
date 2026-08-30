@@ -1,240 +1,761 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* ==========================================================
+     ELEMENTOS PRINCIPALES
+     ========================================================== */
+
   const worldSelector = document.getElementById("world-selector");
   const patriciaSite = document.getElementById("patricia-site");
   const picaSite = document.getElementById("pica-site");
 
-  // MUESTRA UNA PÁGINA Y OCULTA LAS DEMÁS
+
+  /* ==========================================================
+     CAMBIO ENTRE LOS DOS MUNDOS
+     ========================================================== */
+
   function openWorld(world) {
+
     if (world === "patricia") {
+
       worldSelector.style.display = "none";
       picaSite.style.display = "none";
       patriciaSite.style.display = "block";
+
     } else if (world === "pica") {
+
       worldSelector.style.display = "none";
       patriciaSite.style.display = "none";
       picaSite.style.display = "block";
+
     }
-    window.scrollTo(0, 0);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "instant"
+    });
   }
 
-  // VUELVE A LA PANTALLA PRINCIPAL
+
   function showSplitScreen() {
+
     patriciaSite.style.display = "none";
     picaSite.style.display = "none";
     worldSelector.style.display = "grid";
-    window.scrollTo(0, 0);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "instant"
+    });
   }
 
-  // BOTONES ENTRAR
-  document.querySelectorAll("[data-enter]").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      openWorld(btn.dataset.enter);
+
+  /* ==========================================================
+     BOTONES ENTRAR
+     ========================================================== */
+
+  document.querySelectorAll("[data-enter]").forEach(button => {
+
+    button.addEventListener("click", event => {
+
+      event.preventDefault();
+
+      const world = button.dataset.enter;
+
+      openWorld(world);
+
     });
+
   });
 
-  // BOTÓN "VOLVER AL INICIO"
-  document.querySelectorAll("[data-home]").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
+
+  /* ==========================================================
+     BOTONES VOLVER AL INICIO
+     ========================================================== */
+
+  document.querySelectorAll("[data-home]").forEach(button => {
+
+    button.addEventListener("click", event => {
+
+      event.preventDefault();
+
       showSplitScreen();
+
     });
+
   });
 
-  /* ==========================================================================
-     LÓGICA DEL PORTFOLIO 3D (GALERÍAS INDIVIDUALES & OCULTACIÓN DE CUERPO)
-     ========================================================================== */
+
+  /* ==========================================================
+     PORTFOLIO 3D
+     ========================================================== */
+
   const gridView = document.getElementById("projects-grid-view");
   const detailView = document.getElementById("project-detail-view");
-  const backBtns = document.querySelectorAll(".back-to-grid-btn");
-  const detailContents = document.querySelectorAll(".project-detail-content");
 
-  // Elementos del cuerpo a ocultar cuando se abre un proyecto
+  const backButtons = document.querySelectorAll(".back-to-grid-btn");
+
+  const detailContents =
+    document.querySelectorAll(".project-detail-content");
+
+
+  /*
+     Estas son las secciones que desaparecen cuando
+     abrimos un proyecto individual.
+  */
+
   const mainSectionsToToggle = document.querySelectorAll(
-    ".hero-patricia, .intro-section, .services-section, .skills-section, .experience-section, .awards-section, .contact-section, .portfolio-section > h2, .portfolio-section > .section-label"
+    ".hero-patricia, " +
+    ".intro-section, " +
+    ".services-section, " +
+    ".skills-section, " +
+    ".experience-section, " +
+    ".awards-section, " +
+    ".contact-section, " +
+    ".vareia-section, " +
+    ".portfolio-section > h2, " +
+    ".portfolio-section > .section-label"
   );
 
-  // FUNCIÓN PARA ABRIR UN PROYECTO
+
+  /* ==========================================================
+     ABRIR PROYECTO
+     ========================================================== */
+
   function openProjectDetail(projectId) {
-    // Oculta las secciones generales de la web
-    mainSectionsToToggle.forEach(sec => sec.style.display = "none");
-    
+
+    if (!gridView || !detailView) return;
+
+
+    /*
+       Comprobamos que existe realmente el proyecto.
+       Así un enlace roto no deja la web en blanco.
+    */
+
+    const targetDetail =
+      document.getElementById(`detail-${projectId}`);
+
+    if (!targetDetail) {
+
+      console.warn(
+        `No existe el detalle del proyecto: ${projectId}`
+      );
+
+      return;
+
+    }
+
+
+    /* Ocultar secciones generales */
+
+    mainSectionsToToggle.forEach(section => {
+      section.style.display = "none";
+    });
+
+
+    /* Ocultar rejilla */
+
     gridView.style.display = "none";
+
+
+    /* Mostrar contenedor de detalles */
+
     detailView.style.display = "block";
 
+
+    /* Ocultar todos los detalles */
+
     detailContents.forEach(content => {
       content.style.display = "none";
     });
 
-    const targetDetail = document.getElementById(`detail-${projectId}`);
-    if (targetDetail) {
-      targetDetail.style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
 
-      // Si se abre Descubre Vareia, inicializar interactividad de sliders y visores 360º
-      if (projectId === "descubre-vareia") {
-        initDescubreVareia();
-      }
-    }
+    /* Mostrar proyecto seleccionado */
+
+    targetDetail.style.display = "block";
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
   }
 
-  // FUNCIÓN PARA VOLVER A LA VISTA GENERAL
+
+  /* ==========================================================
+     VOLVER A TODOS LOS PROYECTOS
+     ========================================================== */
+
   function closeProjectDetail() {
+
+    if (!gridView || !detailView) return;
+
+
     detailView.style.display = "none";
+
     gridView.style.display = "grid";
-    
-    // Muestra de nuevo todas las secciones del cuerpo
-    mainSectionsToToggle.forEach(sec => sec.style.display = "");
+
+
+    mainSectionsToToggle.forEach(section => {
+      section.style.display = "";
+    });
+
 
     detailContents.forEach(content => {
       content.style.display = "none";
     });
 
-    const workSection = document.getElementById("work-3d");
+
+    const workSection =
+      document.getElementById("work-3d");
+
     if (workSection) {
-      workSection.scrollIntoView({ behavior: "smooth" });
+
+      workSection.scrollIntoView({
+        behavior: "smooth"
+      });
+
     }
+
   }
 
-  // EVENTOS PARA LAS TARJETAS DE LA REJILLA (INCLUYENDO SUBCARD)
-  document.addEventListener("click", (e) => {
-    const card = e.target.closest(".project-open-btn");
-    if (card && card.dataset.project) {
-      openProjectDetail(card.dataset.project);
+
+  /* ==========================================================
+     TARJETAS DE PROYECTOS
+     ========================================================== */
+
+  document.addEventListener("click", event => {
+
+    const card =
+      event.target.closest(".project-open-btn");
+
+    if (!card) return;
+
+
+    const projectId =
+      card.dataset.project;
+
+    if (!projectId) return;
+
+
+    openProjectDetail(projectId);
+
+  });
+
+
+  /* ==========================================================
+     ENLACES DEL MENÚ DE PORTFOLIO
+     ========================================================== */
+
+  document.querySelectorAll(".project-direct-link")
+    .forEach(link => {
+
+      link.addEventListener("click", event => {
+
+        event.preventDefault();
+
+        const projectId =
+          link.dataset.project;
+
+        if (!projectId) return;
+
+        openProjectDetail(projectId);
+
+      });
+
+    });
+
+
+  /* ==========================================================
+     BOTONES VOLVER
+     ========================================================== */
+
+  backButtons.forEach(button => {
+
+    button.addEventListener("click", event => {
+
+      event.preventDefault();
+
+      closeProjectDetail();
+
+    });
+
+  });
+
+
+  /* ==========================================================
+     COMPARADORES:
+     ACTUALIDAD / ÉPOCA ROMANA
+     ========================================================== */
+
+  const comparisonSliders =
+    document.querySelectorAll(".comparison-slider");
+
+
+  comparisonSliders.forEach(slider => {
+
+    const range =
+      slider.querySelector(".slider-handle");
+
+    const afterWrapper =
+      slider.querySelector(".img-after-wrapper");
+
+    if (!range || !afterWrapper) return;
+
+
+    function updateComparison() {
+
+      const value =
+        Number(range.value);
+
+      afterWrapper.style.width =
+        `${value}%`;
+
+      /*
+         La línea central sigue siempre
+         la posición de la barra.
+      */
+
+      slider.style.setProperty(
+        "--comparison-position",
+        `${value}%`
+      );
+
     }
+
+
+    range.addEventListener(
+      "input",
+      updateComparison
+    );
+
+
+    updateComparison();
+
   });
 
-  // EVENTOS PARA EL DROPDOWN DEL MENÚ SUPERIOR
-  document.querySelectorAll(".project-direct-link").forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const projectId = link.dataset.project;
-      openProjectDetail(projectId);
-    });
-  });
 
-  // BOTONES VOLVER
-  backBtns.forEach(btn => {
-    btn.addEventListener("click", closeProjectDetail);
-  });
-  
-  /* ==========================================================================
-     SUBPESTAÑAS SOBRE MÍ (LA MAGA PICA)
-     ========================================================================== */
-  const subtabBtns = document.querySelectorAll(".subtab-btn");
-  const subtabContents = document.querySelectorAll(".subtab-content");
+  /* ==========================================================
+     VISOR 360º
+     ========================================================== */
 
-  subtabBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      subtabBtns.forEach(b => b.classList.remove("active"));
-      subtabContents.forEach(c => c.classList.remove("active"));
+  const viewers =
+    document.querySelectorAll(".viewer-360-container");
 
-      btn.classList.add("active");
-      const targetContent = document.getElementById(`subtab-${btn.dataset.subtab}`);
-      if (targetContent) {
-        targetContent.classList.add("active");
+
+  viewers.forEach(viewer => {
+
+    const wrapper =
+      viewer.querySelector(".viewer-360-wrapper");
+
+    const image =
+      viewer.querySelector(".panorama-img");
+
+    const zoomIn =
+      viewer.querySelector(".zoom-in");
+
+    const zoomOut =
+      viewer.querySelector(".zoom-out");
+
+    const reset =
+      viewer.querySelector(".reset-view");
+
+    if (!wrapper || !image) return;
+
+
+    /*
+       VARIABLES DEL VISOR
+    */
+
+    let offsetX = 0;
+
+    let scale = 1;
+
+    let dragging = false;
+
+    let startX = 0;
+
+    let startOffset = 0;
+
+
+    /*
+       Límites horizontales
+    */
+
+    function getMaxOffset() {
+
+      const imageWidth =
+        image.getBoundingClientRect().width;
+
+      const wrapperWidth =
+        wrapper.clientWidth;
+
+      const overflow =
+        Math.max(
+          0,
+          imageWidth - wrapperWidth
+        );
+
+      return overflow / 2;
+
+    }
+
+
+    /*
+       Evitar que la imagen desaparezca
+    */
+
+    function clampOffset() {
+
+      const max =
+        getMaxOffset();
+
+      offsetX =
+        Math.max(
+          -max,
+          Math.min(max, offsetX)
+        );
+
+    }
+
+
+    /*
+       Dibujar el visor
+    */
+
+    function render() {
+
+      clampOffset();
+
+      image.style.transform =
+        `translate3d(${offsetX}px, -50%, 0) scale(${scale})`;
+
+    }
+
+
+    /* ======================================================
+       ARRASTRAR CON RATÓN / TOUCH
+       ====================================================== */
+
+    wrapper.addEventListener(
+      "pointerdown",
+      event => {
+
+        dragging = true;
+
+        startX = event.clientX;
+
+        startOffset = offsetX;
+
+        wrapper.classList.add(
+          "is-dragging"
+        );
+
+        wrapper.setPointerCapture(
+          event.pointerId
+        );
+
       }
-    });
-  });
+    );
 
-  /* ==========================================================================
-     INTERACTIVIDAD DE DESCUBRE VAREIA (SLIDER Y VISOR 360º)
-     ========================================================================== */
-  function initDescubreVareia() {
-    const descubreContainer = document.getElementById("detail-descubre-vareia");
-    if (!descubreContainer) return;
 
-    // 1. LÓGICA DEL SLIDER DE COMPARACIÓN (ROMANA VS ACTUALIDAD)
-    const sliders = descubreContainer.querySelectorAll(".comparison-slider");
-    sliders.forEach(slider => {
-      const handle = slider.querySelector(".slider-handle");
-      const afterWrapper = slider.querySelector(".img-after-wrapper");
+    wrapper.addEventListener(
+      "pointermove",
+      event => {
 
-      if (handle && afterWrapper) {
-        const updateSlider = () => {
-          const val = handle.value;
-          afterWrapper.style.width = `${val}%`;
-        };
+        if (!dragging) return;
 
-        handle.addEventListener("input", updateSlider);
-        updateSlider(); // Inicializar posición
+
+        const movement =
+          event.clientX - startX;
+
+
+        offsetX =
+          startOffset + movement;
+
+
+        render();
+
       }
-    });
+    );
 
-    // 2. LÓGICA DEL VISOR INTERACTIVO 360º (ARRASTRE Y ZOOM)
-    const viewers360 = descubreContainer.querySelectorAll(".viewer-360-container");
-    viewers360.forEach(viewer => {
-      const img = viewer.querySelector(".panorama-img");
-      const btnZoomIn = viewer.querySelector(".zoom-in");
-      const btnZoomOut = viewer.querySelector(".zoom-out");
-      const btnReset = viewer.querySelector(".reset-view");
 
-      if (!img) return;
+    function stopDragging(event) {
 
-      let scale = 1;
-      let posX = 0;
-      let isDragging = false;
-      let startX = 0;
+      dragging = false;
 
-      const updateTransform = () => {
-        img.style.transform = `scale(${scale}) translateX(${posX}px)`;
-      };
+      wrapper.classList.remove(
+        "is-dragging"
+      );
 
-      // Control Zoom In
-      if (btnZoomIn) {
-        btnZoomIn.addEventListener("click", () => {
-          scale = Math.min(scale + 0.2, 2.5);
-          updateTransform();
-        });
+
+      try {
+
+        wrapper.releasePointerCapture(
+          event.pointerId
+        );
+
+      } catch (error) {
+
+        // No hacemos nada si el pointer ya fue liberado.
+
       }
 
-      // Control Zoom Out
-      if (btnZoomOut) {
-        btnZoomOut.addEventListener("click", () => {
-          scale = Math.max(scale - 0.2, 1);
-          if (scale === 1) posX = 0;
-          updateTransform();
-        });
-      }
+    }
 
-      // Control Reset
-      if (btnReset) {
-        btnReset.addEventListener("click", () => {
-          scale = 1;
-          posX = 0;
-          updateTransform();
-        });
-      }
 
-      // Zoom con rueda del ratón
-      viewer.addEventListener("wheel", (e) => {
-        e.preventDefault();
-        if (e.deltaY < 0) {
-          scale = Math.min(scale + 0.1, 2.5);
-        } else {
-          scale = Math.max(scale - 0.1, 1);
-          if (scale === 1) posX = 0;
+    wrapper.addEventListener(
+      "pointerup",
+      stopDragging
+    );
+
+
+    wrapper.addEventListener(
+      "pointercancel",
+      stopDragging
+    );
+
+
+    wrapper.addEventListener(
+      "pointerleave",
+      event => {
+
+        if (dragging) {
+          stopDragging(event);
         }
-        updateTransform();
-      }, { passive: false });
 
-      // Arrastrar (Panorámica 360º)
-      viewer.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        startX = e.clientX - posX;
-        viewer.style.cursor = "grabbing";
-      });
+      }
+    );
 
-      window.addEventListener("mouseup", () => {
-        isDragging = false;
-        viewer.style.cursor = "default";
-      });
 
-      viewer.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        posX = e.clientX - startX;
-        updateTransform();
-      });
-    });
-  }
+    /* ======================================================
+       ZOOM CON RUEDA
+       ====================================================== */
+
+    wrapper.addEventListener(
+      "wheel",
+      event => {
+
+        event.preventDefault();
+
+
+        const zoomAmount =
+          event.deltaY < 0
+            ? 0.15
+            : -0.15;
+
+
+        scale += zoomAmount;
+
+
+        scale =
+          Math.max(
+            1,
+            Math.min(3, scale)
+          );
+
+
+        render();
+
+      },
+      { passive: false }
+    );
+
+
+    /* ======================================================
+       BOTÓN +
+       ====================================================== */
+
+    if (zoomIn) {
+
+      zoomIn.addEventListener(
+        "click",
+        () => {
+
+          scale += 0.2;
+
+          scale =
+            Math.min(3, scale);
+
+          render();
+
+        }
+      );
+
+    }
+
+
+    /* ======================================================
+       BOTÓN -
+       ====================================================== */
+
+    if (zoomOut) {
+
+      zoomOut.addEventListener(
+        "click",
+        () => {
+
+          scale -= 0.2;
+
+          scale =
+            Math.max(1, scale);
+
+          render();
+
+        }
+      );
+
+    }
+
+
+    /* ======================================================
+       RESTABLECER
+       ====================================================== */
+
+    if (reset) {
+
+      reset.addEventListener(
+        "click",
+        () => {
+
+          offsetX = 0;
+
+          scale = 1;
+
+          render();
+
+        }
+      );
+
+    }
+
+
+    /* ======================================================
+       INICIALIZAR
+       ====================================================== */
+
+    render();
+
+
+    window.addEventListener(
+      "resize",
+      render
+    );
+
+  });
+
+
+  /* ==========================================================
+     SUBPESTAÑAS DE LA MAGA PICA
+     ========================================================== */
+
+  const subtabButtons =
+    document.querySelectorAll(".subtab-btn");
+
+  const subtabContents =
+    document.querySelectorAll(".subtab-content");
+
+
+  subtabButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        /* Quitar active de todos */
+
+        subtabButtons.forEach(btn => {
+
+          btn.classList.remove("active");
+
+        });
+
+
+        subtabContents.forEach(content => {
+
+          content.classList.remove("active");
+
+        });
+
+
+        /* Activar botón */
+
+        button.classList.add("active");
+
+
+        /* Buscar contenido correspondiente */
+
+        const target =
+          document.getElementById(
+            `subtab-${button.dataset.subtab}`
+          );
+
+
+        if (target) {
+
+          target.classList.add("active");
+
+        }
+
+      }
+    );
+
+  });
+
+
+  /* ==========================================================
+     ENLACES INTERNOS DE DESCUBRE VAREIA
+     ========================================================== */
+
+  const vareiaLinks =
+    document.querySelectorAll(
+      'a[href="#descubre-vareia"]'
+    );
+
+
+  vareiaLinks.forEach(link => {
+
+    link.addEventListener(
+      "click",
+      event => {
+
+        /*
+           Dejamos que el navegador haga el scroll,
+           pero nos aseguramos de que la web de Patricia
+           esté visible.
+        */
+
+        if (
+          patriciaSite &&
+          patriciaSite.style.display === "none"
+        ) {
+
+          event.preventDefault();
+
+          openWorld("patricia");
+
+          setTimeout(() => {
+
+            const section =
+              document.getElementById(
+                "descubre-vareia"
+              );
+
+            if (section) {
+
+              section.scrollIntoView({
+                behavior: "smooth"
+              });
+
+            }
+
+          }, 100);
+
+        }
+
+      }
+    );
+
+  });
+
 });
