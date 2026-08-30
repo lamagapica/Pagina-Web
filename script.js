@@ -300,7 +300,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const afterWrapper =
       slider.querySelector(".img-after-wrapper");
 
-    if (!range || !afterWrapper) return;
+    const afterImg =
+      slider.querySelector(".img-after");
+
+    if (!range || !afterWrapper || !afterImg) return;
 
 
     function updateComparison() {
@@ -311,10 +314,8 @@ document.addEventListener("DOMContentLoaded", () => {
       afterWrapper.style.width =
         `${value}%`;
 
-      /*
-         La línea central sigue siempre
-         la posición de la barra.
-      */
+      afterImg.style.width =
+        `${slider.offsetWidth}px`;
 
       slider.style.setProperty(
         "--comparison-position",
@@ -326,6 +327,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     range.addEventListener(
       "input",
+      updateComparison
+    );
+
+    window.addEventListener(
+      "resize",
       updateComparison
     );
 
