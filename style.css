@@ -1,0 +1,1202 @@
+/* ==========================================================================
+   1. IMPORTACIÓN DE FUENTES Y VARIABLES DE COLOR
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+  /* PALETA PATRICIA MARTÍN (Lagoon) */
+  --pat-dark: #26798E;
+  --pat-teal: #63CAA7;
+  --pat-accent: #FFC172;
+  --pat-light: #FFE3B3;
+  --pat-bg: #F8FAF9;
+  --pat-card-bg: #FFFFFF;
+  --pat-text: #1C3137;
+  --pat-muted: #536E75;
+
+  /* PALETA LA MAGA PICA (Colors #225) */
+  --pica-dark: #584053;
+  --pica-teal: #8DC6BF;
+  --pica-warm: #FCBC66;
+  --pica-orange: #F97B4F;
+  --pica-bg: #1F151E;
+  --pica-card-bg: #2D1D2A;
+  --pica-text: #FBEEE6;
+  --pica-muted: #D1B3C4;
+}
+
+/* ==========================================================================
+   2. ESTILOS GENERALES
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+  background-color: #111;
+  color: #333;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   3. PORTADA / PANTALLA DIVIDIDA (SPLIT SCREEN)
+   ========================================================================== */
+.world-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.world {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  transition: transform 0.4s ease;
+}
+
+.world-copy {
+  max-width: 450px;
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.world-description {
+  margin: 1.5rem 0 2rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.world-patricia {
+  background: linear-gradient(135deg, var(--pat-dark) 0%, #1a5767 100%);
+  color: var(--pat-light);
+}
+
+.world-patricia .eyebrow { color: var(--pat-teal); }
+
+.world-patricia h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem;
+  line-height: 1.1;
+  color: #FFFFFF;
+}
+
+.world-patricia h1 em {
+  font-style: italic;
+  color: var(--pat-accent);
+}
+
+.world-patricia .enter-button {
+  background-color: var(--pat-accent);
+  color: var(--pat-text);
+}
+
+.world-patricia .enter-button:hover {
+  background-color: var(--pat-teal);
+  transform: translateY(-3px);
+}
+
+.world-pica {
+  background: linear-gradient(135deg, var(--pica-dark) 0%, var(--pica-bg) 100%);
+  color: var(--pica-text);
+}
+
+.world-pica .eyebrow { color: var(--pica-orange); }
+
+.pica-logo-cover {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}
+
+.world-pica h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem;
+  color: var(--pica-warm);
+}
+
+.world-pica .enter-button {
+  background-color: var(--pica-orange);
+  color: #FFFFFF;
+}
+
+.world-pica .enter-button:hover {
+  background-color: var(--pica-warm);
+  color: var(--pica-dark);
+  transform: translateY(-3px);
+}
+
+.enter-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   4. ESTRUCTURA BASE DE LAS WEBS
+   ========================================================================== */
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 4rem;
+  backdrop-filter: blur(10px);
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.site-header nav a {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.site-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 4rem;
+  font-size: 0.9rem;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.switch-world {
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   5. WEB PATRICIA MARTÍN (Lagoon Palette)
+   ========================================================================== */
+.site-patricia {
+  background-color: var(--pat-bg);
+  color: var(--pat-text);
+}
+
+.site-patricia .site-header {
+  background-color: rgba(38, 121, 142, 0.95);
+  color: #FFFFFF;
+}
+
+.site-patricia .brand-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: block;
+}
+
+.site-patricia .brand-role {
+  font-size: 0.75rem;
+  color: var(--pat-teal);
+  letter-spacing: 1px;
+}
+
+.site-patricia nav a:hover {
+  color: var(--pat-accent);
+}
+
+/* DROPDOWN MENU PARA PORTFOLIO 3D */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--pat-dark);
+  min-width: 170px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  border-radius: 12px;
+  padding: 0.6rem 0;
+  z-index: 200;
+  border: 1px solid rgba(99, 202, 167, 0.3);
+}
+
+.dropdown-menu a {
+  color: #FFFFFF;
+  padding: 0.6rem 1.2rem;
+  display: block;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--pat-accent);
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.site-patricia .switch-world {
+  background-color: var(--pat-accent);
+  color: var(--pat-text);
+}
+
+.site-patricia .switch-world:hover {
+  background-color: var(--pat-teal);
+}
+
+.hero-patricia {
+  background: linear-gradient(135deg, var(--pat-dark), #1d5f70);
+  color: #FFFFFF;
+  padding: 6rem 2rem;
+  text-align: center;
+  border-radius: 20px;
+  margin-bottom: 4rem;
+}
+
+.hero-patricia h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.2rem;
+  line-height: 1.1;
+  margin: 1rem 0;
+}
+
+.hero-patricia h1 em {
+  color: var(--pat-accent);
+}
+
+.hero-patricia .hero-text {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--pat-light);
+}
+
+.site-patricia section {
+  margin-bottom: 5rem;
+}
+
+.site-patricia h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  color: var(--pat-dark);
+  margin-bottom: 1.5rem;
+}
+
+.site-patricia .section-label {
+  color: var(--pat-dark);
+}
+
+.service-grid, .project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.subprojects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-card, .project-card {
+  background-color: var(--pat-card-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(38, 121, 142, 0.08);
+  border: 1px solid rgba(99, 202, 167, 0.2);
+}
+
+/* PORTFOLIO TARJETAS INTERACTIVAS */
+.project-card.project-open-btn {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card.project-open-btn:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(38, 121, 142, 0.18);
+}
+
+.project-mini-desc {
+  font-size: 0.88rem;
+  color: var(--pat-muted);
+  margin-top: 0.5rem;
+}
+
+.project-image-button {
+  width: 100%;
+  border: none;
+  background: rgba(38, 121, 142, 0.04);
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image-button img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.project-card.project-open-btn:hover .project-image-button img {
+  transform: scale(1.05);
+}
+
+/* VISTA DE DETALLE DE PROYECTOS (GALERÍAS OCULTAS) */
+.back-to-grid-btn {
+  background-color: var(--pat-dark);
+  color: #FFFFFF;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.back-to-grid-btn:hover {
+  background-color: var(--pat-accent);
+  color: var(--pat-text);
+}
+
+.detail-header {
+  margin-bottom: 2rem;
+}
+
+.detail-header h2 {
+  margin-bottom: 0.5rem;
+}
+
+.detail-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.detail-media-grid img,
+.detail-media-grid video {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  object-fit: cover;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  max-height: 450px;
+  background: #000;
+}
+
+/* SOFTWARE & HERRAMIENTAS */
+.software-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.software-card {
+  background: var(--pat-card-bg);
+  border: 1px solid rgba(99, 202, 167, 0.25);
+  border-radius: 14px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  box-shadow: 0 4px 15px rgba(38, 121, 142, 0.05);
+  transition: all 0.3s ease;
+}
+
+.software-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--pat-dark);
+  box-shadow: 0 8px 25px rgba(38, 121, 142, 0.15);
+}
+
+.software-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pat-dark);
+}
+
+.software-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.adobe-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  background: var(--pat-dark);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.software-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--pat-text);
+  text-align: center;
+}
+
+/* TIMELINE (LÍNEA DE TIEMPO) */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding-left: 2rem;
+  border-left: 3px solid var(--pat-teal);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timeline-badge {
+  position: absolute;
+  left: -2rem;
+  top: 0;
+  transform: translateX(-50%);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.timeline-badge.work {
+  background-color: var(--pat-dark);
+  color: #fff;
+}
+
+.timeline-badge.edu {
+  background-color: var(--pat-accent);
+  color: var(--pat-text);
+}
+
+.timeline-content {
+  background: var(--pat-card-bg);
+  padding: 1.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(99, 202, 167, 0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  margin-left: 1rem;
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pat-dark);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-content h3 {
+  font-size: 1.25rem;
+  color: var(--pat-text);
+  margin-bottom: 0.2rem;
+}
+
+.timeline-place {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--pat-muted);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+/* PREMIOS & RECONOCIMIENTOS */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.award-card {
+  background: var(--pat-card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(99, 202, 167, 0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  display: flex;
+  gap: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.award-card:hover {
+  transform: translateY(-4px);
+}
+
+.award-card.highlight {
+  border: 2px solid var(--pat-accent);
+  background: linear-gradient(145deg, #ffffff, #fffbf3);
+}
+
+.award-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.award-year {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--pat-dark);
+}
+
+.award-info h3 {
+  font-size: 1.15rem;
+  color: var(--pat-text);
+  margin: 0.2rem 0;
+}
+
+.award-org {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pat-muted);
+  margin-bottom: 0.6rem;
+}
+
+.site-patricia .site-footer {
+  background-color: var(--pat-dark);
+  color: var(--pat-light);
+}
+
+/* ==========================================================================
+   6. WEB LA MAGA PICA (Colors #225 Palette)
+   ========================================================================== */
+.site-pica {
+  background-color: var(--pica-bg);
+  color: var(--pica-text);
+}
+
+.pica-header {
+  background-color: rgba(88, 64, 83, 0.95);
+  border-bottom: 1px solid rgba(252, 188, 102, 0.2);
+}
+
+.pica-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.pica-brand img {
+  height: 38px;
+}
+
+.pica-brand .brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--pica-warm);
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--pica-teal);
+  color: var(--pica-text);
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background-color: var(--pica-orange);
+  border-color: var(--pica-orange);
+  color: #FFFFFF;
+}
+
+.site-pica .switch-world {
+  background-color: var(--pica-warm);
+  color: var(--pica-dark);
+}
+
+.site-pica .switch-world:hover {
+  background-color: var(--pica-orange);
+  color: #FFFFFF;
+}
+
+.pica-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.pica-section {
+  margin-bottom: 5rem;
+}
+
+.pica-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.2rem;
+  color: var(--pica-warm);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.pica-section h2 em {
+  color: var(--pica-teal);
+  font-style: italic;
+}
+
+.pica-section p {
+  font-size: 1.1rem;
+  margin-bottom: 1.4rem;
+  color: var(--pica-muted);
+}
+
+.site-pica .section-label {
+  color: var(--pica-orange);
+}
+
+.about-subtabs {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(252, 188, 102, 0.2);
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.subtab-btn {
+  background: transparent;
+  border: 1px solid var(--pica-teal);
+  color: var(--pica-text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.subtab-btn.active,
+.subtab-btn:hover {
+  background-color: var(--pica-orange);
+  border-color: var(--pica-orange);
+  color: #FFFFFF;
+}
+
+.subtab-content {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.subtab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pica-hero-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.pica-hero-image img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(252, 188, 102, 0.2);
+}
+
+.sculpture-narrative {
+  background: rgba(45, 29, 42, 0.6);
+  border-left: 4px solid var(--pica-warm);
+  padding: 1.5rem 2rem;
+  border-radius: 0 12px 12px 0;
+  margin-top: 2rem;
+}
+
+.sculpture-narrative strong {
+  color: var(--pica-warm);
+}
+
+.pica-photo-text {
+  margin-bottom: 2.5rem;
+}
+
+.photo-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.photo-item {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(141, 198, 191, 0.2);
+  background-color: #140d13;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.sculpture-gallery .photo-item img {
+  object-fit: contain;
+  background-color: #160e15;
+}
+
+.photo-item img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+
+.show-card {
+  background-color: var(--pica-card-bg);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border-left: 5px solid var(--pica-warm);
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.show-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  color: var(--pica-warm);
+}
+
+.show-subtitle {
+  color: var(--pica-teal);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.show-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.show-gallery img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border: 1px solid rgba(141, 198, 191, 0.2);
+}
+
+.show-gallery img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.08);
+}
+
+.show-meta {
+  list-style: none;
+  background-color: rgba(0,0,0,0.25);
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.show-meta li {
+  margin-bottom: 0.4rem;
+  color: var(--pica-text);
+}
+
+.show-card h4 {
+  color: var(--pica-orange);
+  margin: 1.5rem 0 0.8rem;
+}
+
+.show-card ul {
+  padding-left: 1.2rem;
+  color: var(--pica-muted);
+  margin-bottom: 1.5rem;
+}
+
+.show-card ul li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-details {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.contact-details li {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.contact-details a {
+  color: var(--pica-warm);
+  font-weight: 700;
+}
+
+.contact-details a:hover {
+  color: var(--pica-orange);
+  text-decoration: underline;
+}
+
+.site-pica .site-footer {
+  background-color: #140d13;
+  color: var(--pica-muted);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ==========================================================================
+   7. DESCUBRE VAREIA (ZONAS ROMANAS INTERACTIVAS)
+   ========================================================================== */
+.vareia-section .vareia-intro {
+  max-width: 720px;
+  color: var(--pat-muted);
+  font-size: 1.05rem;
+  margin-top: -0.5rem;
+}
+
+/* REJILLA DE ZONAS */
+.vareia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.vareia-card {
+  background-color: var(--pat-card-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(38, 121, 142, 0.08);
+  border: 1px solid rgba(99, 202, 167, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vareia-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(38, 121, 142, 0.18);
+}
+
+.vareia-card-image {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.vareia-card-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.vareia-card:hover .vareia-card-image img {
+  transform: scale(1.05);
+}
+
+.vareia-mini-desc {
+  font-size: 0.88rem;
+  color: var(--pat-muted);
+  margin-top: 0.5rem;
+}
+
+/* BLOQUE DE DETALLE DE UNA ZONA */
+.vareia-zone-detail {
+  max-width: 900px;
+}
+
+.vareia-zone-text {
+  margin-top: 2rem;
+}
+
+.vareia-zone-text p {
+  margin-bottom: 1.2rem;
+  color: var(--pat-muted);
+  font-size: 1.05rem;
+}
+
+/* COMPARADOR DE IMÁGENES (ÉPOCA ROMANA / ACTUALIDAD) */
+.compare-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 2rem 0 1rem;
+  box-shadow: 0 10px 30px rgba(38, 121, 142, 0.18);
+  user-select: none;
+  background-color: #0d1f24;
+}
+
+.compare-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.compare-before { z-index: 1; }
+.compare-after { z-index: 2; }
+
+.compare-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 4;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: #ffffff;
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.compare-handle::before {
+  content: "⇔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--pat-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.compare-label {
+  position: absolute;
+  top: 1rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(28, 49, 55, 0.7);
+  color: #ffffff;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.label-before { left: 1rem; }
+.label-after { right: 1rem; }
+
+/* VISOR DE IMAGEN 360º */
+.viewer-360 {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  background-color: #000;
+  cursor: grab;
+  box-shadow: 0 10px 30px rgba(38, 121, 142, 0.18);
+}
+
+.viewer-360.dragging {
+  cursor: grabbing;
+}
+
+.viewer-360-canvas {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 180% auto;
+  background-position: 50% center;
+  transform: scale(1);
+  transition: transform 0.15s ease-out;
+  will-change: transform, background-position;
+}
+
+.viewer-360-hint {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  padding: 0.4rem 1rem;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.viewer-360-controls {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.6rem;
+  z-index: 2;
+}
+
+.viewer-360-zoom {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--pat-dark);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+}
+
+.viewer-360-zoom:hover {
+  background-color: var(--pat-accent);
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 850px) {
+  .world-selector {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .site-header, .site-footer {
+    padding: 1.2rem 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pica-hero-wrapper, .show-gallery, .photo-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline {
+    padding-left: 1rem;
+  }
+
+  .hero-patricia h1, .world-patricia h1, .world-pica h2 {
+    font-size: 2.8rem;
+  }
+
+  .compare-slider, .viewer-360 {
+    aspect-ratio: 4 / 3;
+  }
+
+  .viewer-360-hint {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
