@@ -26,8 +26,8 @@
   <meta property="og:title" content="Patricia Martín · Artista 3D & La Maga Pica">
   <meta property="og:description" content="Descubre el portfolio 3D de Patricia Martín y los espectáculos de magia de La Maga Pica.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://TU-USUARIO.github.io/TU-REPOSITORIO/">
-  <meta property="og:image" content="https://TU-USUARIO.github.io/TU-REPOSITORIO/assets/portada%20luminis.jpg">
+  <meta property="og:url" content="https://lamagapica.github.io/Pagina-Web/">
+  <meta property="og:image" content="https://lamagapica.github.io/Pagina-Web/assets/portada%20luminis.jpg">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,31 +44,41 @@
   <!-- PANTALLA PRINCIPAL DIVIDIDA EN DOS (SPLIT SCREEN) -->
   <main id="world-selector" class="world-selector">
 
-    <div class="world-seam" aria-hidden="true">
-      <span class="seam-mark">PM</span>
+    <!-- INTRODUCCIÓN CENTRAL SUPERIOR -->
+    <div class="world-intro">
+      <span class="world-intro-mark" aria-hidden="true">✦</span>
+      <p>Dos formas de crear, un mismo origen</p>
     </div>
 
     <!-- LADO IZQUIERDO: PATRICIA MARTÍN -->
     <section class="world world-patricia">
+      <div class="world-glow" aria-hidden="true"></div>
       <div class="world-copy">
-        <p class="world-kicker">Portfolio profesional</p>
-        <h1>Patricia Martín</h1>
-        <p class="world-role">Artista 3D — modelado, texturizado y animación</p>
+        <p class="eyebrow">PORTFOLIO PROFESIONAL</p>
+        <h1>Patricia<br><em>Martín</em></h1>
+        <p class="world-description">Artista 3D · Animación · Modelado · Arte</p>
         <button class="enter-button" data-enter="patricia">
-          Ver el portfolio
+          <span>Entrar a Patricia Martín</span>
+          <span class="arrow" aria-hidden="true">↗</span>
         </button>
       </div>
     </section>
 
+    <!-- DIVISOR CENTRAL DECORATIVO -->
+    <div class="world-divider" aria-hidden="true">
+      <span class="world-divider-node">&amp;</span>
+    </div>
+
     <!-- LADO DERECHO: LA MAGA PICA -->
     <section class="world world-pica">
+      <div class="world-glow" aria-hidden="true"></div>
       <div class="world-copy">
-        <img class="pica-logo-cover" src="assets/logo-pica.png" alt="La Maga Pica">
-        <p class="world-kicker">El otro lado del telón</p>
-        <h2>La Maga Pica</h2>
-        <p class="world-role">Magia, ilusionismo y espectáculo en vivo</p>
+        <p class="eyebrow">ARTE ESCÉNICO</p>
+        <h2>La Maga<br><em>Pica</em></h2>
+        <p class="world-description">Magia · Ilusionismo · Espectáculo</p>
         <button class="enter-button" data-enter="pica">
-          Descubrir la magia
+          <span>Entrar a La Maga Pica</span>
+          <span class="arrow" aria-hidden="true">↗</span>
         </button>
       </div>
     </section>
@@ -113,19 +123,19 @@
         <div class="hero-inner">
           <p class="eyebrow">3D & 2D ARTIST</p>
           <h1>Creo, modelo<br><em>y doy vida.</em></h1>
-          <p class="hero-text">Artista 3D especializada en modelado, texturizado, iluminación y animación.</p>
+          <p class="hero-text">Artista 3D especializada recreaciones 3d del patrimonio.</p>
         </div>
       </section>
 
-      <section class="intro-section" id="about-patricia">
+      <section class="intro-section reveal" id="about-patricia">
         <div class="section-label">01 / SOBRE MÍ</div>
         <div class="intro-content">
           <h2>Diseño mundos,<br><em>objeto a objeto.</em></h2>
-          <p>Soy Patricia Martín, artista 3D con formación superior en Animación 3D y experiencia en modelado de productos, entornos y props.</p>
+          <p>Soy Patricia Martín, artista 3D con formación superior en Animación 3D, Realidad Aumentada, Virtual e Híbrida y especializada en recreaciones 3d  del patrimonio. Tengo experiencia en modelado de productos, entornos y props.</p>
         </div>
       </section>
 
-      <section class="services-section" id="services">
+      <section class="services-section reveal" id="services">
         <div class="section-label">02 / SERVICIOS</div>
         <div class="service-grid">
           <article class="service-card">
@@ -144,7 +154,7 @@
       </section>
 
       <!-- PORTFOLIO SECCIÓN PRINCIPAL -->
-      <section class="portfolio-section" id="work-3d">
+      <section class="portfolio-section reveal" id="work-3d">
         <div class="section-label">03 / PORTFOLIO 3D</div>
         <h2>Trabajos de Diseño 3D</h2>
 
@@ -164,7 +174,7 @@
               <img src="assets/portada vareia.png" alt="Recreaciones 3D">
             </div>
             <h3>Recreaciones 3D</h3>
-            <p class="project-mini-desc">Reconstrucciones e integraciones históricas en 3D.</p>
+            <p class="project-mini-desc">Recreaciones hipotéticas e integraciones históricas en 3D.</p>
           </article>
 
           <article class="project-card project-open-btn" data-project="environment">
@@ -239,7 +249,7 @@
                   <img src="assets/portada silvano.jpg" alt="Silvano">
                 </div>
                 <h3>Silvano</h3>
-                <p class="project-mini-desc">Proyecto de escultura y diseño de personaje en 3D.</p>
+                <p class="project-mini-desc">Proyecto de escultura.</p>
               </article>
             </div>
           </div>
@@ -323,11 +333,9 @@
           <div id="detail-almazara" class="project-detail-content" style="display: none;">
             <div class="detail-header">
               <h2>Almazara</h2>
-              <p><strong>Trabajo de Fin de Grado (Calificación: 10/10)</strong></p>
               <p style="margin-top: 0.8rem; max-width: 800px; color: var(--pat-muted);">
-              Recreación 3D e integración histórica de la antigua almazara romana de Vareia.
-              Actualmente, este trabajo documental y divulgativo es utilizado por el Colegio de Varea
-              (situado sobre los propios restos arqueológicos) para dar a conocer la historia romana a sus alumnos y a otros centros educativos.
+              Tras una solida investigación he realizado una hipotética recreación 3D de la almazara romana de Vareia, situada bajo el actual colegio de Varea.
+              Actualmente este trabajo documental y divulgativo es utilizado por el Colegio de Varea para enseñar la historia a sus alumnos y otros centros.
               </p>
             </div>
             <div class="detail-media-grid">
@@ -346,7 +354,7 @@
           <div id="detail-silvano" class="project-detail-content" style="display: none;">
             <div class="detail-header">
               <h2>Silvano</h2>
-              <p>Galería detallada de renders y proceso de trabajo.</p>
+              <p>Recreación a mayor escala de la estatuilla de Silvano que se encontro en Vareia. Se encontro parte de la cabeza.</p>
             </div>
             <div class="detail-media-grid">
               <img src="assets/patricia-martin-silvano-render.webp" alt="Silvano Render 1">
@@ -361,7 +369,7 @@
           <div id="detail-fuenteencino" class="project-detail-content" style="display: none;">
             <div class="detail-header">
               <h2>La Fuente del Encino</h2>
-              <p>Galería de entornos completos y diseño de iluminación.</p>
+              <p>La Fuente del Encino se encuentra en Varea, a las afueras de Logroño. Debido a su ubicación y al dificil acceso a la misma, esta reconstrucción permite visitarla desde cualquier parte del mundo.</p>
             </div>
             <div class="detail-media-grid">
               <img src="assets/fuente encino1.png" alt="La Fuente del Encino 1">
@@ -385,10 +393,10 @@
               y sustituye imágenes y textos, manteniendo el mismo orden:
               1º comparador romana/actualidad, 2º visor 360º, 3º texto explicativo.
            ========================================================================== -->
-      <section class="vareia-section" id="discover-vareia">
+      <section class="vareia-section reveal" id="discover-vareia">
         <div class="section-label">04 / DESCUBRE VAREIA</div>
         <h2>Descubre Vareia</h2>
-        <p class="vareia-intro">Un recorrido interactivo por la antigua ciudad romana de Vareia: compara cómo era cada rincón en época romana y cómo es en la actualidad, y explóralo en 360º.</p>
+        <p class="vareia-intro">Un recorrido interactivo por la antigüa ciudad romana de Vareia. Compara cómo era cada rincón en época romana y cómo es en la actualidad, y explóralo en 360º.</p>
 
         <!-- VISTA DE REJILLA DE ZONAS -->
         <div id="vareia-grid-view" class="vareia-grid">
@@ -399,17 +407,27 @@
               <img src="assets/vareia-romana.jpg" alt="Almazara Romana de Vareia">
             </div>
             <h3>La Almazara Romana</h3>
-            <p class="vareia-mini-desc">Reconstrucción histórica de la almazara y su entorno.</p>
+            <p class="vareia-mini-desc">Reconstrucción hipotética de la almazara y su entorno.</p>
           </article>
 
           <!-- ZONA 2 (PLANTILLA DE EJEMPLO) -->
           <article class="vareia-card vareia-open-btn" data-vareia-zone="termas">
             <div class="vareia-card-image">
-              <img src="assets/termas-portada.jpg" alt="Termas de Vareia">
+              <img src="assets/termas portada.jpg" alt="Termas de Vareia">
             </div>
             <h3>Las Termas</h3>
             <p class="vareia-mini-desc">El complejo termal romano y su reconstrucción.</p>
           </article>
+
+            <!-- ZONA 3 (PLANTILLA DE EJEMPLO) -->
+          <article class="vareia-card vareia-open-btn" data-vareia-zone="campamento">
+            <div class="vareia-card-image">
+              <img src="assets/campamento portada.jpg" alt="Campamento de Vareia">
+            </div>
+            <h3>El campamento</h3>
+            <p class="vareia-mini-desc">El campamento romano y su reconstrucción.</p>
+          </article>
+
 
           <!-- AÑADE AQUÍ NUEVAS TARJETAS DE ZONA -->
 
@@ -424,7 +442,8 @@
           <div id="vareia-zone-almazara" class="vareia-zone-detail" style="display: none;">
             <div class="detail-header">
               <h2>Calle Artesanos de Vareia</h2>
-              <p>Reconstrucción de la calle dedicada a la venta de productos en época romana.</p>
+              <p>La actual Calle Artesanos de Varea se llama asi debido a que en época romana aqui se encontraba la calle dedicada a la venta de productos (harina, textil, entre otros) 
+                 Reconstrucción de la calle dedicada a la venta de productos en época romana.</p>
             </div>
 
             <!-- 1. COMPARADOR ÉPOCA ROMANA / ACTUALIDAD -->
@@ -453,13 +472,13 @@
           <div id="vareia-zone-termas" class="vareia-zone-detail" style="display: none;">
             <div class="detail-header">
               <h2>Las Termas de Vareia</h2>
-              <p>El complejo termal romano, centro de higiene y vida social.</p>
+              <p>El complejo termal romano, era el centro de higiene y vida social.El patio interno era el lugar donde realizaban sus ejercicios. </p>
             </div>
 
             <!-- 1. COMPARADOR ÉPOCA ROMANA / ACTUALIDAD -->
             <div class="compare-slider">
-              <div class="compare-image compare-before" style="background-image: url('assets/termas-romana.jpg');"></div>
-              <div class="compare-image compare-after" style="background-image: url('assets/termas-actual.jpg');"></div>
+              <div class="compare-image compare-before" style="background-image: url('assets/termas romana.png');"></div>
+              <div class="compare-image compare-after" style="background-image: url('assets/termas actual.jpg');"></div>
               <span class="compare-label label-before">Época Romana</span>
               <span class="compare-label label-after">Actualidad</span>
               <div class="compare-handle"></div>
@@ -468,7 +487,36 @@
 
             <!-- 2. VISOR 360º -->
             <div class="viewer-360">
-              <div id="pano-termas" class="viewer-360-canvas" data-panorama="assets/termas-360.jpg"></div>
+              <div id="pano-termas" class="viewer-360-canvas" data-panorama="assets/360 termas.png"></div>
+            </div>
+
+            <!-- 3. TEXTO EXPLICATIVO -->
+            <div class="vareia-zone-text">
+              <p>Las termas romanas eran mucho más que un lugar de aseo: eran un punto de encuentro social donde se socializaba, se hacían negocios y se disfrutaba del ocio.</p>
+              <p>La reconstrucción muestra la distribución de sus salas (frigidarium, tepidarium y caldarium) y el sistema de calefacción por hipocausto que las hacía funcionar.</p>
+            </div>
+          </div>
+
+          <!-- ZONA: CAMPAMENTO (PLANTILLA DE EJEMPLO, SUSTITUYE LAS IMÁGENES CUANDO LAS TENGAS) -->
+          <div id="vareia-zone-campamento" class="vareia-zone-detail" style="display: none;">
+            <div class="detail-header">
+              <h2>El campamento de Vareia</h2>
+              <p>El campamento Romano </p>
+            </div>
+
+            <!-- 1. COMPARADOR ÉPOCA ROMANA / ACTUALIDAD -->
+            <div class="compare-slider">
+              <div class="compare-image compare-before" style="background-image: url('assets/campamento romana.png');"></div>
+              <div class="compare-image compare-after" style="background-image: url('assets/campamento actual.jpg');"></div>
+              <span class="compare-label label-before">Época Romana</span>
+              <span class="compare-label label-after">Actualidad</span>
+              <div class="compare-handle"></div>
+              <input type="range" min="0" max="100" value="50" class="compare-range" aria-label="Deslizar para comparar época romana y actualidad">
+            </div>
+
+            <!-- 2. VISOR 360º -->
+            <div class="viewer-360">
+              <div id="pano-campamento" class="viewer-360-canvas" data-panorama="assets/360 campamento.png"></div>
             </div>
 
             <!-- 3. TEXTO EXPLICATIVO -->
@@ -485,7 +533,7 @@
       </section>
 
       <!-- SECCIÓN SOFTWARE / HERRAMIENTAS -->
-      <section class="skills-section" id="skills">
+      <section class="skills-section reveal" id="skills">
         <div class="section-label">05 / SOFTWARE & HERRAMIENTAS</div>
         <h2>Especialidades Técnicas</h2>
 
@@ -625,7 +673,7 @@
       </section>
 
       <!-- SECCIÓN EXPERIENCIA Y EDUCACIÓN (TIMELINE) -->
-      <section class="experience-section" id="experience">
+      <section class="experience-section reveal" id="experience">
         <div class="section-label">06 / TRAYECTORIA Y FORMACIÓN</div>
         <h2>Experiencia & Educación</h2>
 
@@ -683,7 +731,7 @@
       </section>
 
       <!-- SECCIÓN PREMIOS Y RECONOCIMIENTOS -->
-      <section class="awards-section" id="awards">
+      <section class="awards-section reveal" id="awards">
         <div class="section-label">07 / LOGROS</div>
         <h2>Premios & Reconocimientos</h2>
 
@@ -720,7 +768,7 @@
         </div>
       </section>
 
-      <section class="contact-section" id="contact-patricia">
+      <section class="contact-section reveal" id="contact-patricia">
         <div class="section-label">08 / CONTACTO</div>
         <h2>Contacto Profesional</h2>
         <p>Email: <a href="mailto:patriciaanimacion3d@gmail.com">patriciaanimacion3d@gmail.com</a></p>
@@ -755,7 +803,7 @@
     <main class="pica-content">
 
       <!-- SECCIÓN 1: SOBRE MÍ CON SUBPESTAÑAS -->
-      <section id="pica-about" class="pica-section">
+      <section id="pica-about" class="pica-section reveal">
         <div class="section-label">01 / SOBRE MÍ</div>
 
         <div class="about-subtabs">
@@ -840,7 +888,7 @@
       </section>
 
       <!-- SECCIÓN 2: ESPECTÁCULOS -->
-      <section id="pica-shows" class="pica-section">
+      <section id="pica-shows" class="pica-section reveal">
         <div class="section-label">02 / ESPECTÁCULOS</div>
         <h2>Magia con historia, <em>magia con identidad.</em></h2>
 
@@ -897,7 +945,7 @@
       </section>
 
       <!-- SECCIÓN 3: CONTACTO -->
-      <section id="pica-contact" class="pica-section">
+      <section id="pica-contact" class="pica-section reveal">
         <div class="section-label">03 / CONTACTO</div>
         <h2>Contacto & Contratación</h2>
         <p>Para contrataciones, programación de espectáculos o información:</p>
