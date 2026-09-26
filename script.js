@@ -286,4 +286,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  /* ==========================================================================
+     ANIMACIÓN DE APARICIÓN AL HACER SCROLL (REVEAL)
+     ========================================================================== */
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
+
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+  } else {
+    // Si el navegador no soporta IntersectionObserver, mostramos todo directamente
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("in-view"));
+  }
 });
