@@ -678,6 +678,56 @@ a {
 
 .hero-badge-icon { font-size: 1rem; }
 
+/* PORTADA "PORTFOLIO 2026" DENTRO DE LA PROPIA PÁGINA DE PATRICIA */
+.hero-patricia-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 78vh;
+  padding-top: 6rem;
+}
+
+.hero-patricia-cover .cover-wordmark-page {
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+.hero-patricia-cover .cv-letter {
+  font-size: clamp(3.4rem, 10vw, 7.5rem);
+}
+
+.hero-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: var(--port-yellow-light);
+  margin-bottom: 1rem;
+}
+
+.hero-side-tag {
+  position: absolute;
+  top: 0;
+  right: 2.5rem;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-side-tag span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: 4px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+}
+
 .site-patricia section {
   margin-bottom: 5rem;
 }
@@ -720,6 +770,65 @@ a {
   border-radius: 50%;
   background: var(--port-yellow);
   display: inline-block;
+}
+
+.intro-content-photo {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.intro-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--pat-accent);
+  box-shadow: 0 10px 30px rgba(38, 121, 142, 0.15);
+}
+
+.intro-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.quick-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+.quick-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  background: var(--pat-card-bg);
+  border: 1px solid rgba(99, 202, 167, 0.3);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pat-dark);
+  transition: all 0.25s ease;
+}
+
+.quick-contact a:hover {
+  background-color: var(--pat-dark);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+  .intro-content-photo {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .intro-photo { max-width: 200px; }
 }
 
 .service-grid, .project-grid {
@@ -1049,6 +1158,11 @@ a {
 .timeline-badge.edu {
   background-color: var(--pat-accent);
   color: var(--pat-text);
+}
+
+.timeline-badge.award {
+  background-color: var(--port-yellow);
+  color: var(--port-black);
 }
 
 .timeline-content {
@@ -1440,6 +1554,18 @@ a {
 .contact-details a:hover {
   color: var(--pica-orange);
   text-decoration: underline;
+}
+
+.contact-details-patricia li {
+  color: var(--pat-text);
+}
+
+.contact-details-patricia a {
+  color: var(--pat-dark) !important;
+}
+
+.contact-details-patricia a:hover {
+  color: var(--pat-teal) !important;
 }
 
 .site-pica .site-footer {
