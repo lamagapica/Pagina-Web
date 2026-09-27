@@ -32,7 +32,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
   <!-- PANNELLUM: LIBRERÍA PARA VISOR 360º EQUIRECTANGULAR -->
@@ -54,9 +54,19 @@
     <section class="world world-patricia">
       <div class="world-photo" aria-hidden="true"></div>
       <div class="world-glow" aria-hidden="true"></div>
-      <div class="world-copy">
-        <p class="eyebrow">PORTFOLIO 3D</p>
-        <h1>Patricia<br><em>Martín</em></h1>
+      <div class="world-copy world-copy-cover">
+        <div class="cover-wordmark" aria-label="Portfolio 2026, Patricia Martín">
+          <span class="cover-row cover-row-1">
+            <span class="cv-letter cv-black" style="--d:0">P</span><span class="cv-letter cv-black" style="--d:1">O</span><span class="cv-letter cv-yellow" style="--d:2">R</span><span class="cv-letter cv-black" style="--d:3">T</span>
+          </span>
+          <span class="cover-row cover-row-2">
+            <span class="cv-letter cv-yellow" style="--d:4">F</span><span class="cv-letter cv-black" style="--d:5">O</span><span class="cv-letter cv-black" style="--d:6">L</span><span class="cv-letter cv-black" style="--d:7">I</span><span class="cv-letter cv-black" style="--d:8">o</span>
+          </span>
+          <span class="cover-meta">
+            <span class="cover-year">2026</span>
+            <span class="cover-name">Patricia Martín</span>
+          </span>
+        </div>
         <p class="world-description">Modelado, texturizado y recreación digital del patrimonio. Representante de La Rioja en SpainSkills.</p>
         <button class="enter-button" data-enter="patricia">
           <span>Entrar al portfolio</span>
@@ -105,9 +115,8 @@
         <div class="nav-dropdown">
           <a href="#work-3d" class="dropdown-trigger">Portfolio 3D ▾</a>
           <div class="dropdown-menu">
-            <a href="#" class="project-direct-link" data-project="productos">Productos</a>
-            <a href="#" class="project-direct-link" data-project="recreaciones3d">Recreaciones 3D</a>
-            <a href="#" class="project-direct-link" data-project="environment">Environment</a>
+            <a href="#" class="project-direct-link" data-project="branding">Branding</a>
+            <a href="#" class="project-direct-link" data-project="visualizacion">Visualización · Patrimonio</a>
           </div>
         </div>
 
@@ -162,34 +171,28 @@
 
       <!-- PORTFOLIO SECCIÓN PRINCIPAL -->
       <section class="portfolio-section reveal" id="work-3d">
-        <div class="section-label">03 / PORTFOLIO 3D</div>
+        <div class="section-label">03 / PORTAFOLIO</div>
         <h2>Trabajos de Diseño 3D</h2>
 
-        <!-- VISTA DE REJILLA PRINCIPAL -->
-        <div id="projects-grid-view" class="project-grid">
+        <!-- VISTA DE REJILLA PRINCIPAL: DOS GRANDES CATEGORÍAS -->
+        <div id="projects-grid-view" class="project-grid project-grid-categories">
 
-          <article class="project-card project-open-btn" data-project="productos">
+          <article class="project-card project-open-btn category-card category-branding" data-project="branding">
             <div class="project-image-button">
-              <img src="assets/Portada bolo.png" alt="Productos">
+              <img src="assets/portada luminis.jpg" alt="Branding">
             </div>
-            <h3>Productos</h3>
-            <p class="project-mini-desc">Diseño de producto 3D, animación y renderizado comercial.</p>
+            <span class="category-tag">Branding</span>
+            <h3>Branding</h3>
+            <p class="project-mini-desc">Identidad de marca, packaging y 3D Art Direction: Luminis, Bolo y EDGE.</p>
           </article>
 
-          <article class="project-card project-open-btn" data-project="recreaciones3d">
+          <article class="project-card project-open-btn category-card category-visualizacion" data-project="visualizacion">
             <div class="project-image-button">
-              <img src="assets/portada vareia.png" alt="Recreaciones 3D">
+              <img src="assets/portada vareia.png" alt="Visualización · Patrimonio · Storytelling">
             </div>
-            <h3>Recreaciones 3D</h3>
-            <p class="project-mini-desc">Recreaciones hipotéticas e integraciones históricas en 3D.</p>
-          </article>
-
-          <article class="project-card project-open-btn" data-project="environment">
-            <div class="project-image-button">
-              <img src="assets/fuente del encino.png" alt="Environment">
-            </div>
-            <h3>Environment</h3>
-            <p class="project-mini-desc">Diseño de escenarios, composición e iluminación ambiental.</p>
+            <span class="category-tag">Patrimonio</span>
+            <h3>Visualización · Patrimonio · Storytelling</h3>
+            <p class="project-mini-desc">Recreación histórica, arquitectura e interiorismo y divulgación en 3D.</p>
           </article>
 
         </div>
@@ -203,36 +206,45 @@
                NIVEL 1: CATEGORÍAS
                ============================================================ -->
 
-          <!-- CATEGORÍA: PRODUCTOS -->
-          <div id="detail-productos" class="project-detail-content" style="display: none;">
-            <div class="detail-header">
-              <h2>Productos</h2>
-              <p>Colección de proyectos de modelado y presentación de producto.</p>
+          <!-- CATEGORÍA: BRANDING -->
+          <div id="detail-branding" class="project-detail-content" style="display: none;">
+            <div class="detail-header poster-header">
+              <h2>Branding</h2>
+              <p>Identidad de marca, packaging y 3D Art Direction.</p>
             </div>
             <div class="subprojects-grid">
-              <article class="project-card project-open-btn" data-project="bolo">
-                <div class="project-image-button">
-                  <img src="assets/Portada bolo.png" alt="Bolo">
-                </div>
-                <h3>Bolo</h3>
-                <p class="project-mini-desc">Diseño y renderizado 3D de producto.</p>
-              </article>
-
               <article class="project-card project-open-btn" data-project="luminis">
                 <div class="project-image-button">
                   <img src="assets/portada luminis.jpg" alt="Luminis">
                 </div>
                 <h3>Luminis</h3>
-                <p class="project-mini-desc">Spot publicitario y desarrollo visual de vino.</p>
+                <p class="project-mini-desc">Branding · Packaging · 3D Art Direction para una marca de vino.</p>
+              </article>
+
+              <article class="project-card project-open-btn" data-project="bolo">
+                <div class="project-image-button">
+                  <img src="assets/Portada bolo.png" alt="Bolo">
+                </div>
+                <h3>Bolo</h3>
+                <p class="project-mini-desc">Bodegón publicitario para posicionamiento de producto comercial.</p>
+              </article>
+
+              <!-- NUEVO PROYECTO: SUSTITUYE LA IMAGEN POR LA TUYA EN assets/ -->
+              <article class="project-card project-open-btn" data-project="edge">
+                <div class="project-image-button">
+                  <img src="assets/edge-portada.jpg" alt="EDGE - La Escuela de Gema">
+                </div>
+                <h3>EDGE</h3>
+                <p class="project-mini-desc">Identidad visual y aplicaciones de marca para un centro de aprendizaje.</p>
               </article>
             </div>
           </div>
 
-          <!-- CATEGORÍA: RECREACIONES 3D -->
-          <div id="detail-recreaciones3d" class="project-detail-content" style="display: none;">
-            <div class="detail-header">
-              <h2>Recreaciones 3D</h2>
-              <p>Reconstrucciones e integraciones históricas en 3D.</p>
+          <!-- CATEGORÍA: VISUALIZACIÓN · PATRIMONIO · STORYTELLING -->
+          <div id="detail-visualizacion" class="project-detail-content" style="display: none;">
+            <div class="detail-header poster-header">
+              <h2>Visualización · Patrimonio · Storytelling</h2>
+              <p>Reconstrucción histórica, arquitectura e interiorismo y divulgación en 3D.</p>
             </div>
             <div class="subprojects-grid">
               <article class="project-card project-open-btn" data-project="vareia">
@@ -247,7 +259,7 @@
                 <div class="project-image-button">
                   <img src="assets/Portada almazara.png" alt="Almazara">
                 </div>
-                <h3>Almazara</h3>
+                <h3>Documental Almazara</h3>
                 <p class="project-mini-desc">Recreación en 3D de la almazara romana de Vareia.</p>
               </article>
 
@@ -258,23 +270,6 @@
                 <h3>Silvano</h3>
                 <p class="project-mini-desc">Proyecto de escultura.</p>
               </article>
-            </div>
-          </div>
-
-          <!-- CATEGORÍA: ENVIRONMENT -->
-          <div id="detail-environment" class="project-detail-content" style="display: none;">
-            <div class="detail-header">
-              <h2>Environment</h2>
-              <p>Diseño de escenarios, composición e iluminación ambiental.</p>
-            </div>
-            <div class="subprojects-grid">
-              <article class="project-card project-open-btn" data-project="vareia">
-                <div class="project-image-button">
-                  <img src="assets/portada vareia.png" alt="Vareia">
-                </div>
-                <h3>Vareia</h3>
-                <p class="project-mini-desc">Reconstrucción histórica y entorno interactivo 3D.</p>
-              </article>
 
               <article class="project-card project-open-btn" data-project="fuenteencino">
                 <div class="project-image-button">
@@ -282,6 +277,15 @@
                 </div>
                 <h3>La Fuente del Encino</h3>
                 <p class="project-mini-desc">Diseño de escenarios, composición e iluminación ambiental.</p>
+              </article>
+
+              <!-- NUEVO PROYECTO: SUSTITUYE LA IMAGEN POR LA TUYA EN assets/ -->
+              <article class="project-card project-open-btn" data-project="arquitectura">
+                <div class="project-image-button">
+                  <img src="assets/arquitectura-portada.jpg" alt="Arquitectura e interiorismo">
+                </div>
+                <h3>Arquitectura & Interiorismo</h3>
+                <p class="project-mini-desc">Renders de arquitectura e interiorismo en colaboración con Render Estudio 3D.</p>
               </article>
             </div>
           </div>
@@ -382,6 +386,32 @@
               <img src="assets/fuente encino1.png" alt="La Fuente del Encino 1">
               <img src="assets/fuente encino2.png" alt="La Fuente del Encino 2">
               <img src="assets/fuente encino3.png" alt="La Fuente del Encino 3">
+            </div>
+          </div>
+
+          <!-- SUBPROYECTO: EDGE (PLANTILLA, SUSTITUYE LAS IMÁGENES CUANDO LAS TENGAS) -->
+          <div id="detail-edge" class="project-detail-content" style="display: none;">
+            <div class="detail-header">
+              <h2>EDGE · La Escuela de Gema</h2>
+              <p>EDGE es un centro de aprendizaje. Aporté la creación de una identidad visual y diferentes aplicaciones de marca, con el objetivo de construir una imagen reconocible y coherente con el centro.</p>
+            </div>
+            <div class="detail-media-grid">
+              <img src="assets/edge1.jpg" alt="EDGE Aplicación de marca 1">
+              <img src="assets/edge2.jpg" alt="EDGE Aplicación de marca 2">
+              <img src="assets/edge3.jpg" alt="EDGE Aplicación de marca 3">
+            </div>
+          </div>
+
+          <!-- SUBPROYECTO: ARQUITECTURA & INTERIORISMO (PLANTILLA, SUSTITUYE LAS IMÁGENES CUANDO LAS TENGAS) -->
+          <div id="detail-arquitectura" class="project-detail-content" style="display: none;">
+            <div class="detail-header">
+              <h2>Arquitectura & Interiorismo</h2>
+              <p>Proyectos en colaboración con Render Estudio 3D. Desarrollo de renders de arquitectura e interiorismo enfocados a la representación fiel de espacios y mobiliario técnico, con especial atención a la topología y al texturizado de maderas y acabados.</p>
+            </div>
+            <div class="detail-media-grid">
+              <img src="assets/arquitectura1.jpg" alt="Render de exterior arquitectónico">
+              <img src="assets/arquitectura2.jpg" alt="Render de mobiliario e interiorismo">
+              <img src="assets/arquitectura3.jpg" alt="Detalle de herrajes y texturizado">
             </div>
           </div>
 
