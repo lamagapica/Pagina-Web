@@ -109,11 +109,12 @@
 
       <nav>
         <a href="#about-patricia">Sobre mí</a>
-        <a href="#services">Servicios</a>
-        
+        <a href="#skills">Software</a>
+        <a href="#experience">Educación & Experiencia</a>
+
         <!-- MENÚ DESPLEGABLE CON HOVER -->
         <div class="nav-dropdown">
-          <a href="#work-3d" class="dropdown-trigger">Portfolio 3D ▾</a>
+          <a href="#work-3d" class="dropdown-trigger">Portfolio ▾</a>
           <div class="dropdown-menu">
             <a href="#" class="project-direct-link" data-project="branding">Branding</a>
             <a href="#" class="project-direct-link" data-project="visualizacion">Visualización · Patrimonio</a>
@@ -121,20 +122,25 @@
         </div>
 
         <a href="#discover-vareia">Descubre Vareia</a>
-        <a href="#skills">Software</a>
-        <a href="#experience">Trayectoria</a>
-        <a href="#awards">Premios</a>
         <a href="#contact-patricia">Contacto</a>
         <button class="switch-world" data-home="true">← Volver al inicio</button>
       </nav>
     </header>
 
     <div class="site-main">
-      <section class="hero-patricia" id="top">
+      <section class="hero-patricia hero-patricia-cover" id="top">
         <div class="hero-photo" aria-hidden="true"></div>
+        <div class="hero-side-tag" aria-hidden="true"><span>PATRICIA MARTÍN · 2026</span></div>
         <div class="hero-inner">
-          <p class="eyebrow">3D & 2D ARTIST</p>
-          <h1>Creo, modelo<br><em>y doy vida.</em></h1>
+          <div class="cover-wordmark cover-wordmark-page" aria-label="Portfolio 2026, Patricia Martín">
+            <span class="cover-row cover-row-1">
+              <span class="cv-letter cv-black" style="--d:0">P</span><span class="cv-letter cv-black" style="--d:1">O</span><span class="cv-letter cv-yellow" style="--d:2">R</span><span class="cv-letter cv-black" style="--d:3">T</span>
+            </span>
+            <span class="cover-row cover-row-2">
+              <span class="cv-letter cv-yellow" style="--d:4">F</span><span class="cv-letter cv-black" style="--d:5">O</span><span class="cv-letter cv-black" style="--d:6">L</span><span class="cv-letter cv-black" style="--d:7">I</span><span class="cv-letter cv-black" style="--d:8">o</span>
+            </span>
+          </div>
+          <p class="hero-subtitle">3D Design · Visual Branding</p>
           <p class="hero-text">Artista 3D especializada en recreación digital del patrimonio, modelado de producto y entornos.</p>
           <div class="hero-badge">
             <span class="hero-badge-icon">🏆</span>
@@ -142,36 +148,263 @@
           </div>
         </div>
       </section>
-
       <section class="intro-section reveal" id="about-patricia">
         <div class="section-label">01 / SOBRE MÍ</div>
-        <div class="intro-content">
-          <h2>Diseño mundos,<br><em>objeto a objeto.</em></h2>
-          <p>Soy Patricia Martín, artista 3D con formación superior en Animación 3D, Realidad Aumentada, Virtual e Híbrida y especializada en recreaciones 3d  del patrimonio. Tengo experiencia en modelado de productos, entornos y props.</p>
+        <div class="intro-content intro-content-photo">
+          <!-- SUSTITUYE POR TU FOTO REAL EN assets/ -->
+          <figure class="intro-photo">
+            <img src="assets/patricia-foto.jpg" alt="Retrato de Patricia Martín">
+          </figure>
+          <div class="intro-text">
+            <h2>Diseño mundos,<br><em>objeto a objeto.</em></h2>
+            <p>Soy Patricia Martín, estoy especializada en modelado 3D fotorrealista. Creo imágenes para convertir conceptos, productos y espacios en experiencias visuales capaces de comunicar una idea.</p>
+            <p>Gané el primer premio en RiojaSkills y representé a La Rioja en SpainSkills. En esta competición, a partir de un briefing, tuve que realizar un concept art y un modelado 3D completo con todo lo que conlleva (iluminación, texturizado y render).</p>
+            <div class="quick-contact">
+              <a href="tel:+34628243657"><span aria-hidden="true">📞</span> 628 243 657</a>
+              <a href="mailto:patriciaanimacion3d@gmail.com"><span aria-hidden="true">✉️</span> patriciaanimacion3d@gmail.com</a>
+              <!-- SUSTITUYE POR TUS URLS REALES -->
+              <a href="#" target="_blank" rel="noopener">ArtStation ↗</a>
+              <a href="#" target="_blank" rel="noopener">LinkedIn ↗</a>
+            </div>
+          </div>
         </div>
       </section>
+      <section class="skills-section reveal" id="skills">
+        <div class="section-label">02 / SOFTWARE & HERRAMIENTAS</div>
+        <h2>Especialidades Técnicas</h2>
 
-      <section class="services-section reveal" id="services">
-        <div class="section-label">02 / SERVICIOS</div>
-        <div class="service-grid">
-          <article class="service-card">
-            <h3>Modelado 3D</h3>
-            <p>Productos y entornos con topología optimizada.</p>
-          </article>
-          <article class="service-card">
-            <h3>Texturizado e iluminación</h3>
-            <p>Texturizado PBR y renderizado fotorrealista.</p>
-          </article>
-          <article class="service-card">
-            <h3>Animación 3D</h3>
-            <p>Piezas audiovisuales y presentación.</p>
-          </article>
+        <!-- HÍBRIDOS: 3D + ANIMACIÓN / TIEMPO REAL -->
+        <div class="software-category">
+          <h3 class="software-category-title">Programas Híbridos</h3>
+          <div class="software-grid">
+            <div class="software-card">
+              <div class="software-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <span class="software-name">Autodesk Maya</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 95%">
+                <div class="software-level-fill" style="width: 95%;"></div>
+              </div>
+              <span class="software-level-text">95%</span>
+            </div>
+
+            <div class="software-card">
+              <div class="software-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+              </div>
+              <span class="software-name">Blender</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
+                <div class="software-level-fill" style="width: 80%;"></div>
+              </div>
+              <span class="software-level-text">80%</span>
+            </div>
+
+            <div class="software-card">
+              <div class="software-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10v10H7z"/></svg>
+              </div>
+              <span class="software-name">Unreal Engine</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
+                <div class="software-level-fill" style="width: 80%;"></div>
+              </div>
+              <span class="software-level-text">80%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODELADO 3D -->
+        <div class="software-category">
+          <h3 class="software-category-title">Modelado 3D</h3>
+          <div class="software-grid">
+            <div class="software-card">
+              <div class="software-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <span class="software-name">Autodesk Inventor</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
+                <div class="software-level-fill" style="width: 80%;"></div>
+              </div>
+              <span class="software-level-text">80%</span>
+            </div>
+
+            <div class="software-card">
+              <div class="software-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <span class="software-name">ZBrush</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 65%">
+                <div class="software-level-fill" style="width: 65%;"></div>
+              </div>
+              <span class="software-level-text">65%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DISEÑO -->
+        <div class="software-category">
+          <h3 class="software-category-title">2D Art</h3>
+          <div class="software-grid">
+            <div class="software-card">
+              <div class="software-icon">
+                <span class="adobe-tag">Ps</span>
+              </div>
+              <span class="software-name">Photoshop</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 95%">
+                <div class="software-level-fill" style="width: 95%;"></div>
+              </div>
+              <span class="software-level-text">95%</span>
+            </div>
+
+            <div class="software-card">
+              <div class="software-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM8 12h8M12 8v8"/></svg>
+              </div>
+              <span class="software-name">AutoCAD</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
+                <div class="software-level-fill" style="width: 80%;"></div>
+              </div>
+              <span class="software-level-text">80%</span>
+            </div>
+
+            <div class="software-card">
+              <div class="software-icon">
+                <span class="adobe-tag">Ai</span>
+              </div>
+              <span class="software-name">Illustrator</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 65%">
+                <div class="software-level-fill" style="width: 65%;"></div>
+              </div>
+              <span class="software-level-text">65%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RENDER -->
+        <div class="software-category">
+          <h3 class="software-category-title">Render</h3>
+          <div class="software-grid">
+            <div class="software-card">
+              <div class="software-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg>
+              </div>
+              <span class="software-name">Lumion</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
+                <div class="software-level-fill" style="width: 80%;"></div>
+              </div>
+              <span class="software-level-text">80%</span>
+            </div>
+
+            <div class="software-card">
+              <div class="software-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/></svg>
+              </div>
+              <span class="software-name">V-Ray</span>
+              <div class="software-level" role="img" aria-label="Nivel de control: 65%">
+                <div class="software-level-fill" style="width: 65%;"></div>
+              </div>
+              <span class="software-level-text">65%</span>
+            </div>
+          </div>
         </div>
       </section>
+      <section class="experience-section reveal" id="experience">
+        <div class="section-label">03 / EDUCACIÓN & EXPERIENCIA</div>
+        <h2>Trayectoria & Reconocimientos</h2>
 
-      <!-- PORTFOLIO SECCIÓN PRINCIPAL -->
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-badge award">🏆 Premio</div>
+            <div class="timeline-content">
+              <span class="timeline-date">2021</span>
+              <h3>Premio Corto de Animación 3D</h3>
+              <span class="timeline-place">La Gota de Leche</span>
+              <p>Reconocimiento al mejor cortometraje de animación 3D.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge edu">Formación</div>
+            <div class="timeline-content">
+              <span class="timeline-date">2023 - 2025</span>
+              <h3>F.P. Grado Superior en Animación 3D, Juegos y Entornos Interactivos</h3>
+              <span class="timeline-place">Formación Profesional Superior</span>
+              <p>Especialización en modelado, texturizado, animación e iluminación.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge award">🥇 Premio</div>
+            <div class="timeline-content">
+              <span class="timeline-date">2025</span>
+              <h3>1º Premio en RiojaSkills</h3>
+              <span class="timeline-place">RiojaSkills 2025</span>
+              <p>Primer premio en el campeonato autonómico de habilidades profesionales en el área de tecnología y 3D.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge work">Proyecto</div>
+            <div class="timeline-content">
+              <span class="timeline-date">2025</span>
+              <h3>Documental Almazara</h3>
+              <span class="timeline-place">C.E.I.P. Varea</span>
+              <p>Recreación en 3D de las ruinas romanas que yacen bajo el colegio de Varea, cedida como herramienta divulgativa para sus alumnos y otros centros.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge work">Experiencia</div>
+            <div class="timeline-content">
+              <span class="timeline-date">2025</span>
+              <h3>Diseñadora 3D (Prácticas)</h3>
+              <span class="timeline-place">Render Estudio 3D</span>
+              <p>Desarrollo y modelado de proyectos de visualización arquitectónica y producto.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge edu">Formación</div>
+            <div class="timeline-content">
+              <span class="timeline-date">2026</span>
+              <h3>Esculpido Digital & Recreación Histórica 3D</h3>
+              <span class="timeline-place">Kore Formación</span>
+              <p>Cursos especializados en ZBrush y Blender aplicados a la conservación de patrimonio y recreación de ciudades históricas.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge award">🏆 Premio</div>
+            <div class="timeline-content">
+              <span class="timeline-date">2026</span>
+              <h3>Representante de La Rioja</h3>
+              <span class="timeline-place">SpainSkills 2026</span>
+              <p>Seleccionada para representar a la comunidad autónoma de La Rioja en las olimpiadas de FP de Animación 3D y Desarrollo.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge edu">Formación</div>
+            <div class="timeline-content">
+              <span class="timeline-date">2026</span>
+              <h3>Entornos 4.0: AR, VR & MR</h3>
+              <span class="timeline-place">Formación Profesional para el Empleo</span>
+              <p>Especialización en Realidad Aumentada (AR), Realidad Virtual (VR) y Realidad Híbrida (MR).</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-badge work">Experiencia</div>
+            <div class="timeline-content">
+              <span class="timeline-date">2026</span>
+              <h3>Diseñadora & Modeladora 3D</h3>
+              <span class="timeline-place">Ascender S.L.</span>
+              <p>Modelado 3D y diseño 2D de sistemas de butacas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="portfolio-section reveal" id="work-3d">
-        <div class="section-label">03 / PORTAFOLIO</div>
+        <div class="section-label">04 / PORTAFOLIO</div>
         <h2>Trabajos de Diseño 3D</h2>
 
         <!-- VISTA DE REJILLA PRINCIPAL: DOS GRANDES CATEGORÍAS -->
@@ -221,14 +454,6 @@
                 <p class="project-mini-desc">Branding · Packaging · 3D Art Direction para una marca de vino.</p>
               </article>
 
-              <article class="project-card project-open-btn" data-project="bolo">
-                <div class="project-image-button">
-                  <img src="assets/Portada bolo.png" alt="Bolo">
-                </div>
-                <h3>Bolo</h3>
-                <p class="project-mini-desc">Bodegón publicitario para posicionamiento de producto comercial.</p>
-              </article>
-
               <!-- NUEVO PROYECTO: SUSTITUYE LA IMAGEN POR LA TUYA EN assets/ -->
               <article class="project-card project-open-btn" data-project="edge">
                 <div class="project-image-button">
@@ -236,6 +461,14 @@
                 </div>
                 <h3>EDGE</h3>
                 <p class="project-mini-desc">Identidad visual y aplicaciones de marca para un centro de aprendizaje.</p>
+              </article>
+
+              <article class="project-card project-open-btn" data-project="bolo">
+                <div class="project-image-button">
+                  <img src="assets/Portada bolo.png" alt="Bolo">
+                </div>
+                <h3>Bolo</h3>
+                <p class="project-mini-desc">Bodegón publicitario para posicionamiento de producto comercial.</p>
               </article>
             </div>
           </div>
@@ -247,12 +480,13 @@
               <p>Reconstrucción histórica, arquitectura e interiorismo y divulgación en 3D.</p>
             </div>
             <div class="subprojects-grid">
-              <article class="project-card project-open-btn" data-project="vareia">
+              <!-- NUEVO PROYECTO: SUSTITUYE LA IMAGEN POR LA TUYA EN assets/ -->
+              <article class="project-card project-open-btn" data-project="arquitectura">
                 <div class="project-image-button">
-                  <img src="assets/portada vareia.png" alt="Vareia">
+                  <img src="assets/arquitectura-portada.jpg" alt="Arquitectura e interiorismo">
                 </div>
-                <h3>Vareia</h3>
-                <p class="project-mini-desc">Reconstrucción histórica y entorno interactivo 3D.</p>
+                <h3>Arquitectura & Interiorismo</h3>
+                <p class="project-mini-desc">Renders de arquitectura e interiorismo en colaboración con Render Estudio 3D.</p>
               </article>
 
               <article class="project-card project-open-btn" data-project="almazara">
@@ -261,6 +495,14 @@
                 </div>
                 <h3>Documental Almazara</h3>
                 <p class="project-mini-desc">Recreación en 3D de la almazara romana de Vareia.</p>
+              </article>
+
+              <article class="project-card project-open-btn" data-project="vareia">
+                <div class="project-image-button">
+                  <img src="assets/portada vareia.png" alt="Vareia">
+                </div>
+                <h3>Vareia</h3>
+                <p class="project-mini-desc">Reconstrucción histórica y entorno interactivo 3D.</p>
               </article>
 
               <article class="project-card project-open-btn" data-project="silvano">
@@ -277,15 +519,6 @@
                 </div>
                 <h3>La Fuente del Encino</h3>
                 <p class="project-mini-desc">Diseño de escenarios, composición e iluminación ambiental.</p>
-              </article>
-
-              <!-- NUEVO PROYECTO: SUSTITUYE LA IMAGEN POR LA TUYA EN assets/ -->
-              <article class="project-card project-open-btn" data-project="arquitectura">
-                <div class="project-image-button">
-                  <img src="assets/arquitectura-portada.jpg" alt="Arquitectura e interiorismo">
-                </div>
-                <h3>Arquitectura & Interiorismo</h3>
-                <p class="project-mini-desc">Renders de arquitectura e interiorismo en colaboración con Render Estudio 3D.</p>
               </article>
             </div>
           </div>
@@ -418,20 +651,8 @@
         </div>
 
       </section>
-
-      <!-- ==========================================================================
-           SECCIÓN: DESCUBRE VAREIA (ZONAS ROMANAS INTERACTIVAS)
-           ==========================================================================
-           CÓMO AÑADIR UNA NUEVA ZONA:
-           1) Copia una tarjeta dentro de #vareia-grid-view y cambia el data-vareia-zone,
-              la imagen y los textos.
-           2) Copia un bloque .vareia-zone-detail completo dentro de #vareia-detail-view,
-              cambia su id a "vareia-zone-TUID" (debe coincidir con data-vareia-zone),
-              y sustituye imágenes y textos, manteniendo el mismo orden:
-              1º comparador romana/actualidad, 2º visor 360º, 3º texto explicativo.
-           ========================================================================== -->
       <section class="vareia-section reveal" id="discover-vareia">
-        <div class="section-label">04 / DESCUBRE VAREIA</div>
+        <div class="section-label">05 / DESCUBRE VAREIA</div>
         <h2>Descubre Vareia</h2>
         <p class="vareia-intro">Un recorrido interactivo por la antigüa ciudad romana de Vareia. Compara cómo era cada rincón en época romana y cómo es en la actualidad, y explóralo en 360º.</p>
 
@@ -568,248 +789,17 @@
         </div>
 
       </section>
-
-      <!-- SECCIÓN SOFTWARE / HERRAMIENTAS -->
-      <section class="skills-section reveal" id="skills">
-        <div class="section-label">05 / SOFTWARE & HERRAMIENTAS</div>
-        <h2>Especialidades Técnicas</h2>
-
-        <!-- HÍBRIDOS: 3D + ANIMACIÓN / TIEMPO REAL -->
-        <div class="software-category">
-          <h3 class="software-category-title">Programas Híbridos</h3>
-          <div class="software-grid">
-            <div class="software-card">
-              <div class="software-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-              </div>
-              <span class="software-name">Autodesk Maya</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 95%">
-                <div class="software-level-fill" style="width: 95%;"></div>
-              </div>
-              <span class="software-level-text">95%</span>
-            </div>
-
-            <div class="software-card">
-              <div class="software-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
-              </div>
-              <span class="software-name">Blender</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
-                <div class="software-level-fill" style="width: 80%;"></div>
-              </div>
-              <span class="software-level-text">80%</span>
-            </div>
-
-            <div class="software-card">
-              <div class="software-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10v10H7z"/></svg>
-              </div>
-              <span class="software-name">Unreal Engine</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
-                <div class="software-level-fill" style="width: 80%;"></div>
-              </div>
-              <span class="software-level-text">80%</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- MODELADO 3D -->
-        <div class="software-category">
-          <h3 class="software-category-title">Modelado 3D</h3>
-          <div class="software-grid">
-            <div class="software-card">
-              <div class="software-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-              </div>
-              <span class="software-name">Autodesk Inventor</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
-                <div class="software-level-fill" style="width: 80%;"></div>
-              </div>
-              <span class="software-level-text">80%</span>
-            </div>
-
-            <div class="software-card">
-              <div class="software-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-              </div>
-              <span class="software-name">ZBrush</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 65%">
-                <div class="software-level-fill" style="width: 65%;"></div>
-              </div>
-              <span class="software-level-text">65%</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- DISEÑO -->
-        <div class="software-category">
-          <h3 class="software-category-title">Diseño</h3>
-          <div class="software-grid">
-            <div class="software-card">
-              <div class="software-icon">
-                <span class="adobe-tag">Ps</span>
-              </div>
-              <span class="software-name">Photoshop</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 95%">
-                <div class="software-level-fill" style="width: 95%;"></div>
-              </div>
-              <span class="software-level-text">95%</span>
-            </div>
-
-            <div class="software-card">
-              <div class="software-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM8 12h8M12 8v8"/></svg>
-              </div>
-              <span class="software-name">AutoCAD</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
-                <div class="software-level-fill" style="width: 80%;"></div>
-              </div>
-              <span class="software-level-text">80%</span>
-            </div>
-
-            <div class="software-card">
-              <div class="software-icon">
-                <span class="adobe-tag">Ai</span>
-              </div>
-              <span class="software-name">Illustrator</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 65%">
-                <div class="software-level-fill" style="width: 65%;"></div>
-              </div>
-              <span class="software-level-text">65%</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- RENDER -->
-        <div class="software-category">
-          <h3 class="software-category-title">Render</h3>
-          <div class="software-grid">
-            <div class="software-card">
-              <div class="software-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2z"/></svg>
-              </div>
-              <span class="software-name">Lumion</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 80%">
-                <div class="software-level-fill" style="width: 80%;"></div>
-              </div>
-              <span class="software-level-text">80%</span>
-            </div>
-
-            <div class="software-card">
-              <div class="software-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/></svg>
-              </div>
-              <span class="software-name">V-Ray</span>
-              <div class="software-level" role="img" aria-label="Nivel de control: 65%">
-                <div class="software-level-fill" style="width: 65%;"></div>
-              </div>
-              <span class="software-level-text">65%</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECCIÓN EXPERIENCIA Y EDUCACIÓN (TIMELINE) -->
-      <section class="experience-section reveal" id="experience">
-        <div class="section-label">06 / TRAYECTORIA Y FORMACIÓN</div>
-        <h2>Experiencia & Educación</h2>
-
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-badge work">Experiencia</div>
-            <div class="timeline-content">
-              <span class="timeline-date">2026</span>
-              <h3>Diseñadora & Modeladora 3D</h3>
-              <span class="timeline-place">Ascender S.L.</span>
-              <p>Modelado 3D y diseño 2D de sistemas de butacas.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-badge edu">Formación</div>
-            <div class="timeline-content">
-              <span class="timeline-date">2026</span>
-              <h3>Entornos 4.0: AR, VR & MR</h3>
-              <span class="timeline-place">Formación Profesional para el Empleo</span>
-              <p>Especialización en Realidad Aumentada (AR), Realidad Virtual (VR) y Realidad Híbrida (MR).</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-badge edu">Formación</div>
-            <div class="timeline-content">
-              <span class="timeline-date">2026</span>
-              <h3>Esculpido Digital & Recreación Histórica 3D</h3>
-              <span class="timeline-place">Kore Formación</span>
-              <p>Cursos especializados en ZBrush y Blender aplicados a la conservación de patrimonio y recreación de ciudades históricas.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-badge work">Experiencia</div>
-            <div class="timeline-content">
-              <span class="timeline-date">2025</span>
-              <h3>Diseñadora 3D (Prácticas)</h3>
-              <span class="timeline-place">Render Estudio 3D</span>
-              <p>Desarrollo y modelado de proyectos de visualización arquitectónica y producto.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-badge edu">Formación</div>
-            <div class="timeline-content">
-              <span class="timeline-date">2023 - 2025</span>
-              <h3>F.P. Grado Superior en Animación 3D, Juegos y Entornos Interactivos</h3>
-              <span class="timeline-place">Formación Profesional Superior</span>
-              <p>Especialización en modelado, texturizado, animación e iluminación.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECCIÓN PREMIOS Y RECONOCIMIENTOS -->
-      <section class="awards-section reveal" id="awards">
-        <div class="section-label">07 / LOGROS</div>
-        <h2>Premios & Reconocimientos</h2>
-
-        <div class="awards-grid">
-          <article class="award-card highlight">
-            <div class="award-icon">🏆</div>
-            <div class="award-info">
-              <span class="award-year">2026</span>
-              <h3>Representante de La Rioja</h3>
-              <p class="award-org">SpainSkills 2026</p>
-              <p>Seleccionada para representar a la comunidad autónoma de La Rioja en las olimpiadas de FP de Animación 3D y Desarrollo.</p>
-            </div>
-          </article>
-
-          <article class="award-card highlight">
-            <div class="award-icon">🥇</div>
-            <div class="award-info">
-              <span class="award-year">2025</span>
-              <h3>1º Premio en Animación 3D</h3>
-              <p class="award-org">RiojaSkills 2025</p>
-              <p>Primer premio en el campeonato autonómico de habilidades profesionales en el área de tecnología y 3D.</p>
-            </div>
-          </article>
-
-          <article class="award-card">
-            <div class="award-icon">🎬</div>
-            <div class="award-info">
-              <span class="award-year">2021</span>
-              <h3>Premio Corto de Animación 3D</h3>
-              <p class="award-org">La Gota de Leche</p>
-              <p>Reconocimiento al mejor cortometraje de animación 3D.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
       <section class="contact-section reveal" id="contact-patricia">
-        <div class="section-label">08 / CONTACTO</div>
+        <div class="section-label">06 / CONTACTO</div>
         <h2>Contacto Profesional</h2>
-        <p>Email: <a href="mailto:patriciaanimacion3d@gmail.com">patriciaanimacion3d@gmail.com</a></p>
-        <p>Teléfono: <a href="tel:+34628243657">628 243 657</a></p>
+        <p>Disponible para colaboraciones y oportunidades profesionales.</p>
+        <ul class="contact-details contact-details-patricia">
+          <li><strong>Teléfono:</strong> <a href="tel:+34628243657">628 243 657</a></li>
+          <li><strong>Email:</strong> <a href="mailto:patriciaanimacion3d@gmail.com">patriciaanimacion3d@gmail.com</a></li>
+          <!-- SUSTITUYE POR TUS URLS REALES -->
+          <li><strong>ArtStation:</strong> <a href="#" target="_blank" rel="noopener">patriciaanimacion3d</a></li>
+          <li><strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">Patricia Martín</a></li>
+        </ul>
       </section>
     </div>
 
