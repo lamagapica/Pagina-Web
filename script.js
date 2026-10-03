@@ -58,16 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const portfolioSectionEl = document.querySelector(".portfolio-section");
   const vareiaSectionEl = document.getElementById("discover-vareia");
 
-  // PILA DE NAVEGACIÓN: guarda los ids de las vistas de detalle visitadas
-  // (Categoría -> Subproyecto) para que "Volver" retroceda un nivel cada vez
-  // en lugar de saltar siempre a la rejilla principal.
+  // PILA DE NAVEGACIÓN
   let projectDetailStack = [];
 
   // FUNCIÓN PARA ABRIR UN PROYECTO (CATEGORÍA O SUBPROYECTO)
   function openProjectDetail(projectId) {
-    // Si venimos de la rejilla principal, empezamos una navegación nueva.
-    // Si venimos de otra vista de detalle (p.ej. de una categoría a un
-    // subproyecto), guardamos esa vista en la pila para poder volver a ella.
     if (gridView.style.display === "none") {
       const currentlyVisible = Array.from(detailContents).find(
         content => content.style.display === "block"
@@ -97,10 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // FUNCIÓN PARA VOLVER (UN NIVEL, O A LA VISTA GENERAL SI YA NO HAY MÁS)
+  // FUNCIÓN PARA VOLVER
   function closeProjectDetail() {
     if (projectDetailStack.length > 0) {
-      // Vuelve a la vista de detalle anterior (p.ej. de un subproyecto a su categoría)
       const previousId = projectDetailStack.pop();
       detailContents.forEach(content => {
         content.style.display = "none";
@@ -130,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // EVENTOS PARA LAS TARJETAS DE LA REJILLA (INCLUYENDO SUBCARD)
+  // EVENTOS PARA LAS TARJETAS DE LA REJILLA
   document.addEventListener("click", (e) => {
     const card = e.target.closest(".project-open-btn");
     if (card && card.dataset.project) {
@@ -176,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (targetZone) {
       targetZone.style.display = "block";
       window.scrollTo({ top: 0, behavior: "smooth" });
-      // Inicializa el visor 360º de esta zona ahora que ya es visible
       initViewers360();
     }
   }
@@ -236,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================================================
-     VISOR DE IMAGEN 360º (PANNELLUM - PROYECCIÓN EQUIRECTANGULAR REAL)
+     VISOR DE IMAGEN 360º (PANNELLUM)
      ========================================================================== */
   function initViewers360() {
     document.querySelectorAll(".viewer-360-canvas").forEach(canvas => {
@@ -263,9 +256,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // El comparador se inicializa siempre; el visor 360º se inicializa
-  // más abajo, cuando el usuario abre cada zona (openVareiaZone),
-  // para que Pannellum pueda medir el contenedor ya visible.
   initCompareSliders();
 
   /* ==========================================================================
@@ -288,58 +278,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ==========================================================================
-     LA MAGA PICA — ANIMACIÓN DE PALABRAS EN LOS TEXTOS
-     ========================================================================== */
-  // Envuelve cada palabra de un elemento en un <span class="word"> sin romper
-  // las etiquetas internas (<em>, <strong>, <br>...), para poder animarlas
-  // una a una con un pequeño desfase (efecto "aparición mágica").
-  function wrapWordsInSpans(root) {
-    if (!root || root.dataset.wordsWrapped) return;
-    root.dataset.wordsWrapped = "true";
-
-    let index = 0;
-
-    function walk(node) {
-      if (node.nodeType === Node.TEXT_NODE) {
-        if (!node.textContent.trim()) return;
-
-        const fragment = document.createDocumentFragment();
-        const parts = node.textContent.split(/(\s+)/);
-
-        parts.forEach(part => {
-          if (part === "") return;
-          if (/^\s+$/.test(part)) {
-            fragment.appendChild(document.createTextNode(part));
-          } else {
-            const span = document.createElement("span");
-            span.className = "word";
-            span.style.setProperty("--i", index++);
-            span.textContent = part;
-            fragment.appendChild(span);
-          }
-        });
-
-        node.parentNode.replaceChild(fragment, node);
-      } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== "BR") {
-        Array.from(node.childNodes).forEach(walk);
-      }
-    }
-
-    Array.from(root.childNodes).forEach(walk);
-  }
-
-  const picaAnimatedTextSelectors = [
-    "#pica-site .pica-hero-text h2",
-    "#pica-site .pica-hero-text > p:first-of-type",
-    "#pica-site .pica-photo-text h2",
-    "#pica-site .pica-section > h2",
-    "#pica-site .show-card h3",
-    "#pica-site .show-subtitle"
-  ].join(", ");
-
-  document.querySelectorAll(picaAnimatedTextSelectors).forEach(wrapWordsInSpans);
-
-  /* ==========================================================================
      ANIMACIÓN DE APARICIÓN AL HACER SCROLL (REVEAL)
      ========================================================================== */
   if ("IntersectionObserver" in window) {
@@ -354,7 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
   } else {
-    // Si el navegador no soporta IntersectionObserver, mostramos todo directamente
     document.querySelectorAll(".reveal").forEach(el => el.classList.add("in-view"));
   }
 });
