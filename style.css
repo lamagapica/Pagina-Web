@@ -41,7 +41,6 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
@@ -49,12 +48,6 @@ body {
   line-height: 1.6;
   background-color: #111;
   color: #333;
-  overflow-x: hidden;
-}
-
-img, video {
-  max-width: 100%;
-  height: auto;
 }
 
 a {
@@ -116,7 +109,7 @@ a {
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* GRIETA CENTRAL: EL PUNTO DONDE SE ENCUENTRAN LOS DOS OFICIOS DE PATRICIA */
+/* GRIETA CENTRAL */
 .world-divider {
   position: absolute;
   inset: 0;
@@ -155,7 +148,6 @@ a {
   transition: filter 0.5s ease, clip-path 0.5s ease;
 }
 
-/* borde tallado / irregular entre los dos mundos, como una fractura de piedra */
 .world-patricia {
   clip-path: polygon(0% 0%, 93% 0%, 87% 7%, 95% 13%, 88% 19%, 96% 26%, 85% 33%, 93% 40%,
     86% 47%, 95% 54%, 87% 61%, 94% 68%, 85% 75%, 93% 82%, 87% 89%, 92% 95%, 89% 100%, 0% 100%);
@@ -166,7 +158,6 @@ a {
     14% 68%, 5% 61%, 15% 54%, 4% 47%, 13% 40%, 6% 33%, 14% 26%, 4% 19%, 12% 13%, 6% 7%);
 }
 
-/* FOTOGRAFÍA DE FONDO DE CADA MUNDO */
 .world-photo {
   position: absolute;
   inset: -3%;
@@ -181,7 +172,6 @@ a {
   transform: scale(1.09);
 }
 
-/* VELO OSCURO PARA GARANTIZAR LA LEGIBILIDAD DEL TEXTO */
 .world::before {
   content: "";
   position: absolute;
@@ -190,7 +180,6 @@ a {
   pointer-events: none;
 }
 
-/* RESPLANDOR DE COLOR PROPIO DE CADA MUNDO */
 .world-glow {
   position: absolute;
   inset: 0;
@@ -204,7 +193,6 @@ a {
   opacity: 1;
 }
 
-/* Al pasar el ratón por un lado, el otro se atenúa ligeramente (navegadores compatibles con :has) */
 .world-selector:has(.world-patricia:hover) .world-pica { filter: brightness(0.6) saturate(0.85); }
 .world-selector:has(.world-pica:hover) .world-patricia { filter: brightness(0.6) saturate(0.85); }
 
@@ -242,9 +230,6 @@ a {
   max-width: 34ch;
 }
 
-/* ==========================================================================
-   3c. PORTADA ANIMADA "PORTFOLIO 2026" (world-patricia)
-   ========================================================================== */
 .world-copy-cover { max-width: 480px; }
 
 .cover-wordmark {
@@ -376,11 +361,6 @@ a {
 
 .world-pica .eyebrow { color: var(--pica-orange); }
 
-.pica-logo-cover {
-  max-width: 100px;
-  margin-bottom: 1rem;
-}
-
 .world-pica h2 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
@@ -441,11 +421,6 @@ a {
   to { opacity: 1; }
 }
 
-@keyframes worldSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 /* ==========================================================================
    3b. ANIMACIONES DE ENTRADA AL HACER SCROLL (REVEAL)
    ========================================================================== */
@@ -497,10 +472,8 @@ a {
 
 .site-header nav {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
-  gap: 1rem 1.8rem;
+  gap: 1.8rem;
 }
 
 .site-header nav a {
@@ -612,10 +585,6 @@ a {
   display: block;
 }
 
-.nav-dropdown.open .dropdown-menu {
-  display: block;
-}
-
 .site-patricia .switch-world {
   background-color: var(--pat-accent);
   color: var(--pat-text);
@@ -691,7 +660,6 @@ a {
 
 .hero-badge-icon { font-size: 1rem; }
 
-/* PORTADA "PORTFOLIO 2026" DENTRO DE LA PROPIA PÁGINA DE PATRICIA */
 .hero-patricia-cover {
   display: flex;
   align-items: center;
@@ -866,7 +834,6 @@ a {
   border: 1px solid rgba(99, 202, 167, 0.2);
 }
 
-/* PORTFOLIO TARJETAS INTERACTIVAS */
 .project-card.project-open-btn {
   position: relative;
   cursor: pointer;
@@ -927,7 +894,6 @@ a {
   transform: scale(1.05);
 }
 
-/* VISTA DE DETALLE DE PROYECTOS (GALERÍAS OCULTAS) */
 .back-to-grid-btn {
   background-color: var(--pat-dark);
   color: #FFFFFF;
@@ -954,7 +920,6 @@ a {
   margin-bottom: 0.5rem;
 }
 
-/* CABECERO CARTEL (estilo "BRANDING" / "VISUALIZACIÓN..." del portafolio) */
 .detail-header.poster-header {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
@@ -986,7 +951,6 @@ a {
   margin: 0 auto;
 }
 
-/* TARJETAS DE CATEGORÍA (BRANDING / VISUALIZACIÓN) EN LA REJILLA PRINCIPAL */
 .category-card {
   position: relative;
 }
@@ -1207,58 +1171,6 @@ a {
   color: var(--pat-muted);
   display: block;
   margin-bottom: 0.8rem;
-}
-
-/* PREMIOS & RECONOCIMIENTOS */
-.awards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.award-card {
-  background: var(--pat-card-bg);
-  border-radius: 16px;
-  padding: 2rem;
-  border: 1px solid rgba(99, 202, 167, 0.2);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-  display: flex;
-  gap: 1.2rem;
-  transition: transform 0.3s ease;
-}
-
-.award-card:hover {
-  transform: translateY(-4px);
-}
-
-.award-card.highlight {
-  border: 2px solid var(--pat-accent);
-  background: linear-gradient(145deg, #ffffff, #fffbf3);
-}
-
-.award-icon {
-  font-size: 2.2rem;
-  line-height: 1;
-}
-
-.award-year {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--pat-dark);
-}
-
-.award-info h3 {
-  font-size: 1.15rem;
-  color: var(--pat-text);
-  margin: 0.2rem 0;
-}
-
-.award-org {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--pat-muted);
-  margin-bottom: 0.6rem;
 }
 
 .site-patricia .site-footer {
@@ -1490,827 +1402,4 @@ a {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.4rem;
   color: var(--pica-warm);
-}
-
-.show-subtitle {
-  color: var(--pica-teal);
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.show-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-  margin: 1.5rem 0 2rem 0;
-}
-
-.show-gallery img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, filter 0.3s ease;
-  border: 1px solid rgba(141, 198, 191, 0.2);
-}
-
-.show-gallery img:hover {
-  transform: scale(1.02);
-  filter: brightness(1.08);
-}
-
-.show-meta {
-  list-style: none;
-  background-color: rgba(0,0,0,0.25);
-  padding: 1.2rem;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
-}
-
-.show-meta li {
-  margin-bottom: 0.4rem;
-  color: var(--pica-text);
-}
-
-.show-card h4 {
-  color: var(--pica-orange);
-  margin: 1.5rem 0 0.8rem;
-}
-
-.show-card ul {
-  padding-left: 1.2rem;
-  color: var(--pica-muted);
-  margin-bottom: 1.5rem;
-}
-
-.show-card ul li {
-  margin-bottom: 0.5rem;
-}
-
-.contact-details {
-  list-style: none;
-  margin-top: 2rem;
-}
-
-.contact-details li {
-  font-size: 1.2rem;
-  margin-bottom: 1.2rem;
-}
-
-.contact-details a {
-  color: var(--pica-warm);
-  font-weight: 700;
-}
-
-.contact-details a:hover {
-  color: var(--pica-orange);
-  text-decoration: underline;
-}
-
-.contact-details-patricia li {
-  color: var(--pat-text);
-}
-
-.contact-details-patricia a {
-  color: var(--pat-dark) !important;
-}
-
-.contact-details-patricia a:hover {
-  color: var(--pat-teal) !important;
-}
-
-.site-pica .site-footer {
-  background-color: #140d13;
-  color: var(--pica-muted);
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-/* ==========================================================================
-   6b. LA MAGA PICA — TOQUE MÁGICO (AURA, BRILLOS Y TEXTOS ANIMADOS)
-   ========================================================================== */
-
-/* Aura ambiental de fondo, muy sutil, que respira lentamente */
-.site-pica {
-  background-image:
-    radial-gradient(circle at 12% 18%, rgba(249, 123, 79, 0.12), transparent 38%),
-    radial-gradient(circle at 88% 15%, rgba(141, 198, 191, 0.10), transparent 42%),
-    radial-gradient(circle at 50% 90%, rgba(252, 188, 102, 0.08), transparent 45%);
-  background-attachment: fixed, fixed, fixed;
-  animation: pica-aura 16s ease-in-out infinite alternate;
-}
-
-@keyframes pica-aura {
-  0%   { background-position: 0% 0%, 100% 0%, 50% 100%; }
-  100% { background-position: 8% 6%, 92% 10%, 46% 92%; }
-}
-
-/* Logo / nombre con brillo mágico */
-.pica-brand .brand-name {
-  position: relative;
-  background: linear-gradient(90deg, var(--pica-warm), var(--pica-orange), var(--pica-teal), var(--pica-warm));
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: pica-shimmer 6s linear infinite;
-}
-
-.pica-brand::before {
-  content: "\2726";
-  margin-right: 0.35rem;
-  color: var(--pica-warm);
-  display: inline-block;
-  animation: pica-twinkle 2.4s ease-in-out infinite;
-}
-
-@keyframes pica-shimmer {
-  to { background-position: 300% center; }
-}
-
-@keyframes pica-twinkle {
-  0%, 100% { opacity: 0.4; transform: scale(0.85) rotate(0deg); }
-  50%      { opacity: 1;   transform: scale(1.15) rotate(25deg); }
-}
-
-/* Etiquetas de sección con destello */
-.site-pica .section-label {
-  position: relative;
-  padding-left: 1.4rem;
-}
-
-.site-pica .section-label::before {
-  content: "\2727";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--pica-teal);
-  animation: pica-twinkle 3s ease-in-out infinite;
-}
-
-/* Subrayado de los h2 con brillo pulsante que recorre el degradado */
-.pica-section h2::after {
-  background-size: 200% auto;
-  animation: pica-underline-glow 3.5s ease-in-out infinite;
-}
-
-@keyframes pica-underline-glow {
-  0%, 100% { background-position: 0% center; opacity: 0.85; }
-  50%      { background-position: 100% center; opacity: 1; }
-}
-
-/* --- Animación de textos: revelado de palabras --- */
-.word {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(0.6em) rotate(2deg);
-  will-change: transform, opacity;
-}
-
-.reveal.in-view .word,
-.subtab-content.active .word {
-  animation: pica-word-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: calc(var(--i, 0) * 0.045s);
-}
-
-@keyframes pica-word-in {
-  from { opacity: 0; transform: translateY(0.6em) rotate(2deg); }
-  to   { opacity: 1; transform: translateY(0) rotate(0deg); }
-}
-
-/* Imagen de cabecera con leve flotación y marco luminoso */
-.pica-hero-image {
-  position: relative;
-}
-
-.pica-hero-image::before {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, var(--pica-orange), var(--pica-teal), var(--pica-warm));
-  opacity: 0.55;
-  z-index: -1;
-  filter: blur(10px);
-  animation: pica-glow-pulse 4s ease-in-out infinite;
-}
-
-.pica-hero-image img {
-  animation: pica-float 5s ease-in-out infinite;
-}
-
-@keyframes pica-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
-}
-
-@keyframes pica-glow-pulse {
-  0%, 100% { opacity: 0.35; filter: blur(10px); }
-  50%      { opacity: 0.7;  filter: blur(16px); }
-}
-
-/* Botones de subpestañas: barrido de luz al pasar el cursor */
-.subtab-btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.subtab-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -60%;
-  width: 40%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.6s ease;
-}
-
-.subtab-btn:hover::before {
-  left: 130%;
-}
-
-.subtab-btn.active {
-  box-shadow: 0 0 18px rgba(249, 123, 79, 0.55);
-}
-
-/* Tarjetas de espectáculos: elevación con resplandor de color */
-.show-card {
-  position: relative;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-}
-
-.show-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 45px rgba(249, 123, 79, 0.22), 0 0 0 1px rgba(252, 188, 102, 0.25);
-  border-left-color: var(--pica-orange);
-}
-
-.show-card h3 {
-  transition: letter-spacing 0.4s ease;
-}
-
-.show-card:hover h3 {
-  letter-spacing: 0.5px;
-}
-
-/* Galería de fotos con brillo al pasar el cursor */
-.site-pica .photo-item {
-  position: relative;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.site-pica .photo-item:hover {
-  transform: translateY(-6px) scale(1.015);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(141, 198, 191, 0.35);
-}
-
-/* Datos de contacto con pequeño destello en el icono */
-.contact-details li {
-  position: relative;
-  padding-left: 1.6rem;
-  transition: transform 0.3s ease;
-}
-
-.contact-details li::before {
-  content: "\2726";
-  position: absolute;
-  left: 0;
-  color: var(--pica-teal);
-  animation: pica-twinkle 2.8s ease-in-out infinite;
-}
-
-.contact-details li:hover {
-  transform: translateX(4px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .site-pica,
-  .pica-brand .brand-name,
-  .pica-brand::before,
-  .site-pica .section-label::before,
-  .pica-section h2::after,
-  .pica-hero-image::before,
-  .pica-hero-image img,
-  .contact-details li::before {
-    animation: none !important;
-  }
-  .word {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
-/* ==========================================================================
-   7. DESCUBRE VAREIA (ZONAS ROMANAS INTERACTIVAS)
-   ========================================================================== */
-.vareia-section .vareia-intro {
-  max-width: 720px;
-  color: var(--pat-muted);
-  font-size: 1.05rem;
-  margin-top: -0.5rem;
-}
-
-/* REJILLA DE ZONAS */
-.vareia-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.vareia-card {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--pat-card-bg);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(38, 121, 142, 0.08);
-  border: 1px solid rgba(99, 202, 167, 0.2);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.vareia-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--pat-accent), var(--pat-teal));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-}
-
-.vareia-card:hover::before {
-  transform: scaleX(1);
-}
-
-.vareia-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(38, 121, 142, 0.18);
-}
-
-.vareia-card-image {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-}
-
-.vareia-card-image img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.vareia-card:hover .vareia-card-image img {
-  transform: scale(1.05);
-}
-
-.vareia-mini-desc {
-  font-size: 0.88rem;
-  color: var(--pat-muted);
-  margin-top: 0.5rem;
-}
-
-/* BLOQUE DE DETALLE DE UNA ZONA */
-.vareia-zone-detail {
-  max-width: 900px;
-}
-
-.vareia-zone-text {
-  margin-top: 2rem;
-}
-
-.vareia-zone-text p {
-  margin-bottom: 1.2rem;
-  color: var(--pat-muted);
-  font-size: 1.05rem;
-}
-
-/* COMPARADOR DE IMÁGENES (ÉPOCA ROMANA / ACTUALIDAD) */
-.compare-slider {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 16px;
-  overflow: hidden;
-  margin: 2rem 0 1rem;
-  box-shadow: 0 10px 30px rgba(38, 121, 142, 0.18);
-  user-select: none;
-  background-color: #0d1f24;
-}
-
-.compare-image {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-.compare-before { z-index: 1; }
-.compare-after { z-index: 2; }
-
-.compare-range {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  cursor: ew-resize;
-  z-index: 4;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.compare-handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 3px;
-  background: #ffffff;
-  transform: translateX(-50%);
-  z-index: 3;
-  pointer-events: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.compare-handle::before {
-  content: "⇔";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #ffffff;
-  color: var(--pat-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  font-weight: 700;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-}
-
-.compare-label {
-  position: absolute;
-  top: 1rem;
-  padding: 0.35rem 0.9rem;
-  background: rgba(28, 49, 55, 0.7);
-  color: #ffffff;
-  border-radius: 30px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.label-before { left: 1rem; }
-.label-after { right: 1rem; }
-
-/* VISOR DE IMAGEN 360º */
-.viewer-360 {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 16px;
-  overflow: hidden;
-  margin: 1.5rem 0;
-  background-color: #000;
-  cursor: grab;
-  box-shadow: 0 10px 30px rgba(38, 121, 142, 0.18);
-}
-
-.viewer-360.dragging {
-  cursor: grabbing;
-}
-
-.viewer-360-canvas {
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: 180% auto;
-  background-position: 50% center;
-  transform: scale(1);
-  transition: transform 0.15s ease-out;
-  will-change: transform, background-position;
-}
-
-.viewer-360-hint {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: rgba(0, 0, 0, 0.55);
-  color: #ffffff;
-  padding: 0.4rem 1rem;
-  border-radius: 30px;
-  font-size: 0.78rem;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.viewer-360-controls {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  display: flex;
-  gap: 0.6rem;
-  z-index: 2;
-}
-
-.viewer-360-zoom {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--pat-dark);
-  font-size: 1.3rem;
-  font-weight: 700;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  transition: all 0.25s ease;
-}
-
-.viewer-360-zoom:hover {
-  background-color: var(--pat-accent);
-  transform: translateY(-2px);
-}
-
-/* RESPONSIVE */
-@media (max-width: 850px) {
-  .world-selector {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-
-  .world-intro {
-    top: 1.1rem;
-  }
-
-  .world-intro-mark {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
-  }
-
-  .world-intro p {
-    font-size: 0.85rem;
-  }
-
-  .world-divider-node {
-    width: 44px;
-    height: 44px;
-    font-size: 1.1rem;
-  }
-
-  .world {
-    padding: 5rem 1.5rem 2.5rem;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .world-patricia,
-  .world-pica {
-    clip-path: none;
-  }
-
-  .world-copy {
-    text-align: center;
-    padding: 1.6rem 1.8rem;
-    max-width: 100%;
-  }
-
-  .world-description {
-    max-width: none;
-  }
-
-  .site-header {
-    padding: 1.2rem 1.5rem;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .site-header nav {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .site-footer {
-    padding: 1.5rem;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-  }
-
-  .dropdown-menu {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    text-align: center;
-  }
-
-  .hero-side-tag {
-    display: none;
-  }
-
-  .pica-hero-wrapper, .show-gallery, .photo-gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .pica-hero-image img {
-    height: 260px;
-  }
-
-  .photo-item img {
-    height: 240px;
-  }
-
-  .show-gallery img {
-    height: 200px;
-  }
-
-  .show-card {
-    padding: 1.6rem;
-  }
-
-  .timeline {
-    padding-left: 1rem;
-  }
-
-  .timeline-badge {
-    left: -1rem;
-  }
-
-  .timeline-content {
-    margin-left: 0.6rem;
-    padding: 1.4rem;
-  }
-
-  .hero-patricia h1, .world-patricia h1, .world-pica h2 {
-    font-size: 2.8rem;
-  }
-
-  .pica-section h2 {
-    font-size: 2.4rem;
-  }
-
-  .site-patricia h2 {
-    font-size: 2.1rem;
-  }
-
-  .site-main {
-    padding: 3rem 1.4rem;
-  }
-
-  .pica-content {
-    padding: 2.5rem 1.4rem;
-  }
-
-  .about-subtabs {
-    justify-content: center;
-  }
-
-  .subtab-btn {
-    padding: 0.5rem 1.1rem;
-    font-size: 0.88rem;
-  }
-
-  .compare-slider, .viewer-360 {
-    aspect-ratio: 4 / 3;
-  }
-
-  .viewer-360-hint {
-    font-size: 0.68rem;
-    padding: 0.3rem 0.7rem;
-  }
-
-  .cover-wordmark { align-items: center; }
-  .cover-row { justify-content: center; }
-  .cover-meta { justify-content: center; }
-
-  .detail-header.poster-header {
-    padding: 2.2rem 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .world {
-    padding: 4.5rem 1rem 2rem;
-  }
-
-  .world-copy {
-    padding: 1.3rem 1.2rem;
-  }
-
-  .eyebrow {
-    font-size: 0.7rem;
-  }
-
-  .world-description {
-    font-size: 0.98rem;
-  }
-
-  .hero-patricia {
-    padding: 6rem 1.2rem 3.5rem;
-  }
-
-  .hero-patricia h1, .world-patricia h1, .world-pica h2 {
-    font-size: 2.1rem;
-  }
-
-  .hero-patricia .hero-text {
-    font-size: 1.05rem;
-  }
-
-  .pica-section h2 {
-    font-size: 1.9rem;
-  }
-
-  .site-patricia h2 {
-    font-size: 1.7rem;
-  }
-
-  .pica-brand .brand-name {
-    font-size: 1.2rem;
-  }
-
-  .site-header {
-    padding: 1rem 1.1rem;
-  }
-
-  .site-header nav {
-    gap: 0.7rem 1rem;
-  }
-
-  .site-header nav a,
-  .tab-btn {
-    font-size: 0.85rem;
-  }
-
-  .switch-world {
-    padding: 0.5rem 1.1rem;
-    font-size: 0.8rem;
-  }
-
-  .site-main,
-  .pica-content {
-    padding: 2rem 1.1rem;
-  }
-
-  .about-subtabs {
-    gap: 0.5rem;
-  }
-
-  .pica-hero-image img {
-    height: 210px;
-  }
-
-  .photo-item img {
-    height: 200px;
-  }
-
-  .show-gallery img {
-    height: 170px;
-  }
-
-  .show-card {
-    padding: 1.3rem;
-  }
-
-  .show-card h3 {
-    font-size: 1.9rem;
-  }
-
-  .timeline-content h3 {
-    font-size: 1.1rem;
-  }
-
-  .award-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .detail-header.poster-header h2 {
-    font-size: 1.9rem;
-  }
 }
